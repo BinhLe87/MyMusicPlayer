@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "LBRestKitConn.h"
+#import "LBHomeNewVC.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [LBRestKitConn configureRestKit];
+    
+     LBHomeNewVC *homeNewVC = [[LBHomeNewVC alloc] initWithNibName:@"LBHomeNew" bundle:nil];
+    
+    self.window.rootViewController = homeNewVC;
+    
     return YES;
 }
 

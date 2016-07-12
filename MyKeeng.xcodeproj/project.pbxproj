@@ -7,25 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B60A9120B7A62BB61C668B6 /* libPods-MyKeeng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F382DB8352B54C427A82D9B /* libPods-MyKeeng.a */; };
+		AB34B5F91D3533F500F4047C /* LBHomeNewSongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB34B5F81D3533F500F4047C /* LBHomeNewSongCell.xib */; };
+		AB34B5FC1D3534B100F4047C /* LBHomeNewSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34B5FB1D3534B100F4047C /* LBHomeNewSongCell.m */; };
+		AB34B6051D35399E00F4047C /* LBHomeNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34B6041D35399E00F4047C /* LBHomeNewVC.m */; };
+		AB34B6071D3539F900F4047C /* LBHomeNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB34B6061D3539F900F4047C /* LBHomeNew.xib */; };
 		AB7CB9AD1D349BE0007BF344 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CB9AC1D349BE0007BF344 /* main.m */; };
 		AB7CB9B01D349BE0007BF344 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CB9AF1D349BE0007BF344 /* AppDelegate.m */; };
-		AB7CB9B31D349BE0007BF344 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CB9B21D349BE0007BF344 /* ViewController.m */; };
 		AB7CB9B61D349BE0007BF344 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7CB9B41D349BE0007BF344 /* Main.storyboard */; };
 		AB7CB9B81D349BE0007BF344 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB7CB9B71D349BE0007BF344 /* Assets.xcassets */; };
 		AB7CB9BB1D349BE0007BF344 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7CB9B91D349BE0007BF344 /* LaunchScreen.storyboard */; };
+		AB7CBA0B1D34ABA3007BF344 /* LBSong.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CBA071D34ABA3007BF344 /* LBSong.m */; };
+		AB7CBA101D34CFF1007BF344 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA0F1D34CFF1007BF344 /* libRestKit.a */; };
+		AB7CBA121D34D005007BF344 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA111D34D005007BF344 /* CFNetwork.framework */; };
+		AB7CBA141D34D00D007BF344 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA131D34D00D007BF344 /* CoreData.framework */; };
+		AB7CBA161D34D018007BF344 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA151D34D018007BF344 /* MobileCoreServices.framework */; };
+		AB7CBA181D34D020007BF344 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA171D34D020007BF344 /* Security.framework */; };
+		AB7CBA1A1D34D02E007BF344 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA191D34D02E007BF344 /* SystemConfiguration.framework */; };
+		AB7CBA1D1D34D112007BF344 /* LBRestKitConn.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CBA1C1D34D112007BF344 /* LBRestKitConn.m */; };
+		AB7CBA221D34F5AA007BF344 /* LBMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CBA211D34F5AA007BF344 /* LBMedia.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F382DB8352B54C427A82D9B /* libPods-MyKeeng.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyKeeng.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34ACE6209E8CE486AD265874 /* Pods-MyKeeng.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyKeeng.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyKeeng/Pods-MyKeeng.debug.xcconfig"; sourceTree = "<group>"; };
+		799DD9B57227CE5012F5BD4B /* Pods-MyKeeng.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyKeeng.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyKeeng/Pods-MyKeeng.release.xcconfig"; sourceTree = "<group>"; };
+		AB34B5F81D3533F500F4047C /* LBHomeNewSongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBHomeNewSongCell.xib; sourceTree = "<group>"; };
+		AB34B5FA1D3534B100F4047C /* LBHomeNewSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeNewSongCell.h; sourceTree = "<group>"; };
+		AB34B5FB1D3534B100F4047C /* LBHomeNewSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeNewSongCell.m; sourceTree = "<group>"; };
+		AB34B6031D35399E00F4047C /* LBHomeNewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeNewVC.h; sourceTree = "<group>"; };
+		AB34B6041D35399E00F4047C /* LBHomeNewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeNewVC.m; sourceTree = "<group>"; };
+		AB34B6061D3539F900F4047C /* LBHomeNew.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBHomeNew.xib; sourceTree = "<group>"; };
 		AB7CB9A81D349BE0007BF344 /* MyKeeng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKeeng.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7CB9AC1D349BE0007BF344 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AB7CB9AE1D349BE0007BF344 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		AB7CB9AF1D349BE0007BF344 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AB7CB9B11D349BE0007BF344 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AB7CB9B21D349BE0007BF344 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AB7CB9AE1D349BE0007BF344 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
+		AB7CB9AF1D349BE0007BF344 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
 		AB7CB9B51D349BE0007BF344 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB7CB9B71D349BE0007BF344 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB7CB9BA1D349BE0007BF344 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB7CB9BC1D349BE0007BF344 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB7CB9DA1D349E35007BF344 /* LBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBConstants.h; sourceTree = "<group>"; };
+		AB7CBA061D34ABA3007BF344 /* LBSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSong.h; sourceTree = "<group>"; };
+		AB7CBA071D34ABA3007BF344 /* LBSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSong.m; sourceTree = "<group>"; };
+		AB7CBA0F1D34CFF1007BF344 /* libRestKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRestKit.a; path = "Pods/../build/Debug-iphoneos/libRestKit.a"; sourceTree = "<group>"; };
+		AB7CBA111D34D005007BF344 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		AB7CBA131D34D00D007BF344 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		AB7CBA151D34D018007BF344 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		AB7CBA171D34D020007BF344 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		AB7CBA191D34D02E007BF344 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		AB7CBA1B1D34D112007BF344 /* LBRestKitConn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRestKitConn.h; sourceTree = "<group>"; };
+		AB7CBA1C1D34D112007BF344 /* LBRestKitConn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRestKitConn.m; sourceTree = "<group>"; };
+		AB7CBA1E1D34D3DD007BF344 /* MyKeeng-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyKeeng-PrefixHeader.pch"; sourceTree = "<group>"; };
+		AB7CBA201D34F5AA007BF344 /* LBMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMedia.h; sourceTree = "<group>"; };
+		AB7CBA211D34F5AA007BF344 /* LBMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMedia.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +67,60 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB7CBA1A1D34D02E007BF344 /* SystemConfiguration.framework in Frameworks */,
+				AB7CBA181D34D020007BF344 /* Security.framework in Frameworks */,
+				AB7CBA161D34D018007BF344 /* MobileCoreServices.framework in Frameworks */,
+				AB7CBA141D34D00D007BF344 /* CoreData.framework in Frameworks */,
+				AB7CBA121D34D005007BF344 /* CFNetwork.framework in Frameworks */,
+				AB7CBA101D34CFF1007BF344 /* libRestKit.a in Frameworks */,
+				5B60A9120B7A62BB61C668B6 /* libPods-MyKeeng.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56B70105E3CCF36DE709533A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB7CBA191D34D02E007BF344 /* SystemConfiguration.framework */,
+				AB7CBA171D34D020007BF344 /* Security.framework */,
+				AB7CBA151D34D018007BF344 /* MobileCoreServices.framework */,
+				AB7CBA131D34D00D007BF344 /* CoreData.framework */,
+				AB7CBA111D34D005007BF344 /* CFNetwork.framework */,
+				AB7CBA0F1D34CFF1007BF344 /* libRestKit.a */,
+				0F382DB8352B54C427A82D9B /* libPods-MyKeeng.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5FA76AFA1F03ACF9773E3840 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				34ACE6209E8CE486AD265874 /* Pods-MyKeeng.debug.xcconfig */,
+				799DD9B57227CE5012F5BD4B /* Pods-MyKeeng.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AB34B5F71D35335200F4047C /* LBHomeNew */ = {
+			isa = PBXGroup;
+			children = (
+				AB34B5F81D3533F500F4047C /* LBHomeNewSongCell.xib */,
+				AB34B5FA1D3534B100F4047C /* LBHomeNewSongCell.h */,
+				AB34B5FB1D3534B100F4047C /* LBHomeNewSongCell.m */,
+				AB34B6061D3539F900F4047C /* LBHomeNew.xib */,
+			);
+			name = LBHomeNew;
+			sourceTree = "<group>";
+		};
 		AB7CB99F1D349BE0007BF344 = {
 			isa = PBXGroup;
 			children = (
 				AB7CB9AA1D349BE0007BF344 /* MyKeeng */,
 				AB7CB9A91D349BE0007BF344 /* Products */,
+				5FA76AFA1F03ACF9773E3840 /* Pods */,
+				56B70105E3CCF36DE709533A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +135,11 @@
 		AB7CB9AA1D349BE0007BF344 /* MyKeeng */ = {
 			isa = PBXGroup;
 			children = (
-				AB7CB9AE1D349BE0007BF344 /* AppDelegate.h */,
-				AB7CB9AF1D349BE0007BF344 /* AppDelegate.m */,
-				AB7CB9B11D349BE0007BF344 /* ViewController.h */,
-				AB7CB9B21D349BE0007BF344 /* ViewController.m */,
+				AB7CBA001D34AB09007BF344 /* Model */,
+				AB7CBA011D34AB11007BF344 /* View */,
+				AB7CB9E91D349E35007BF344 /* View Controllers */,
+				AB7CB9C21D349E35007BF344 /* App Delegate */,
+				AB7CB9D11D349E35007BF344 /* Components */,
 				AB7CB9B41D349BE0007BF344 /* Main.storyboard */,
 				AB7CB9B71D349BE0007BF344 /* Assets.xcassets */,
 				AB7CB9B91D349BE0007BF344 /* LaunchScreen.storyboard */,
@@ -75,8 +153,120 @@
 			isa = PBXGroup;
 			children = (
 				AB7CB9AC1D349BE0007BF344 /* main.m */,
+				AB7CBA1E1D34D3DD007BF344 /* MyKeeng-PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AB7CB9C21D349E35007BF344 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				AB7CB9AE1D349BE0007BF344 /* AppDelegate.h */,
+				AB7CB9AF1D349BE0007BF344 /* AppDelegate.m */,
+			);
+			path = "App Delegate";
+			sourceTree = "<group>";
+		};
+		AB7CB9D11D349E35007BF344 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AB7CB9D51D349E35007BF344 /* Data Source Manager */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AB7CB9D51D349E35007BF344 /* Data Source Manager */ = {
+			isa = PBXGroup;
+			children = (
+				AB7CB9D61D349E35007BF344 /* Connection Manager */,
+				AB7CB9D91D349E35007BF344 /* Constants */,
+			);
+			path = "Data Source Manager";
+			sourceTree = "<group>";
+		};
+		AB7CB9D61D349E35007BF344 /* Connection Manager */ = {
+			isa = PBXGroup;
+			children = (
+				AB7CBA1B1D34D112007BF344 /* LBRestKitConn.h */,
+				AB7CBA1C1D34D112007BF344 /* LBRestKitConn.m */,
+			);
+			path = "Connection Manager";
+			sourceTree = "<group>";
+		};
+		AB7CB9D91D349E35007BF344 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				AB7CB9DA1D349E35007BF344 /* LBConstants.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		AB7CB9E91D349E35007BF344 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB7CB9ED1D349E35007BF344 /* Protocols */,
+				AB34B6031D35399E00F4047C /* LBHomeNewVC.h */,
+				AB34B6041D35399E00F4047C /* LBHomeNewVC.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		AB7CB9ED1D349E35007BF344 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AB7CBA001D34AB09007BF344 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB7CBA1F1D34F598007BF344 /* Media */,
+				AB7CBA0E1D34ABB6007BF344 /* Album */,
+				AB7CBA0D1D34ABAD007BF344 /* Video */,
+				AB7CBA031D34AB2F007BF344 /* Song */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AB7CBA011D34AB11007BF344 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB34B5F71D35335200F4047C /* LBHomeNew */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AB7CBA031D34AB2F007BF344 /* Song */ = {
+			isa = PBXGroup;
+			children = (
+				AB7CBA061D34ABA3007BF344 /* LBSong.h */,
+				AB7CBA071D34ABA3007BF344 /* LBSong.m */,
+			);
+			name = Song;
+			sourceTree = "<group>";
+		};
+		AB7CBA0D1D34ABAD007BF344 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Video;
+			sourceTree = "<group>";
+		};
+		AB7CBA0E1D34ABB6007BF344 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Album;
+			sourceTree = "<group>";
+		};
+		AB7CBA1F1D34F598007BF344 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				AB7CBA201D34F5AA007BF344 /* LBMedia.h */,
+				AB7CBA211D34F5AA007BF344 /* LBMedia.m */,
+			);
+			name = Media;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +276,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB7CB9BF1D349BE0007BF344 /* Build configuration list for PBXNativeTarget "MyKeeng" */;
 			buildPhases = (
+				01A9F4836CDA37874D5E2FF2 /* Check Pods Manifest.lock */,
 				AB7CB9A41D349BE0007BF344 /* Sources */,
 				AB7CB9A51D349BE0007BF344 /* Frameworks */,
 				AB7CB9A61D349BE0007BF344 /* Resources */,
+				F0EF80E28D6123E545A49F68 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -138,20 +330,59 @@
 			files = (
 				AB7CB9BB1D349BE0007BF344 /* LaunchScreen.storyboard in Resources */,
 				AB7CB9B81D349BE0007BF344 /* Assets.xcassets in Resources */,
+				AB34B5F91D3533F500F4047C /* LBHomeNewSongCell.xib in Resources */,
+				AB34B6071D3539F900F4047C /* LBHomeNew.xib in Resources */,
 				AB7CB9B61D349BE0007BF344 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		01A9F4836CDA37874D5E2FF2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F0EF80E28D6123E545A49F68 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyKeeng/Pods-MyKeeng-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB7CB9A41D349BE0007BF344 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB7CB9B31D349BE0007BF344 /* ViewController.m in Sources */,
 				AB7CB9B01D349BE0007BF344 /* AppDelegate.m in Sources */,
+				AB7CBA1D1D34D112007BF344 /* LBRestKitConn.m in Sources */,
+				AB34B5FC1D3534B100F4047C /* LBHomeNewSongCell.m in Sources */,
+				AB7CBA0B1D34ABA3007BF344 /* LBSong.m in Sources */,
 				AB7CB9AD1D349BE0007BF344 /* main.m in Sources */,
+				AB7CBA221D34F5AA007BF344 /* LBMedia.m in Sources */,
+				AB34B6051D35399E00F4047C /* LBHomeNewVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +435,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyKeeng/MyKeeng-PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -214,6 +446,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -246,12 +479,14 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyKeeng/MyKeeng-PrefixHeader.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -261,10 +496,17 @@
 		};
 		AB7CB9C01D349BE0007BF344 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34ACE6209E8CE486AD265874 /* Pods-MyKeeng.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyKeeng/MyKeeng-PrefixHeader.pch";
 				INFOPLIST_FILE = MyKeeng/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(SRCROOT)/**",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = LB.MyKeeng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -272,10 +514,17 @@
 		};
 		AB7CB9C11D349BE0007BF344 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 799DD9B57227CE5012F5BD4B /* Pods-MyKeeng.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyKeeng/MyKeeng-PrefixHeader.pch";
 				INFOPLIST_FILE = MyKeeng/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(SRCROOT)/**",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = LB.MyKeeng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -300,6 +549,7 @@
 				AB7CB9C11D349BE0007BF344 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
