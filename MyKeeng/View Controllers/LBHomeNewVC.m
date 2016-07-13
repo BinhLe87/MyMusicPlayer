@@ -9,17 +9,38 @@
 #import "LBHomeNewVC.h"
 #import "LBHomeNewSongCell.h"
 
-@interface LBHomeNewVC ()
+
+
+@interface LBHomeNewVC () {
+    
+   
+}
+
 
 @end
 
 @implementation LBHomeNewVC
 
+int HOMENEW_CELL_WIDTH = 320;
+
+#pragma mark - Constant variables
+static const int HOMENEW_CELL_HEIGHT = 120;
+
+
+#pragma mark - Load view
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    HOMENEW_CELL_WIDTH = CGRectGetWidth(self.view.bounds);
+    
     UINib *mediaCellNib = [UINib nibWithNibName:@"LBHomeNewSongCell" bundle:nil];
     [self.tableview registerNib:mediaCellNib forCellReuseIdentifier:@"SongCell"];
+    
+    //set seperator style
+    [self.tableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    
     
     _medias = [[NSMutableArray alloc] init];
     //load first page
@@ -43,28 +64,71 @@
     return _medias.count;
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+         // do whatever
+         
+         switch (orientation) {
+             case UIDeviceOrientationPortrait:
+                 HOMENEW_CELL_WIDTH = CGRectGetWidth(self.view.bounds);
+                 break;
+                
+             case UIDeviceOrientationLandscapeLeft:
+                 HOMENEW_CELL_WIDTH = CGRectGetWidth(self.view.bounds);
+                 break;
+                 
+             default:
+                 HOMENEW_CELL_WIDTH = CGRectGetWidth(self.view.bounds);
+                 break;
+         }
+         
+     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         NSLog(@"Xoay hoan tat");
+         
+         [self.tableview reloadData];
+     }];
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LBHomeNewSongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongCell" forIndexPath:indexPath];
     
     LBMedia *media = [self.medias objectAtIndex:indexPath.row];
     
+    // Configure the cell...
+
+    [cell.SongImg setImageWithURL:[NSURL URLWithString:media.image]];
+    
     cell.SongNameLbl.text = media.name;
     cell.SingerLbl.text = media.singer;
-    cell.NumListenLbl.text = [NSString stringWithFormat:@"Nghe %d", [media.listen_no intValue]];
+    cell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
     
     cell.NumLikeLbl.text = [NSString stringWithFormat:@"Thích %d", [media.total_like intValue]];
     cell.NumCommentLbl.text = [NSString stringWithFormat:@"Bình luận %d", [media.number_comment intValue]];
     
+    //display seperator image at the bottom of cell
+    UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
+    seperatorImgView.frame = CGRectMake(0, HOMENEW_CELL_HEIGHT - 1 , HOMENEW_CELL_WIDTH, 1);
     
-    // Configure the cell...
+    [cell.contentView addSubview:seperatorImgView];
+    
+    
+    
+    
+    
     
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 100;
+    return HOMENEW_CELL_HEIGHT;
 }
 
 
@@ -112,12 +176,13 @@
 }
 */
 
-#pragma mark - Loading data
+#pragma mark - Load table data
 -(void)loadHomePage:(int)page size:(int)size {
     
     
     NSDictionary *queryParams = @{@"page" : [NSNumber numberWithInt:page],
                                   @"num": [NSNumber numberWithInt:size]};
+    
     
     RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] appropriateObjectRequestOperationWithObject:nil method:RKRequestMethodGET path:KEENG_API_GET_HOME parameters:queryParams];
     

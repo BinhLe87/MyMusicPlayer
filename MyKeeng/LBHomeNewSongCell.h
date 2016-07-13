@@ -10,7 +10,7 @@
 
 @interface LBHomeNewSongCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *SongNameLbl;
+@property (strong, nonatomic) IBOutlet UILabel *SongNameLbl;
 
 @property (weak, nonatomic) IBOutlet UILabel *SingerLbl;
 @property (weak, nonatomic) IBOutlet UILabel *NumListenLbl;
@@ -19,5 +19,8 @@
 
 
 @property (weak, nonatomic) IBOutlet UILabel *NumCommentLbl;
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *SongImg;
 
 @end

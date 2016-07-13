@@ -7,20 +7,22 @@
 //
 
 #import "LBHomeNewSongCell.h"
+#import "UILabel+dynamicSizeMe.h"
 
 @implementation LBHomeNewSongCell
 
 - (void)awakeFromNib {
+    
     [super awakeFromNib];
     // Initialization code
-    
-  
-    _SongNameLbl.numberOfLines = 0;
-    [_SongNameLbl sizeToFit];
-    
-    
- 
+
 }
+
+-(void)layoutSubviews {
+    
+
+    
+  }
 
 
 
