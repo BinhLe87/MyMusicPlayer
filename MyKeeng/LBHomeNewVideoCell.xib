@@ -16,13 +16,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zbv-qO-ehR">
-                        <rect key="frame" x="0.0" y="0.0" width="421" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="421" height="167"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zFj-dL-LXV">
-                                <rect key="frame" x="0.0" y="0.0" width="421" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="421" height="117"/>
                             </imageView>
                             <view opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X6a-nZ-KM5">
-                                <rect key="frame" x="0.0" y="50" width="421" height="0.0"/>
+                                <rect key="frame" x="0.0" y="117" width="421" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vH2-Bl-aTm">
                                         <rect key="frame" x="0.0" y="0.0" width="410" height="0.0"/>
