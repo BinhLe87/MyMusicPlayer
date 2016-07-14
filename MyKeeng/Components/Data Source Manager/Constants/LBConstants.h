@@ -7,5 +7,6 @@
 //
 
 #pragma mark - Restful 
-#define KEENG_WS_URL @"http://vip.service.keeng.vn/KeengWSRestfulV3/ws/"
+//#define KEENG_WS_URL @"http://vip.service.keeng.vn/KeengWSRestfulV3/ws/"
+#define KEENG_WS_URL @"http://service.keeng.la.onbox.vn:8082/KeengWSRestful/ws/"
 #define KEENG_API_GET_HOME @"common/getHome"

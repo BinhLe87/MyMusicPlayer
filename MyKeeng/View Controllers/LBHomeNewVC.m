@@ -8,12 +8,12 @@
 
 #import "LBHomeNewVC.h"
 #import "LBHomeNewSongCell.h"
-
+#import "LBHomeNewVideoCell.h"
 
 
 @interface LBHomeNewVC () {
     
-   
+    
 }
 
 
@@ -24,7 +24,11 @@
 int HOMENEW_CELL_WIDTH = 320;
 
 #pragma mark - Constant variables
-static const int HOMENEW_CELL_HEIGHT = 120;
+static const int HOMENEW_SONGCELL_HEIGHT = 120;
+static const int HOMENEW_VIDEOCELL_HEIGHT = 150;
+
+static int curPageIdx = 0;
+static const int NUM_ROW_PER_PAGE = 10;
 
 
 #pragma mark - Load view
@@ -34,8 +38,13 @@ static const int HOMENEW_CELL_HEIGHT = 120;
     
     HOMENEW_CELL_WIDTH = CGRectGetWidth(self.view.bounds);
     
-    UINib *mediaCellNib = [UINib nibWithNibName:@"LBHomeNewSongCell" bundle:nil];
-    [self.tableview registerNib:mediaCellNib forCellReuseIdentifier:@"SongCell"];
+    //register LBHomeNewSongCell nib file
+    UINib *songCellNib = [UINib nibWithNibName:@"LBHomeNewSongCell" bundle:nil];
+    [self.tableview registerNib:songCellNib forCellReuseIdentifier:[LBHomeNewSongCell reusableCellWithIdentifier]];
+    
+    //register LBHomeNewVideoCell nib file
+    UINib *videoCellNib = [UINib nibWithNibName:@"LBHomeNewVideoCell" bundle:nil];
+    [self.tableview registerNib:videoCellNib forCellReuseIdentifier:[LBHomeNewVideoCell reusableCellWithIdentifier]];
     
     //set seperator style
     [self.tableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -44,7 +53,8 @@ static const int HOMENEW_CELL_HEIGHT = 120;
     
     _medias = [[NSMutableArray alloc] init];
     //load first page
-    [self loadHomePage:1 size:10];
+    curPageIdx = 1;
+    [self loadHomePage:curPageIdx size:NUM_ROW_PER_PAGE];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,7 +85,7 @@ static const int HOMENEW_CELL_HEIGHT = 120;
              case UIDeviceOrientationPortrait:
                  HOMENEW_CELL_WIDTH = CGRectGetWidth(self.view.bounds);
                  break;
-                
+                 
              case UIDeviceOrientationLandscapeLeft:
                  HOMENEW_CELL_WIDTH = CGRectGetWidth(self.view.bounds);
                  break;
@@ -97,84 +107,143 @@ static const int HOMENEW_CELL_HEIGHT = 120;
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LBHomeNewSongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongCell" forIndexPath:indexPath];
     
     LBMedia *media = [self.medias objectAtIndex:indexPath.row];
     
-    // Configure the cell...
-
-    [cell.SongImg setImageWithURL:[NSURL URLWithString:media.image]];
+    if ([media isKindOfClass:[LBSong class]]) {
+        
+        LBHomeNewSongCell *songCell;
+        
+        songCell = (LBHomeNewSongCell *)[tableView dequeueReusableCellWithIdentifier:[LBHomeNewSongCell reusableCellWithIdentifier] forIndexPath:indexPath];
+        
+        
+        // Configure the cell...
+        
+        [songCell.SongImg setImageWithURL:[NSURL URLWithString:media.image]];
+        
+        songCell.SongNameLbl.text = media.name;
+        songCell.SingerLbl.text = media.singer;
+        songCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
+        songCell.NumLikeLbl.text = @"New Song";
+        songCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
+        
+        //display seperator image at the bottom of cell
+        UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
+        seperatorImgView.frame = CGRectMake(0, HOMENEW_SONGCELL_HEIGHT - 1 , HOMENEW_CELL_WIDTH, 1);
+        
+        [songCell.contentView addSubview:seperatorImgView];
+        
+        return songCell;
+    } else if ([media isKindOfClass:[LBVideo class]]) {
+        
+        LBHomeNewVideoCell *videoCell;
+        
+        videoCell = (LBHomeNewVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBHomeNewVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
+        
+        
+        // Configure the cell...
+        videoCell.cellSize = CGSizeMake(HOMENEW_CELL_WIDTH, HOMENEW_VIDEOCELL_HEIGHT);
+  
+        
+        [videoCell.VideoImg setImageWithURL:[NSURL URLWithString:media.image]];
+        
+        videoCell.VideoNameLbl.text = media.name;
+      //  videoCell.SingerLbl.text = media.singer;
+     //   videoCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
+        videoCell.NumLikeLbl.text = @"New Video";
+        videoCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
+        
+        //display seperator image at the bottom of cell
+        UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
+        seperatorImgView.frame = CGRectMake(0, HOMENEW_VIDEOCELL_HEIGHT - 1 , HOMENEW_CELL_WIDTH, 1);
+        
+        [videoCell.contentView addSubview:seperatorImgView];
+        
+        return videoCell;
+        
+    }
     
-    cell.SongNameLbl.text = media.name;
-    cell.SingerLbl.text = media.singer;
-    cell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
-    
-    cell.NumLikeLbl.text = [NSString stringWithFormat:@"Thích %d", [media.total_like intValue]];
-    cell.NumCommentLbl.text = [NSString stringWithFormat:@"Bình luận %d", [media.number_comment intValue]];
-    
-    //display seperator image at the bottom of cell
-    UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
-    seperatorImgView.frame = CGRectMake(0, HOMENEW_CELL_HEIGHT - 1 , HOMENEW_CELL_WIDTH, 1);
-    
-    [cell.contentView addSubview:seperatorImgView];
-    
-    
-    
-    
-    
-    
-    return cell;
+    return nil;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return HOMENEW_CELL_HEIGHT;
+    if ([[_medias objectAtIndex:indexPath.row] isKindOfClass:[LBSong class]]) {
+        
+        return HOMENEW_SONGCELL_HEIGHT;
+    } else {
+        
+        return HOMENEW_VIDEOCELL_HEIGHT;
+    }
 }
+
+#pragma mark - Scroll view
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row % NUM_ROW_PER_PAGE == 1) { //when at the first row of every page, will load next page on background
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            
+            curPageIdx++;
+            [self loadHomePage:curPageIdx size:NUM_ROW_PER_PAGE];
+        });
+    }
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (self.tableview.contentOffset.y > self.tableview.contentSize.height - self.tableview.bounds.size.height) {
+        
+        [self.tableview reloadData];
+    }
+}
+
 
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma mark - Load table data
 -(void)loadHomePage:(int)page size:(int)size {

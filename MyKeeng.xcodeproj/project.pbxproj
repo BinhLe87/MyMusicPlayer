@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5B60A9120B7A62BB61C668B6 /* libPods-MyKeeng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F382DB8352B54C427A82D9B /* libPods-MyKeeng.a */; };
+		AB1FC7221D372E5F006A6059 /* LBVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1FC7211D372E5F006A6059 /* LBVideo.m */; };
+		AB1FC7261D37715A006A6059 /* LBHomeNewVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1FC7241D37715A006A6059 /* LBHomeNewVideoCell.m */; };
+		AB1FC7271D37715A006A6059 /* LBHomeNewVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1FC7251D37715A006A6059 /* LBHomeNewVideoCell.xib */; };
 		AB34B5F91D3533F500F4047C /* LBHomeNewSongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB34B5F81D3533F500F4047C /* LBHomeNewSongCell.xib */; };
 		AB34B5FC1D3534B100F4047C /* LBHomeNewSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34B5FB1D3534B100F4047C /* LBHomeNewSongCell.m */; };
 		AB34B6051D35399E00F4047C /* LBHomeNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34B6041D35399E00F4047C /* LBHomeNewVC.m */; };
@@ -668,6 +671,11 @@
 		0F382DB8352B54C427A82D9B /* libPods-MyKeeng.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyKeeng.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34ACE6209E8CE486AD265874 /* Pods-MyKeeng.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyKeeng.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyKeeng/Pods-MyKeeng.debug.xcconfig"; sourceTree = "<group>"; };
 		799DD9B57227CE5012F5BD4B /* Pods-MyKeeng.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyKeeng.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyKeeng/Pods-MyKeeng.release.xcconfig"; sourceTree = "<group>"; };
+		AB1FC7201D372E5F006A6059 /* LBVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVideo.h; sourceTree = "<group>"; };
+		AB1FC7211D372E5F006A6059 /* LBVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBVideo.m; sourceTree = "<group>"; };
+		AB1FC7231D37715A006A6059 /* LBHomeNewVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeNewVideoCell.h; sourceTree = "<group>"; };
+		AB1FC7241D37715A006A6059 /* LBHomeNewVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeNewVideoCell.m; sourceTree = "<group>"; };
+		AB1FC7251D37715A006A6059 /* LBHomeNewVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBHomeNewVideoCell.xib; sourceTree = "<group>"; };
 		AB34B5F81D3533F500F4047C /* LBHomeNewSongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBHomeNewSongCell.xib; sourceTree = "<group>"; };
 		AB34B5FA1D3534B100F4047C /* LBHomeNewSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeNewSongCell.h; sourceTree = "<group>"; };
 		AB34B5FB1D3534B100F4047C /* LBHomeNewSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeNewSongCell.m; sourceTree = "<group>"; };
@@ -1383,6 +1391,9 @@
 				AB34B5FA1D3534B100F4047C /* LBHomeNewSongCell.h */,
 				AB34B5FB1D3534B100F4047C /* LBHomeNewSongCell.m */,
 				AB34B6061D3539F900F4047C /* LBHomeNew.xib */,
+				AB1FC7231D37715A006A6059 /* LBHomeNewVideoCell.h */,
+				AB1FC7241D37715A006A6059 /* LBHomeNewVideoCell.m */,
+				AB1FC7251D37715A006A6059 /* LBHomeNewVideoCell.xib */,
 			);
 			name = LBHomeNew;
 			sourceTree = "<group>";
@@ -1524,6 +1535,8 @@
 		AB7CBA0D1D34ABAD007BF344 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				AB1FC7201D372E5F006A6059 /* LBVideo.h */,
+				AB1FC7211D372E5F006A6059 /* LBVideo.m */,
 			);
 			name = Video;
 			sourceTree = "<group>";
@@ -2737,6 +2750,7 @@
 				ABD9BBCE1D36293900D8FCF4 /* icon_select_a.png in Resources */,
 				ABD9BB931D36293900D8FCF4 /* btn_message_box@2x.png in Resources */,
 				ABD9BB311D36293900D8FCF4 /* top_segment_2@2x.png in Resources */,
+				AB1FC7271D37715A006A6059 /* LBHomeNewVideoCell.xib in Resources */,
 				ABD9BBDE1D36293900D8FCF4 /* menu_ee@2x.png in Resources */,
 				ABD9BB471D36293900D8FCF4 /* bg_gioi_thieu_keengtv.png in Resources */,
 				ABD9BB171D36293900D8FCF4 /* bg_player@2x.png in Resources */,
@@ -3000,7 +3014,9 @@
 				AB7CB9AD1D349BE0007BF344 /* main.m in Sources */,
 				ABD9BD5F1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m in Sources */,
 				AB7CBA221D34F5AA007BF344 /* LBMedia.m in Sources */,
+				AB1FC7221D372E5F006A6059 /* LBVideo.m in Sources */,
 				AB34B6051D35399E00F4047C /* LBHomeNewVC.m in Sources */,
+				AB1FC7261D37715A006A6059 /* LBHomeNewVideoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

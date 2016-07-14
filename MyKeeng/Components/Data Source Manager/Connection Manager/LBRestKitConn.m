@@ -8,6 +8,7 @@
 
 #import "LBRestKitConn.h"
 #import <RestKit/RestKit.h>
+#import <RestKit/ObjectMapping/RKDynamicMapping.h>
 
 
 
@@ -23,18 +24,38 @@
     // initialize RestKit
     RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
     
-#pragma mark - API GET_HOME
+//TODO: API GET_HOME
     // setup object mappings
-    RKObjectMapping *mediaMapping = [RKObjectMapping mappingForClass:[LBSong class]];
-    [mediaMapping addAttributeMappingsFromArray:@[@"number_comment", @"total_like", @"name", @"singer", @"listen_no", @"image", @"image310", @"url", @"media_url", @"locate_path"]];
+    RKObjectMapping *songMapping = [RKObjectMapping mappingForClass:[LBSong class]];
+    [songMapping addAttributeMappingsFromArray:@[@"name", @"singer", @"listen_no", @"image", @"image310", @"url", @"media_url", @"locate_path", @"download_url", @"price", @"media_url_mono", @"media_url_pre", @"item_type"]];
     
+    
+    RKObjectMapping *videoMapping = [RKObjectMapping mappingForClass:[LBVideo class]];
+    [videoMapping addAttributeMappingsFromArray:@[@"name", @"singer", @"listen_no", @"image", @"image310", @"url", @"media_url", @"locate_path", @"download_url", @"price", @"item_type"]];
+
+
+    
+     // Connect a response descriptor for our dynamic mapping
+     RKDynamicMapping *dynamicMapping =  [RKDynamicMapping new];
+    
+    [dynamicMapping setObjectMappingForRepresentationBlock:^RKObjectMapping *(id representation) {
+       
+        if ([[representation valueForKey:@"item_type"] integerValue] == 1) {
+            return songMapping;
+        } else if ([[representation valueForKey:@"item_type"] integerValue] == 3) {
+            return videoMapping;
+        }
+        
+        return nil;
+    }];
     
     RKResponseDescriptor *mediaResponseDescriptor =
-    [RKResponseDescriptor responseDescriptorWithMapping:mediaMapping
+    [RKResponseDescriptor responseDescriptorWithMapping:dynamicMapping
                                                  method:RKRequestMethodGET
                                             pathPattern: KEENG_API_GET_HOME
                                                 keyPath: @"data"
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+ 
     
     [objectManager addResponseDescriptor:mediaResponseDescriptor];
     
@@ -73,5 +94,6 @@
     
     [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/plain"];
 }
+
 
 @end

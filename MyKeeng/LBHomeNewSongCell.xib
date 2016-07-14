@@ -27,15 +27,37 @@
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="78" id="xE8-to-QlQ"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrC-xZ-gFE">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrC-xZ-gFE">
                         <rect key="frame" x="100" y="10" width="302.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="180" id="A9c-b3-lb9"/>
+                            <constraint firstAttribute="width" constant="450" id="Xjx-th-CmL"/>
+                            <constraint firstAttribute="height" priority="250" constant="21" id="o2g-SE-aM7"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="A9c-b3-lb9"/>
+                                <exclude reference="Xjx-th-CmL"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact" misplaced="YES">
+                            <rect key="frame" x="100" y="10" width="44.5" height="21"/>
+                            <mask key="constraints">
+                                <include reference="Xjx-th-CmL"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="A9c-b3-lb9"/>
+                            </mask>
+                        </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb4-eE-pFa">
                         <rect key="frame" x="8" y="105" width="180" height="21"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -68,15 +90,18 @@
                     <constraint firstItem="fb4-eE-pFa" firstAttribute="leading" secondItem="fdi-MI-22E" secondAttribute="leading" id="GWW-oW-vl9"/>
                     <constraint firstItem="fb4-eE-pFa" firstAttribute="top" secondItem="fdi-MI-22E" secondAttribute="bottom" constant="8" id="GmF-YO-zL4"/>
                     <constraint firstItem="9tG-q1-hr0" firstAttribute="top" secondItem="CrC-xZ-gFE" secondAttribute="bottom" constant="8" id="KyR-ZX-BO0"/>
+                    <constraint firstItem="Dsb-nS-cyN" firstAttribute="top" secondItem="2K8-V6-jhx" secondAttribute="top" id="L7v-Xa-NEQ"/>
                     <constraint firstItem="CrC-xZ-gFE" firstAttribute="leading" secondItem="fdi-MI-22E" secondAttribute="trailing" constant="12" id="R9Y-oi-TG1"/>
                     <constraint firstItem="hgM-cD-q8b" firstAttribute="bottom" secondItem="fb4-eE-pFa" secondAttribute="bottom" id="She-K0-T86"/>
                     <constraint firstItem="Dsb-nS-cyN" firstAttribute="bottom" secondItem="2K8-V6-jhx" secondAttribute="bottom" id="Vdi-X5-Y1k"/>
+                    <constraint firstAttribute="bottom" secondItem="fb4-eE-pFa" secondAttribute="bottom" constant="8" id="XZJ-mS-mnu"/>
                     <constraint firstItem="fdi-MI-22E" firstAttribute="top" secondItem="bLL-Yq-keZ" secondAttribute="top" constant="10" id="avZ-sk-Mgc"/>
                     <constraint firstItem="hgM-cD-q8b" firstAttribute="leading" secondItem="fb4-eE-pFa" secondAttribute="trailing" constant="10" id="h7K-89-RQE"/>
                     <constraint firstItem="Dsb-nS-cyN" firstAttribute="leading" secondItem="2K8-V6-jhx" secondAttribute="trailing" constant="2" id="i6R-hR-dT7"/>
                     <constraint firstItem="fdi-MI-22E" firstAttribute="top" secondItem="bLL-Yq-keZ" secondAttribute="topMargin" constant="10" id="kEF-FD-bcN"/>
                     <constraint firstItem="fdi-MI-22E" firstAttribute="leading" secondItem="bLL-Yq-keZ" secondAttribute="leadingMargin" constant="10" id="pLA-Dj-TNN"/>
                     <constraint firstItem="Dsb-nS-cyN" firstAttribute="height" secondItem="2K8-V6-jhx" secondAttribute="height" id="re9-XY-qG7"/>
+                    <constraint firstItem="Dsb-nS-cyN" firstAttribute="height" secondItem="2K8-V6-jhx" secondAttribute="height" id="tO6-6w-FEb"/>
                     <constraint firstItem="9tG-q1-hr0" firstAttribute="leading" secondItem="CrC-xZ-gFE" secondAttribute="leading" id="u0C-V7-Dj0"/>
                     <constraint firstItem="2K8-V6-jhx" firstAttribute="top" secondItem="9tG-q1-hr0" secondAttribute="bottom" constant="8" id="uR1-lg-PEK"/>
                 </constraints>
@@ -84,6 +109,8 @@
                     <mask key="constraints">
                         <exclude reference="kEF-FD-bcN"/>
                         <exclude reference="pLA-Dj-TNN"/>
+                        <exclude reference="GmF-YO-zL4"/>
+                        <exclude reference="Vdi-X5-Y1k"/>
                         <exclude reference="re9-XY-qG7"/>
                     </mask>
                 </variation>

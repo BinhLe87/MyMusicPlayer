@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LBMedia.h"
+#import "LBSong.h"
+#import "LBVideo.h"
 
 @interface LBHomeNewVC : UIViewController
 

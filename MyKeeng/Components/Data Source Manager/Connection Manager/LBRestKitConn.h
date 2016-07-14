@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LBSong.h"
-
+#import "LBVideo.h"
 
 @interface LBRestKitConn : NSObject
 

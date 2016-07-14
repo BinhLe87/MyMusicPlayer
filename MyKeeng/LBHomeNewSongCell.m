@@ -20,11 +20,14 @@
 
 -(void)layoutSubviews {
     
-
+    [_SongNameLbl sizeToFit];
     
   }
 
-
++(NSString *)reusableCellWithIdentifier {
+    
+    return @"SongCellID";
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

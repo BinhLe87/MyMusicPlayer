@@ -14,6 +14,14 @@
 
 @interface LBSong : LBMedia
 
+@property (nonatomic, retain) NSString * media_url;
+@property (nonatomic, retain) NSString * media_url_mono;
+@property (nonatomic, retain) NSString * media_url_pre;
+@property (nonatomic, retain) NSString * locate_path;
+@property (nonatomic, retain) NSNumber * total_like;
+@property (nonatomic, retain) NSNumber * number_comment;
+@property (nonatomic, retain) NSNumber * is_like;
+@property (nonatomic, retain) NSString * download_url;
 
 
 
