@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="211" id="KGk-i7-Jjw" customClass="LBHomeNewVideoCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="211" id="KGk-i7-Jjw" customClass="LBHomeNewVideoCell">
             <rect key="frame" x="0.0" y="0.0" width="421" height="211"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -18,74 +18,88 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ga5-NB-IC2">
                         <rect key="frame" x="0.0" y="0.0" width="421" height="169"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zFj-dL-LXV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_video.png" translatesAutoresizingMaskIntoConstraints="NO" id="zFj-dL-LXV">
                                 <rect key="frame" x="0.0" y="0.0" width="421" height="169"/>
                             </imageView>
                             <view opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRi-8L-bq3">
                                 <rect key="frame" x="0.0" y="118" width="421" height="50.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucl-1H-OrI">
-                                <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKx-6m-yFN">
-                                <rect key="frame" x="8" y="161" width="0.0" height="0.0"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="1dh-kv-TWe">
-                                <rect key="frame" x="0.0" y="161" width="101" height="16"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZwM-Jy-1ne">
+                                <rect key="frame" x="0.0" y="118" width="421" height="51"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_headphone_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="8DV-o0-VZC">
-                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="Pl3-a5-tRW"/>
-                                            <constraint firstAttribute="width" constant="16" id="qqw-5W-GCz"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dfadfadfdfdaf" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhe-9w-etq">
-                                        <rect key="frame" x="16" y="0.0" width="85" height="16"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucl-1H-OrI">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1dh-kv-TWe">
+                                        <rect key="frame" x="0.0" y="20" width="421" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKx-6m-yFN">
+                                                <rect key="frame" x="0.0" y="0.0" width="306" height="31"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EhQ-HO-eJC">
+                                                <rect key="frame" x="326" y="0.0" width="95" height="16"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_headphone_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="8DV-o0-VZC">
+                                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="Pl3-a5-tRW"/>
+                                                            <constraint firstAttribute="width" constant="16" id="qqw-5W-GCz"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dfadfadfdfdaf" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhe-9w-etq">
+                                                        <rect key="frame" x="16" y="0.0" width="79" height="16"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Ucl-1H-OrI" firstAttribute="top" secondItem="ZwM-Jy-1ne" secondAttribute="top" constant="8" id="XO0-pj-WY5"/>
+                                    <constraint firstItem="Ucl-1H-OrI" firstAttribute="leading" secondItem="ZwM-Jy-1ne" secondAttribute="leading" constant="8" id="xrt-H6-cN8"/>
+                                </constraints>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_onmedia_video.png" translatesAutoresizingMaskIntoConstraints="NO" id="YOh-Nd-jh8">
+                                <rect key="frame" x="189" y="66" width="42" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="N2B-UP-ggr"/>
+                                    <constraint firstAttribute="width" constant="60" id="Oiu-HY-Zlk"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ZwM-Jy-1ne" secondAttribute="bottom" id="0Xa-Mm-nn3"/>
                             <constraint firstItem="nRi-8L-bq3" firstAttribute="top" secondItem="zFj-dL-LXV" secondAttribute="bottom" id="1Va-Kg-qqz"/>
                             <constraint firstItem="zFj-dL-LXV" firstAttribute="leading" secondItem="ga5-NB-IC2" secondAttribute="leading" id="2UE-w5-XhY"/>
-                            <constraint firstItem="mKx-6m-yFN" firstAttribute="leading" secondItem="ga5-NB-IC2" secondAttribute="leading" constant="8" id="7Ts-YW-NVh"/>
-                            <constraint firstItem="1dh-kv-TWe" firstAttribute="leading" secondItem="ga5-NB-IC2" secondAttribute="leading" constant="50" id="9qS-4C-t20"/>
-                            <constraint firstItem="1dh-kv-TWe" firstAttribute="leading" secondItem="ga5-NB-IC2" secondAttribute="leading" constant="20" id="DYZ-hc-ei2"/>
                             <constraint firstAttribute="bottom" secondItem="zFj-dL-LXV" secondAttribute="bottom" id="Fmi-2F-yPs"/>
+                            <constraint firstItem="ZwM-Jy-1ne" firstAttribute="height" secondItem="ga5-NB-IC2" secondAttribute="height" multiplier="0.3" id="GzW-rN-F3u"/>
+                            <constraint firstItem="YOh-Nd-jh8" firstAttribute="centerX" secondItem="ga5-NB-IC2" secondAttribute="centerX" id="HUh-0V-4Pa"/>
                             <constraint firstItem="nRi-8L-bq3" firstAttribute="height" secondItem="ga5-NB-IC2" secondAttribute="height" multiplier="0.3" id="Ohg-pR-uv9"/>
-                            <constraint firstItem="nRi-8L-bq3" firstAttribute="top" secondItem="Ucl-1H-OrI" secondAttribute="bottom" constant="20" id="OnX-J4-tQl"/>
                             <constraint firstAttribute="trailing" secondItem="nRi-8L-bq3" secondAttribute="trailing" id="Pp4-qi-lh0"/>
-                            <constraint firstAttribute="bottom" secondItem="Ucl-1H-OrI" secondAttribute="bottom" constant="22" id="QwY-94-AMp"/>
-                            <constraint firstItem="Ucl-1H-OrI" firstAttribute="leading" secondItem="ga5-NB-IC2" secondAttribute="leading" constant="8" id="RVz-y4-bSF"/>
+                            <constraint firstItem="ZwM-Jy-1ne" firstAttribute="leading" secondItem="ga5-NB-IC2" secondAttribute="leading" id="UUi-bW-3nS"/>
                             <constraint firstAttribute="bottom" secondItem="nRi-8L-bq3" secondAttribute="bottom" id="d8T-OH-jaV"/>
                             <constraint firstItem="zFj-dL-LXV" firstAttribute="top" secondItem="ga5-NB-IC2" secondAttribute="top" id="eUD-Wk-o9x"/>
-                            <constraint firstAttribute="bottom" secondItem="mKx-6m-yFN" secondAttribute="bottom" constant="8" id="jTh-5S-jdD"/>
-                            <constraint firstItem="Ucl-1H-OrI" firstAttribute="leading" secondItem="ga5-NB-IC2" secondAttribute="leading" constant="8" id="lZA-5c-btM"/>
+                            <constraint firstAttribute="trailing" secondItem="ZwM-Jy-1ne" secondAttribute="trailing" id="fxD-iK-VfY"/>
                             <constraint firstItem="nRi-8L-bq3" firstAttribute="leading" secondItem="ga5-NB-IC2" secondAttribute="leading" id="oi9-ZO-h3O"/>
-                            <constraint firstAttribute="trailing" secondItem="1dh-kv-TWe" secondAttribute="trailing" constant="8" id="pGu-0q-DQy"/>
+                            <constraint firstItem="YOh-Nd-jh8" firstAttribute="centerY" secondItem="ga5-NB-IC2" secondAttribute="centerY" id="pK8-QY-WHp"/>
                             <constraint firstAttribute="trailing" secondItem="zFj-dL-LXV" secondAttribute="trailing" id="sYB-Aq-XlF"/>
-                            <constraint firstAttribute="bottom" secondItem="1dh-kv-TWe" secondAttribute="bottom" constant="8" id="tB6-RN-SkU"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="lZA-5c-btM"/>
                                 <exclude reference="1Va-Kg-qqz"/>
-                                <exclude reference="OnX-J4-tQl"/>
-                                <exclude reference="9qS-4C-t20"/>
-                                <exclude reference="DYZ-hc-ei2"/>
                             </mask>
                         </variation>
                     </view>
@@ -126,6 +140,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="default_video.png" width="250" height="140"/>
+        <image name="ic_onmedia_video.png" width="130" height="130"/>
         <image name="icon_headphone_white.png" width="15" height="12"/>
     </resources>
 </document>
