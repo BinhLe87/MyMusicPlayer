@@ -25,7 +25,7 @@ int HOMENEW_CELL_WIDTH = 320;
 
 #pragma mark - Constant variables
 static const int HOMENEW_SONGCELL_HEIGHT = 120;
-static const int HOMENEW_VIDEOCELL_HEIGHT = 150;
+static const int HOMENEW_VIDEOCELL_HEIGHT = 200;
 
 static int curPageIdx = 0;
 static const int NUM_ROW_PER_PAGE = 10;
@@ -140,16 +140,17 @@ static const int NUM_ROW_PER_PAGE = 10;
         
         videoCell = (LBHomeNewVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBHomeNewVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
         
-        
+
         // Configure the cell...
         videoCell.cellSize = CGSizeMake(HOMENEW_CELL_WIDTH, HOMENEW_VIDEOCELL_HEIGHT);
-  
         
         [videoCell.VideoImg setImageWithURL:[NSURL URLWithString:media.image]];
         
         videoCell.VideoNameLbl.text = media.name;
-      //  videoCell.SingerLbl.text = media.singer;
-     //   videoCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
+        
+
+        videoCell.SingerLbl.text = media.singer;
+        videoCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
         videoCell.NumLikeLbl.text = @"New Video";
         videoCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
         

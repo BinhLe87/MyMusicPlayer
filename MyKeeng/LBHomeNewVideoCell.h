@@ -26,9 +26,12 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *VideoImg;
 
-@property (weak, nonatomic) IBOutlet UIView *infoView;
+
 
 @property CGSize cellSize;
+
+
+@property (weak, nonatomic) IBOutlet UIView *infoView;
 
 
 @end

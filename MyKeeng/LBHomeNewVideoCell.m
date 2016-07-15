@@ -10,32 +10,31 @@
 
 @implementation LBHomeNewVideoCell
 
+
+
 - (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    NSLog(@"%f-%f", self.bounds.size.height, self.VideoImg.bounds.size.height);
-    
-
-    
-    [self.infoView setTintColor:[UIColor redColor]];
-    
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame =  CGRectMake(0, 0, _cellSize.width, _cellSize.height * 0.8 - round(_cellSize.height * 0.8/2.0));
-   
-    gradient.colors = @ [(id)[[UIColor colorWithWhite:0 alpha:0.9] CGColor],
-                         (id)[[UIColor clearColor] CGColor]];
-    
-    
-    [self.infoView.layer insertSublayer:gradient atIndex:0];
-    //self.infoView.alpha = 0.08;
-
     
     // Initialization code
+  
+    
+    [super awakeFromNib];
+    
+    
+   
+
 }
 
 -(void)layoutSubviews {
     
-
+    self.infoView.layer.sublayers = nil;
+    
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame =  CGRectMake(0, 0 , _cellSize.width, self.infoView.bounds.size.height);
+    
+    gradient.colors = @ [(id)[[UIColor colorWithWhite:0 alpha:0.2] CGColor],
+                         (id)[[UIColor clearColor] CGColor]];
+    
+    [self.infoView.layer insertSublayer:gradient atIndex:0];
 
 }
 
