@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		5B60A9120B7A62BB61C668B6 /* libPods-MyKeeng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F382DB8352B54C427A82D9B /* libPods-MyKeeng.a */; };
 		AB1FC7221D372E5F006A6059 /* LBVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1FC7211D372E5F006A6059 /* LBVideo.m */; };
-		AB1FC7261D37715A006A6059 /* LBHomeNewVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1FC7241D37715A006A6059 /* LBHomeNewVideoCell.m */; };
-		AB1FC7271D37715A006A6059 /* LBHomeNewVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1FC7251D37715A006A6059 /* LBHomeNewVideoCell.xib */; };
+		AB1FC7261D37715A006A6059 /* LBVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1FC7241D37715A006A6059 /* LBVideoCell.m */; };
+		AB1FC7271D37715A006A6059 /* LBVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1FC7251D37715A006A6059 /* LBVideoCell.xib */; };
 		AB34B5F91D3533F500F4047C /* LBHomeNewSongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB34B5F81D3533F500F4047C /* LBHomeNewSongCell.xib */; };
 		AB34B5FC1D3534B100F4047C /* LBHomeNewSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34B5FB1D3534B100F4047C /* LBHomeNewSongCell.m */; };
 		AB34B6051D35399E00F4047C /* LBHomeNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34B6041D35399E00F4047C /* LBHomeNewVC.m */; };
@@ -377,6 +377,8 @@
 		AB7CBA1D1D34D112007BF344 /* LBRestKitConn.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CBA1C1D34D112007BF344 /* LBRestKitConn.m */; };
 		AB7CBA221D34F5AA007BF344 /* LBMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CBA211D34F5AA007BF344 /* LBMedia.m */; };
 		ABD9BD5F1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD9BD5E1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m */; };
+		ABE762331D3DC262008C3B72 /* LBVideoPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE762311D3DC262008C3B72 /* LBVideoPlayerVC.m */; };
+		ABE762341D3DC262008C3B72 /* LBVideoPlayerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE762321D3DC262008C3B72 /* LBVideoPlayerVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -385,9 +387,9 @@
 		799DD9B57227CE5012F5BD4B /* Pods-MyKeeng.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyKeeng.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyKeeng/Pods-MyKeeng.release.xcconfig"; sourceTree = "<group>"; };
 		AB1FC7201D372E5F006A6059 /* LBVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVideo.h; sourceTree = "<group>"; };
 		AB1FC7211D372E5F006A6059 /* LBVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBVideo.m; sourceTree = "<group>"; };
-		AB1FC7231D37715A006A6059 /* LBHomeNewVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeNewVideoCell.h; sourceTree = "<group>"; };
-		AB1FC7241D37715A006A6059 /* LBHomeNewVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeNewVideoCell.m; sourceTree = "<group>"; };
-		AB1FC7251D37715A006A6059 /* LBHomeNewVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBHomeNewVideoCell.xib; sourceTree = "<group>"; };
+		AB1FC7231D37715A006A6059 /* LBVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVideoCell.h; sourceTree = "<group>"; };
+		AB1FC7241D37715A006A6059 /* LBVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBVideoCell.m; sourceTree = "<group>"; };
+		AB1FC7251D37715A006A6059 /* LBVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBVideoCell.xib; sourceTree = "<group>"; };
 		AB34B5F81D3533F500F4047C /* LBHomeNewSongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBHomeNewSongCell.xib; sourceTree = "<group>"; };
 		AB34B5FA1D3534B100F4047C /* LBHomeNewSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeNewSongCell.h; sourceTree = "<group>"; };
 		AB34B5FB1D3534B100F4047C /* LBHomeNewSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeNewSongCell.m; sourceTree = "<group>"; };
@@ -765,6 +767,9 @@
 		AB7CBA211D34F5AA007BF344 /* LBMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMedia.m; sourceTree = "<group>"; };
 		ABD9BD5D1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+dynamicSizeMe.h"; sourceTree = "<group>"; };
 		ABD9BD5E1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+dynamicSizeMe.m"; sourceTree = "<group>"; };
+		ABE762301D3DC262008C3B72 /* LBVideoPlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVideoPlayerVC.h; sourceTree = "<group>"; };
+		ABE762311D3DC262008C3B72 /* LBVideoPlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBVideoPlayerVC.m; sourceTree = "<group>"; };
+		ABE762321D3DC262008C3B72 /* LBVideoPlayerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBVideoPlayerVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -815,9 +820,6 @@
 				AB34B5FA1D3534B100F4047C /* LBHomeNewSongCell.h */,
 				AB34B5FB1D3534B100F4047C /* LBHomeNewSongCell.m */,
 				AB34B6061D3539F900F4047C /* LBHomeNew.xib */,
-				AB1FC7231D37715A006A6059 /* LBHomeNewVideoCell.h */,
-				AB1FC7241D37715A006A6059 /* LBHomeNewVideoCell.m */,
-				AB1FC7251D37715A006A6059 /* LBHomeNewVideoCell.xib */,
 			);
 			name = LBHomeNew;
 			sourceTree = "<group>";
@@ -1296,6 +1298,8 @@
 		AB7CBA011D34AB11007BF344 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ABE762351D3DC405008C3B72 /* LBMediaView */,
+				ABE7622F1D3DC21E008C3B72 /* LBVideoPlayer */,
 				AB34B5F71D35335200F4047C /* LBHomeNew */,
 			);
 			name = View;
@@ -1350,6 +1354,42 @@
 				ABD9BD5E1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m */,
 			);
 			name = "UILabel-dynamicSize";
+			sourceTree = "<group>";
+		};
+		ABE7622F1D3DC21E008C3B72 /* LBVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				ABE762301D3DC262008C3B72 /* LBVideoPlayerVC.h */,
+				ABE762311D3DC262008C3B72 /* LBVideoPlayerVC.m */,
+				ABE762321D3DC262008C3B72 /* LBVideoPlayerVC.xib */,
+			);
+			name = LBVideoPlayer;
+			sourceTree = "<group>";
+		};
+		ABE762351D3DC405008C3B72 /* LBMediaView */ = {
+			isa = PBXGroup;
+			children = (
+				ABE762371D3DC462008C3B72 /* VideoView */,
+				ABE762361D3DC433008C3B72 /* Community */,
+			);
+			name = LBMediaView;
+			sourceTree = "<group>";
+		};
+		ABE762361D3DC433008C3B72 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Community;
+			sourceTree = "<group>";
+		};
+		ABE762371D3DC462008C3B72 /* VideoView */ = {
+			isa = PBXGroup;
+			children = (
+				AB1FC7231D37715A006A6059 /* LBVideoCell.h */,
+				AB1FC7241D37715A006A6059 /* LBVideoCell.m */,
+				AB1FC7251D37715A006A6059 /* LBVideoCell.xib */,
+			);
+			name = VideoView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1671,7 +1711,7 @@
 				AB3810E11D38A3820082C339 /* ic_open_player@2x.png in Resources */,
 				AB3811251D38A3830082C339 /* icon_clock_gray.png in Resources */,
 				AB3810401D38A3820082C339 /* bg_input_text.png in Resources */,
-				AB1FC7271D37715A006A6059 /* LBHomeNewVideoCell.xib in Resources */,
+				AB1FC7271D37715A006A6059 /* LBVideoCell.xib in Resources */,
 				AB3810AE1D38A3820082C339 /* ic_comment@2x.png in Resources */,
 				AB38105F1D38A3820082C339 /* btn_play_video@2x.png in Resources */,
 				AB3810E21D38A3820082C339 /* ic_pause.png in Resources */,
@@ -1740,6 +1780,7 @@
 				AB3811671D38A3830082C339 /* progress_video@2x.png in Resources */,
 				AB3810F71D38A3820082C339 /* ic_repeat_all@2x.png in Resources */,
 				AB3811031D38A3830082C339 /* ic_upload_data@2x.png in Resources */,
+				ABE762341D3DC262008C3B72 /* LBVideoPlayerVC.xib in Resources */,
 				AB3811071D38A3830082C339 /* icon-152.png in Resources */,
 				AB3810761D38A3820082C339 /* default_cover.jpg in Resources */,
 				AB38104C1D38A3820082C339 /* bg_search_bar@2x.png in Resources */,
@@ -1807,6 +1848,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE762331D3DC262008C3B72 /* LBVideoPlayerVC.m in Sources */,
 				AB7CB9B01D349BE0007BF344 /* AppDelegate.m in Sources */,
 				AB7CBA1D1D34D112007BF344 /* LBRestKitConn.m in Sources */,
 				AB34B5FC1D3534B100F4047C /* LBHomeNewSongCell.m in Sources */,
@@ -1816,7 +1858,7 @@
 				AB7CBA221D34F5AA007BF344 /* LBMedia.m in Sources */,
 				AB1FC7221D372E5F006A6059 /* LBVideo.m in Sources */,
 				AB34B6051D35399E00F4047C /* LBHomeNewVC.m in Sources */,
-				AB1FC7261D37715A006A6059 /* LBHomeNewVideoCell.m in Sources */,
+				AB1FC7261D37715A006A6059 /* LBVideoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

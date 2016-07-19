@@ -1,5 +1,5 @@
 //
-//  LBHomeNewVideoCell.h
+//  LBVideoCell.h
 //  MyKeeng
 //
 //  Created by Le Van Binh on 7/14/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LBHomeNewVideoCell : UITableViewCell
+@interface LBVideoCell : UITableViewCell
 
 
 +(NSString *)reusableCellWithIdentifier;

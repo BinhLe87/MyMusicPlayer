@@ -8,7 +8,7 @@
 
 #import "LBHomeNewVC.h"
 #import "LBHomeNewSongCell.h"
-#import "LBHomeNewVideoCell.h"
+#import "LBVideoCell.h"
 
 
 @interface LBHomeNewVC () {
@@ -42,9 +42,9 @@ static const int NUM_ROW_PER_PAGE = 10;
     UINib *songCellNib = [UINib nibWithNibName:@"LBHomeNewSongCell" bundle:nil];
     [self.tableview registerNib:songCellNib forCellReuseIdentifier:[LBHomeNewSongCell reusableCellWithIdentifier]];
     
-    //register LBHomeNewVideoCell nib file
-    UINib *videoCellNib = [UINib nibWithNibName:@"LBHomeNewVideoCell" bundle:nil];
-    [self.tableview registerNib:videoCellNib forCellReuseIdentifier:[LBHomeNewVideoCell reusableCellWithIdentifier]];
+    //register LBVideoCell nib file
+    UINib *videoCellNib = [UINib nibWithNibName:@"LBVideoCell" bundle:nil];
+    [self.tableview registerNib:videoCellNib forCellReuseIdentifier:[LBVideoCell reusableCellWithIdentifier]];
     
     //set seperator style
     [self.tableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -136,9 +136,9 @@ static const int NUM_ROW_PER_PAGE = 10;
         return songCell;
     } else if ([media isKindOfClass:[LBVideo class]]) {
         
-        LBHomeNewVideoCell *videoCell;
+        LBVideoCell *videoCell;
         
-        videoCell = (LBHomeNewVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBHomeNewVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
+        videoCell = (LBVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
         
 
         // Configure the cell...
