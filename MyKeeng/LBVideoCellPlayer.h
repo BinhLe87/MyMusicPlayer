@@ -11,8 +11,9 @@
 
 @interface LBVideoCellPlayer : UIView <ALMoviePlayerControllerDelegate>
 
-@property (nonatomic, strong) ALMoviePlayerController *moviePlayer;
+@property (nonatomic) ALMoviePlayerController *moviePlayer;
 
 -(void)setContentURL:(NSURL *)contentURL;
+
 
 @end

@@ -32,4 +32,6 @@
 
 -(void)enterFullScreen;
 
+-(void)moviePlayerWillExit:(NSNotification *)notification;
+
 @end

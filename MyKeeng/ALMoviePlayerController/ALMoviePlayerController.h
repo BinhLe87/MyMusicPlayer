@@ -18,10 +18,13 @@ static NSString * const ALMoviePlayerContentURLDidChangeNotification = @"ALMovie
 - (void)moviePlayerWillMoveFromWindow;
 @end
 
+
+
 @interface ALMoviePlayerController : MPMoviePlayerController
 
 - (void)setFrame:(CGRect)frame;
 - (id)initWithFrame:(CGRect)frame;
+- (void)exitMoviePlayer;
 
 @property (nonatomic, weak) id<ALMoviePlayerControllerDelegate> delegate;
 @property (nonatomic, strong) ALMoviePlayerControls *controls;

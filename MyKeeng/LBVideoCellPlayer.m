@@ -49,6 +49,9 @@
     return self;
 }
 
+
+
+
 -(void)layoutSubviews {
     
     
@@ -81,7 +84,7 @@
     [self.moviePlayer setContentURL:contentURL];
 }
 
-
+#pragma mark - Delegates
 -(void)moviePlayerWillMoveFromWindow {
     
     //re-add movie player into this self.view after exit full mode
@@ -94,8 +97,4 @@
     [self layoutIfNeeded];
     
 }
-
-
-
-
 @end

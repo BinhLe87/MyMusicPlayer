@@ -152,17 +152,17 @@ static const NSTimeInterval fullscreenAnimationDuration = 0.15;
             [self.movieBackgroundView addSubview:self.view];
             UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
             
-                                [[NSNotificationCenter defaultCenter] postNotificationName:MPMoviePlayerDidEnterFullscreenNotification object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:MPMoviePlayerDidEnterFullscreenNotification object:nil];
             
-//            [self rotateMoviePlayerForOrientation:UIInterfaceOrientationLandscapeRight animated:NO completion:^{
-//                [UIView animateWithDuration:animated ? fullscreenAnimationDuration : 0.0 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
-//                    self.view.alpha = 1.f;
-//                } completion:^(BOOL finished) {
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:MPMoviePlayerDidEnterFullscreenNotification object:nil];
-//                  
-////                    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarOrientationWillChange:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
-//                }];
-//            }];
+            //            [self rotateMoviePlayerForOrientation:UIInterfaceOrientationLandscapeRight animated:NO completion:^{
+            //                [UIView animateWithDuration:animated ? fullscreenAnimationDuration : 0.0 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            //                    self.view.alpha = 1.f;
+            //                } completion:^(BOOL finished) {
+            //                    [[NSNotificationCenter defaultCenter] postNotificationName:MPMoviePlayerDidEnterFullscreenNotification object:nil];
+            //
+            ////                    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarOrientationWillChange:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
+            //                }];
+            //            }];
         }];
         
     } else {
@@ -171,7 +171,7 @@ static const NSTimeInterval fullscreenAnimationDuration = 0.15;
          [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
                                     forKey:@"orientation"];
         
-         //[self rotateMoviePlayerForOrientation:UIInterfaceOrientationPortrait animated:YES completion:nil];
+        //[self rotateMoviePlayerForOrientation:UIInterfaceOrientationPortrait animated:YES completion:nil];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:MPMoviePlayerWillExitFullscreenNotification object:nil];
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
@@ -276,8 +276,6 @@ static const NSTimeInterval fullscreenAnimationDuration = 0.15;
 - (void)play {
     [super play];
     
-    
-    
     //remote file
     if (![self.contentURL.scheme isEqualToString:@"file"] && self.loadState == MPMovieLoadStateUnknown) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
@@ -293,6 +291,14 @@ static const NSTimeInterval fullscreenAnimationDuration = 0.15;
             [self.delegate performSelector:@selector(movieTimedOut)];
         }
     }
+}
+
+-(void) exitMoviePlayer {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MPMoviePlayerPlaybackDidFinishNotification" object:nil];
+    
+    [self stop];
+    
 }
 
 

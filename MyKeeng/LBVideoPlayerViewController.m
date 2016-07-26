@@ -38,6 +38,8 @@ static const int NUM_ROW_PER_PAGE = 10;
 //TODO: initialize video player
     _videoPlayer = [[LBVideoCellPlayer alloc] initWithFrame:CGRectMake(0, 0, _videoSectionView.bounds.size.width, _videoSectionView.bounds.size.height)];
     
+    //_videoPlayer.moviePlayer.delegate = self;
+    
     [self.videoSectionView addSubview:_videoPlayer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enterFullScreen) name:@"MPMoviePlayerDidEnterFullscreenNotification" object:nil];
@@ -58,6 +60,9 @@ static const int NUM_ROW_PER_PAGE = 10;
     //load first page
     curPageIdx = 1;
     [self loadHomePage:curPageIdx size:NUM_ROW_PER_PAGE];
+    
+//TODO: register observer notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerWillExit:) name:@"MPMoviePlayerPlaybackDidFinishNotification" object:_videoPlayer.moviePlayer];
 
     
 }
@@ -73,7 +78,6 @@ static const int NUM_ROW_PER_PAGE = 10;
     CGSize size = [UIScreen mainScreen].bounds.size;
     
     [self.view setFrame:CGRectMake(0, 0, size.width, size.height)];
-
 }
 
 -(void)viewDidLayoutSubviews {
@@ -296,4 +300,22 @@ static const int NUM_ROW_PER_PAGE = 10;
     }
 }
 
+#pragma mark - Delegates
+-(void)moviePlayerWillExit:(NSNotification *)notification {
+    
+    NSLog(@"%@", notification.object);
+    
+    if ([notification.object isKindOfClass:[ALMoviePlayerController class]]) {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MPMoviePlayerPlaybackDidFinishNotification" object:_videoPlayer.moviePlayer];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+-(void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end
