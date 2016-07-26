@@ -15,6 +15,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="421" height="210.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="dmp-p1-tjJ">
+                        <rect key="frame" x="0.0" y="169" width="421" height="42"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4a-ex-Jdw">
+                                <rect key="frame" x="0.0" y="0.0" width="234" height="42"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK0-IU-72s">
+                                <rect key="frame" x="234" y="0.0" width="187" height="42"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ga5-NB-IC2">
                         <rect key="frame" x="0.0" y="0.0" width="421" height="169"/>
                         <subviews>
@@ -103,28 +120,16 @@
                             </mask>
                         </variation>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK0-IU-72s">
-                        <rect key="frame" x="8" y="188" width="29.5" height="14"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                        <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4a-ex-Jdw">
-                        <rect key="frame" x="47" y="185" width="37" height="17.5"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                        <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="wK0-IU-72s" secondAttribute="bottom" constant="8" id="8OA-fS-Jpx"/>
+                    <constraint firstAttribute="bottom" secondItem="dmp-p1-tjJ" secondAttribute="bottom" id="2If-uM-Pn8"/>
                     <constraint firstItem="ga5-NB-IC2" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.8" id="9dF-wn-Wye"/>
                     <constraint firstItem="ga5-NB-IC2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Cr3-kv-rAl"/>
-                    <constraint firstItem="L4a-ex-Jdw" firstAttribute="bottom" secondItem="wK0-IU-72s" secondAttribute="bottom" id="QlV-NU-cIb"/>
-                    <constraint firstItem="L4a-ex-Jdw" firstAttribute="leading" secondItem="wK0-IU-72s" secondAttribute="trailing" constant="10" id="SBr-Fc-l98"/>
-                    <constraint firstItem="wK0-IU-72s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="evy-kg-o8Q"/>
+                    <constraint firstAttribute="trailing" secondItem="dmp-p1-tjJ" secondAttribute="trailing" id="EEG-ev-f6o"/>
+                    <constraint firstItem="dmp-p1-tjJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="cza-Xe-A73"/>
                     <constraint firstItem="ga5-NB-IC2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hm5-u2-3w5"/>
                     <constraint firstAttribute="trailing" secondItem="ga5-NB-IC2" secondAttribute="trailing" id="iTz-BX-MzA"/>
+                    <constraint firstItem="dmp-p1-tjJ" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.2" id="ob3-Bi-2ET"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -134,6 +139,7 @@
                 <outlet property="SingerLbl" destination="mKx-6m-yFN" id="afu-f7-9iN"/>
                 <outlet property="VideoImg" destination="zFj-dL-LXV" id="Nwf-Hq-8Zl"/>
                 <outlet property="VideoNameLbl" destination="Ucl-1H-OrI" id="HNB-km-Xju"/>
+                <outlet property="footerView" destination="dmp-p1-tjJ" id="Rut-l9-bfO"/>
                 <outlet property="infoView" destination="nRi-8L-bq3" id="EYi-an-Osb"/>
             </connections>
             <point key="canvasLocation" x="226.5" y="232.5"/>

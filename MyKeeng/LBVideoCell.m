@@ -19,9 +19,6 @@
     
     [super awakeFromNib];
     
-  
-   
-
 }
 
 -(void)layoutSubviews {
@@ -50,6 +47,11 @@
 +(NSString *)reusableCellWithIdentifier {
     
     return @"VideoCellID";
+}
+
++(CGFloat)heightForVideoCell {
+    
+    return 200;
 }
 
 @end

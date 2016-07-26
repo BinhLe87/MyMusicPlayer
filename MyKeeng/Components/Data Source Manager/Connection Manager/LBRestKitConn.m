@@ -27,14 +27,12 @@
 //TODO: API GET_HOME
     // setup object mappings
     RKObjectMapping *songMapping = [RKObjectMapping mappingForClass:[LBSong class]];
-    [songMapping addAttributeMappingsFromArray:@[@"name", @"singer", @"listen_no", @"image", @"image310", @"url", @"media_url", @"locate_path", @"download_url", @"price", @"media_url_mono", @"media_url_pre", @"item_type"]];
+    [songMapping addAttributeMappingsFromArray:@[@"id", @"name", @"singer", @"listen_no", @"image", @"image310", @"url", @"media_url", @"locate_path", @"download_url", @"price", @"media_url_mono", @"media_url_pre", @"item_type"]];
     
     
     RKObjectMapping *videoMapping = [RKObjectMapping mappingForClass:[LBVideo class]];
-    [videoMapping addAttributeMappingsFromArray:@[@"name", @"singer", @"listen_no", @"image", @"image310", @"url", @"media_url", @"locate_path", @"download_url", @"price", @"item_type"]];
+    [videoMapping addAttributeMappingsFromArray:@[@"id", @"name", @"singer", @"listen_no", @"image", @"image310", @"url", @"media_url", @"locate_path", @"download_url", @"price", @"item_type"]];
 
-
-    
      // Connect a response descriptor for our dynamic mapping
      RKDynamicMapping *dynamicMapping =  [RKDynamicMapping new];
     

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LBVideoPlayerViewController">
+            <connections>
+                <outlet property="tableview" destination="GGt-kO-iRX" id="SIh-cg-8A6"/>
+                <outlet property="videoSectionView" destination="Abr-5K-VKi" id="72R-ol-fxS"/>
+                <outlet property="view" destination="QQd-3Y-MJf" id="lbe-5X-h7d"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="QQd-3Y-MJf">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Abr-5K-VKi">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="170.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GGt-kO-iRX">
+                    <rect key="frame" x="0.0" y="170" width="325" height="398"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="tK9-3A-0dV"/>
+                        <outlet property="delegate" destination="-1" id="lOo-LC-aWu"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="GGt-kO-iRX" firstAttribute="height" secondItem="QQd-3Y-MJf" secondAttribute="height" multiplier="0.7" id="5rm-I1-jXa"/>
+                <constraint firstItem="GGt-kO-iRX" firstAttribute="leading" secondItem="QQd-3Y-MJf" secondAttribute="leading" id="7xT-Ea-hko"/>
+                <constraint firstItem="Abr-5K-VKi" firstAttribute="leading" secondItem="QQd-3Y-MJf" secondAttribute="leading" id="BZn-8p-YJh"/>
+                <constraint firstAttribute="bottom" secondItem="Abr-5K-VKi" secondAttribute="bottom" id="Jlh-Z1-8cF"/>
+                <constraint firstItem="Abr-5K-VKi" firstAttribute="top" secondItem="QQd-3Y-MJf" secondAttribute="top" id="Js7-oR-mEl"/>
+                <constraint firstItem="Abr-5K-VKi" firstAttribute="height" secondItem="QQd-3Y-MJf" secondAttribute="height" multiplier="0.3" id="M3L-IQ-bsy"/>
+                <constraint firstAttribute="trailing" secondItem="Abr-5K-VKi" secondAttribute="trailing" id="TVO-QI-bww"/>
+                <constraint firstAttribute="bottom" secondItem="GGt-kO-iRX" secondAttribute="bottom" id="aQt-fp-PUv"/>
+                <constraint firstAttribute="trailing" secondItem="GGt-kO-iRX" secondAttribute="trailing" id="sbg-PQ-yCM"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Jlh-Z1-8cF"/>
+                    <exclude reference="M3L-IQ-bsy"/>
+                    <exclude reference="5rm-I1-jXa"/>
+                    <exclude reference="7xT-Ea-hko"/>
+                    <exclude reference="aQt-fp-PUv"/>
+                    <exclude reference="sbg-PQ-yCM"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact">
+                <mask key="constraints">
+                    <include reference="Jlh-Z1-8cF"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular">
+                <mask key="constraints">
+                    <include reference="M3L-IQ-bsy"/>
+                    <include reference="5rm-I1-jXa"/>
+                    <include reference="7xT-Ea-hko"/>
+                    <include reference="aQt-fp-PUv"/>
+                    <include reference="sbg-PQ-yCM"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

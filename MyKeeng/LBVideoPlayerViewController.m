@@ -1,29 +1,29 @@
 //
-//  LBHomeNewVC.m
+//  LBVideoPlayerViewController.m
 //  MyKeeng
 //
-//  Created by Le Van Binh on 7/12/16.
+//  Created by Le Van Binh on 7/19/16.
 //  Copyright © 2016 LB. All rights reserved.
 //
 
-#import "LBHomeNewVC.h"
-#import "LBHomeNewSongCell.h"
-#import "LBVideoCell.h"
 #import "LBVideoPlayerViewController.h"
 #import "MyKeengUtilities.h"
+#import "LBHomeNewVC.h"
+#import "LBVideoCell.h"
 
 
-@interface LBHomeNewVC () {
-    
-    
-}
+@interface LBVideoPlayerViewController ()
 
+enum SECTION_TYPE {
+    VIDEO_SECTION = 1,
+    COMMENT_SECTION = 2
+};
 
 @end
 
-@implementation LBHomeNewVC
+@implementation LBVideoPlayerViewController
 
-int HOMENEW_CELL_WIDTH = 320;
+static int HOMENEW_CELL_WIDTH = 320;
 
 #pragma mark - Constant variables
 static const int HOMENEW_SONGCELL_HEIGHT = 120;
@@ -32,17 +32,20 @@ static int curPageIdx = 0;
 static const int NUM_ROW_PER_PAGE = 10;
 
 
-#pragma mark - Load view
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+//TODO: initialize video player
+    _videoPlayer = [[LBVideoCellPlayer alloc] initWithFrame:CGRectMake(0, 0, _videoSectionView.bounds.size.width, _videoSectionView.bounds.size.height)];
+    
+    [self.videoSectionView addSubview:_videoPlayer];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enterFullScreen) name:@"MPMoviePlayerDidEnterFullscreenNotification" object:nil];
+    
+//TODO: register NIB files of table cell
     
     HOMENEW_CELL_WIDTH = CGRectGetWidth(self.view.bounds);
     
-    //register LBHomeNewSongCell nib file
-    UINib *songCellNib = [UINib nibWithNibName:@"LBHomeNewSongCell" bundle:nil];
-    [self.tableview registerNib:songCellNib forCellReuseIdentifier:[LBHomeNewSongCell reusableCellWithIdentifier]];
     
     //register LBVideoCell nib file
     UINib *videoCellNib = [UINib nibWithNibName:@"LBVideoCell" bundle:nil];
@@ -55,35 +58,29 @@ static const int NUM_ROW_PER_PAGE = 10;
     //load first page
     curPageIdx = 1;
     [self loadHomePage:curPageIdx size:NUM_ROW_PER_PAGE];
-    
-    
-    //set status bar
-    self.edgesForExtendedLayout=UIRectEdgeNone;
-    self.extendedLayoutIncludesOpaqueBars=NO;
-    self.automaticallyAdjustsScrollViewInsets=YES;
-}
 
--(BOOL)prefersStatusBarHidden {
     
-    return YES;
 }
-
 
 -(void)viewWillAppear:(BOOL)animated {
-
-    [super viewWillAppear:animated];
-        
-      [self.navigationController setNavigationBarHidden:YES];
+    
+     [_videoPlayer setContentURL:[NSURL URLWithString:_mainVideo.media_url]];
+     self.videoPlayer.moviePlayer.view.alpha = 1.f;
 }
 
-//-(void)viewWillDisappear:(BOOL)animated {
-//    
-//    [self.navigationController setNavigationBarHidden:NO];
-//}
+-(void)enterFullScreen {
+    
+    CGSize size = [UIScreen mainScreen].bounds.size;
+    
+    [self.view setFrame:CGRectMake(0, 0, size.width, size.height)];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidLayoutSubviews {
+    
+    
+    
+    _videoPlayer.frame = CGRectMake(0, 0, _videoSectionView.bounds.size.width, _videoSectionView.bounds.size.height);
 }
 
 #pragma mark - Table view data source
@@ -132,39 +129,15 @@ static const int NUM_ROW_PER_PAGE = 10;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    LBMedia *media = [self.medias objectAtIndex:indexPath.row];
+    LBVideo *media = [self.medias objectAtIndex:indexPath.row];
     
-    if ([media isKindOfClass:[LBSong class]]) {
-        
-        LBHomeNewSongCell *songCell;
-        
-        songCell = (LBHomeNewSongCell *)[tableView dequeueReusableCellWithIdentifier:[LBHomeNewSongCell reusableCellWithIdentifier] forIndexPath:indexPath];
-        
-        
-        // Configure the cell...
-        
-        [songCell.SongImg setImageWithURL:[NSURL URLWithString:media.image]];
-        
-        songCell.SongNameLbl.text = media.name;
-        songCell.SingerLbl.text = media.singer;
-        songCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
-        songCell.NumLikeLbl.text = @"New Song";
-        songCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
-        
-        //display seperator image at the bottom of cell
-        UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
-        seperatorImgView.frame = CGRectMake(0, HOMENEW_SONGCELL_HEIGHT - 1 , HOMENEW_CELL_WIDTH, 1);
-        
-        [songCell.contentView addSubview:seperatorImgView];
-        
-        return songCell;
-    } else if ([media isKindOfClass:[LBVideo class]]) {
+    
         
         LBVideoCell *videoCell;
         
         videoCell = (LBVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
         
-
+        
         // Configure the cell...
         videoCell.cellSize = CGSizeMake(HOMENEW_CELL_WIDTH, [LBVideoCell heightForVideoCell]);
         
@@ -172,7 +145,7 @@ static const int NUM_ROW_PER_PAGE = 10;
         
         videoCell.VideoNameLbl.text = media.name;
         
-
+        
         videoCell.SingerLbl.text = media.singer;
         videoCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
         videoCell.NumLikeLbl.text = @"New Video";
@@ -185,36 +158,22 @@ static const int NUM_ROW_PER_PAGE = 10;
         [videoCell.contentView addSubview:seperatorImgView];
         
         return videoCell;
-        
-    }
-    
-    return nil;
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ([[_medias objectAtIndex:indexPath.row] isKindOfClass:[LBSong class]]) {
-        
-        return HOMENEW_SONGCELL_HEIGHT;
-    } else {
-        
         return [LBVideoCell heightForVideoCell];
-    }
+
 }
 
 #pragma mark - Table view Delegates
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    LBMedia *media = [_medias objectAtIndex:indexPath.row];
+    LBVideo *media = (LBVideo*)[_medias objectAtIndex:indexPath.row];
     
-    if ([media isKindOfClass:[LBVideo class]]) {
-        
-        LBVideoPlayerViewController *videoPlayerVC = [[LBVideoPlayerViewController alloc] initWithNibName:@"LBVideoPlayerViewController" bundle:nil];
-        videoPlayerVC.mainVideo = (LBVideo*) media;
-      
-        
-        [self.navigationController pushViewController:videoPlayerVC animated:YES];
-    }
+    [_videoPlayer setContentURL:[NSURL URLWithString:media.media_url]];
+    
 }
 
 #pragma mark - Scroll view
@@ -238,6 +197,9 @@ static const int NUM_ROW_PER_PAGE = 10;
         [self.tableview reloadData];
     }
 }
+
+
+
 
 
 
@@ -276,6 +238,22 @@ static const int NUM_ROW_PER_PAGE = 10;
  */
 
 /*
+ #pragma mark - Table view delegate
+ 
+ // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+ - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Navigation logic may go here, for example:
+ // Create the next view controller.
+ <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+ 
+ // Pass the selected object to the new view controller.
+ 
+ // Push the view controller.
+ [self.navigationController pushViewController:detailViewController animated:YES];
+ }
+ */
+
+/*
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -307,10 +285,15 @@ static const int NUM_ROW_PER_PAGE = 10;
         
         for (LBMedia *media in operation.mappingResult.array) {
             
-            [self.medias addObject:media];
+            if ([media isKindOfClass:[LBVideo class]]) {
+                
+                if (![media.id isEqualToString:_mainVideo.id]) {
+             
+                    [self.medias addObject:media];
+                }
+            }
         }
     }
 }
-
 
 @end

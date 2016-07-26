@@ -12,6 +12,7 @@
 
 
 +(NSString *)reusableCellWithIdentifier;
++(CGFloat) heightForVideoCell;
 
 @property (strong, nonatomic) IBOutlet UILabel *VideoNameLbl;
 
@@ -25,6 +26,9 @@
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *VideoImg;
+
+
+@property (weak, nonatomic) IBOutlet UIStackView *footerView;
 
 
 

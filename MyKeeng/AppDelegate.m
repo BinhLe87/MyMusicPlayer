@@ -10,7 +10,12 @@
 #import "LBRestKitConn.h"
 #import "LBHomeNewVC.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () {
+    
+    CGRect originFrameInPortrait;
+}
+
+
 
 @end
 
@@ -22,14 +27,76 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+ originFrameInPortrait = CGRectMake(0, 0, MIN(self.window.frame.size.height, self.window.frame.size.width), MAX(self.window.frame.size.height, self.window.frame.size.width));
+    
+    
+   
+    
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:@"UIApplicationWillChangeStatusBarOrientationNotification" object:nil];
+    
+    //    if (isLandscape) {
+    //
+    //        if (SYSTEM_VERSION_GREATER_THAN(@"7.0")) {
+    //
+    //            CGRect frame = self.window.frame;
+    //            frame.size.width -= 20.f;
+    //            frame.origin.x += 20.f;
+    //            self.window.frame = frame;
+    //        }
+    //    } else {
+    //
+    //        if (SYSTEM_VERSION_GREATER_THAN(@"7.0")) {
+    //
+    //            [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    //            CGRect frame = self.window.frame;
+    //            frame.origin.y += 20.0f;
+    //            frame.size.height -= 20.0f;
+    //            self.window.frame = frame;
+    //        }
+    //    }
+    
+    
+    
+    
+    
     [LBRestKitConn configureRestKit];
     
-     LBHomeNewVC *homeNewVC = [[LBHomeNewVC alloc] initWithNibName:@"LBHomeNew" bundle:nil];
+    LBHomeNewVC *homeNewVC = [[LBHomeNewVC alloc] initWithNibName:@"LBHomeNew" bundle:nil];
     
-    self.window.rootViewController = homeNewVC;
+    UINavigationController *navigationCtrl = [[UINavigationController alloc] initWithRootViewController:homeNewVC];
+    
+    
+    
+    self.window.rootViewController = navigationCtrl;
     
     return YES;
 }
+
+
+-(void) orientationChanged:(NSNotification *)notification {
+    
+    if (isPortrait) {
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            
+            CGRect viewFrame = originFrameInPortrait;
+            viewFrame.origin.y += 20.0;
+            viewFrame.size.height -= 20.0;
+            
+            self.window.frame = viewFrame;
+        }
+        
+    } else { //is landscape mode
+        
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            
+            self.window.frame = originFrameInPortrait;
+            
+        }
+        
+    }
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
