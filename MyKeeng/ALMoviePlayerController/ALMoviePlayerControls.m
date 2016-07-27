@@ -613,8 +613,10 @@ static const CGFloat iPhoneScreenPortraitWidth = 320.f;
     } else {
         if (completion)
             completion();
-    }
+    } 
 }
+
+
 
 - (void)showLoadingIndicators {
     [self addSubview:_activityBackgroundView];

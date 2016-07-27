@@ -19,6 +19,8 @@ enum SECTION_TYPE {
     COMMENT_SECTION = 2
 };
 
+-(void) addMediaIntoArray:(LBVideo *)video;
+
 @end
 
 @implementation LBVideoPlayerViewController
@@ -34,9 +36,10 @@ static const int NUM_ROW_PER_PAGE = 10;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-//TODO: initialize video player
+    
+    //TODO: initialize video player
     _videoPlayer = [[LBVideoCellPlayer alloc] initWithFrame:CGRectMake(0, 0, _videoSectionView.bounds.size.width, _videoSectionView.bounds.size.height)];
+    _videoPlayer.delegate = self;
     
     //_videoPlayer.moviePlayer.delegate = self;
     
@@ -44,7 +47,7 @@ static const int NUM_ROW_PER_PAGE = 10;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enterFullScreen) name:@"MPMoviePlayerDidEnterFullscreenNotification" object:nil];
     
-//TODO: register NIB files of table cell
+    //TODO: register NIB files of table cell
     
     HOMENEW_CELL_WIDTH = CGRectGetWidth(self.view.bounds);
     
@@ -61,16 +64,14 @@ static const int NUM_ROW_PER_PAGE = 10;
     curPageIdx = 1;
     [self loadHomePage:curPageIdx size:NUM_ROW_PER_PAGE];
     
-//TODO: register observer notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerWillExit:) name:@"MPMoviePlayerPlaybackDidFinishNotification" object:_videoPlayer.moviePlayer];
-
-    
+    //TODO: register observer notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishPlayCurrentMovie) name:@"MPMoviePlayerPlaybackDidFinishNotification" object:_videoPlayer.moviePlayer];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     
-     [_videoPlayer setContentURL:[NSURL URLWithString:_mainVideo.media_url]];
-     self.videoPlayer.moviePlayer.view.alpha = 1.f;
+    [_videoPlayer setContentURL:[NSURL URLWithString:_mainVideo.media_url]];
+    self.videoPlayer.moviePlayer.view.alpha = 1.f;
 }
 
 -(void)enterFullScreen {
@@ -81,8 +82,6 @@ static const int NUM_ROW_PER_PAGE = 10;
 }
 
 -(void)viewDidLayoutSubviews {
-    
-    
     
     _videoPlayer.frame = CGRectMake(0, 0, _videoSectionView.bounds.size.width, _videoSectionView.bounds.size.height);
 }
@@ -135,48 +134,46 @@ static const int NUM_ROW_PER_PAGE = 10;
     
     LBVideo *media = [self.medias objectAtIndex:indexPath.row];
     
+    LBVideoCell *videoCell;
     
-        
-        LBVideoCell *videoCell;
-        
-        videoCell = (LBVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
-        
-        
-        // Configure the cell...
-        videoCell.cellSize = CGSizeMake(HOMENEW_CELL_WIDTH, [LBVideoCell heightForVideoCell]);
-        
-        [videoCell.VideoImg setImageWithURL:[NSURL URLWithString:media.image]];
-        
-        videoCell.VideoNameLbl.text = media.name;
-        
-        
-        videoCell.SingerLbl.text = media.singer;
-        videoCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
-        videoCell.NumLikeLbl.text = @"New Video";
-        videoCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
-        
-        //display seperator image at the bottom of cell
-        UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
-        seperatorImgView.frame = CGRectMake(0, [LBVideoCell heightForVideoCell] - 1 , HOMENEW_CELL_WIDTH, 1);
-        
-        [videoCell.contentView addSubview:seperatorImgView];
-        
-        return videoCell;
-
+    videoCell = (LBVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
+    
+    
+    // Configure the cell...
+    videoCell.cellSize = CGSizeMake(HOMENEW_CELL_WIDTH, [LBVideoCell heightForVideoCell]);
+    
+    [videoCell.VideoImg setImageWithURL:[NSURL URLWithString:media.image]];
+    
+    videoCell.VideoNameLbl.text = media.name;
+    
+    
+    videoCell.SingerLbl.text = media.singer;
+    videoCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
+    videoCell.NumLikeLbl.text = @"New Video";
+    videoCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
+    
+    //display seperator image at the bottom of cell
+    UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
+    seperatorImgView.frame = CGRectMake(0, [LBVideoCell heightForVideoCell] - 1 , HOMENEW_CELL_WIDTH, 1);
+    
+    [videoCell.contentView addSubview:seperatorImgView];
+    
+    return videoCell;
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-        return [LBVideoCell heightForVideoCell];
-
+    return [LBVideoCell heightForVideoCell];
+    
 }
 
 #pragma mark - Table view Delegates
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    LBVideo *media = (LBVideo*)[_medias objectAtIndex:indexPath.row];
+    _mainVideo = (LBVideo*)[_medias objectAtIndex:indexPath.row];
     
-    [_videoPlayer setContentURL:[NSURL URLWithString:media.media_url]];
+    [_videoPlayer setContentURL:[NSURL URLWithString:_mainVideo.media_url]];
     
 }
 
@@ -203,7 +200,135 @@ static const int NUM_ROW_PER_PAGE = 10;
 }
 
 
+#pragma mark - Load table data
+-(void)loadHomePage:(int)page size:(int)size {
+    
+    
+    NSDictionary *queryParams = @{@"page" : [NSNumber numberWithInt:page],
+                                  @"num": [NSNumber numberWithInt:size]};
+    
+    
+    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] appropriateObjectRequestOperationWithObject:nil method:RKRequestMethodGET path:KEENG_API_GET_HOME parameters:queryParams];
+    
+    [operation setCompletionBlockWithSuccess:nil failure:nil];
+    // [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
+    
+    
+    // [NSThread sleepForTimeInterval:10];
+    [operation start];
+    [operation waitUntilFinished];
+    
+    if (!operation.error) {
+        
+        for (LBMedia *media in operation.mappingResult.array) {
+            
+            if ([media isKindOfClass:[LBVideo class]]) {
+                
+                [self.medias addObject:media];
+                //[self addMediaIntoArray:(LBVideo*)media];
+            }
+        }
+    }
+}
 
+#pragma mark - Delegates
+
+-(void)finishPlayCurrentMovie {
+    
+    //play next video has greater listen_no
+    int nextVideoIndex = [self getIndexOfLeastGreaterObject:_mainVideo];
+    
+    if (nextVideoIndex >= 0) {
+        
+        _mainVideo = (LBVideo*)[_medias objectAtIndex:nextVideoIndex];
+        [_videoPlayer setContentURL:[NSURL URLWithString:_mainVideo.media_url]];
+        
+        [self.tableview reloadData];
+        
+        [self.tableview scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:nextVideoIndex inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    } else {
+        
+         NSLog(@"Already played all of videos!");
+    }
+}
+
+-(void)exitVideoPlayer {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+
+-(void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Internal methods
+
+-(void)addMediaIntoArray:(LBVideo *)video {
+    
+    NSComparator comparator = ^(id obj1, id obj2) {
+        NSNumber *id1 = [obj1 valueForKey:@"listen_no"];
+        NSNumber *id2 = [obj2 valueForKey:@"listen_no"];
+        
+        return (NSComparisonResult)[id1 compare:id2];
+        
+    };
+    
+    NSUInteger newIndex = [_medias indexOfObject:video inSortedRange:(NSRange){0, [_medias count]} options:NSBinarySearchingInsertionIndex|NSBinarySearchingFirstEqual usingComparator:comparator];
+    
+    
+    if ([_medias count] == 0) { //initialize first element
+        
+        [_medias insertObject:video atIndex:newIndex];
+    }
+    
+    if (newIndex < [_medias count]) {
+        
+        if (video.listen_no != [[_medias objectAtIndex:newIndex] listen_no]) {
+            
+            [_medias insertObject:video atIndex:newIndex];
+        } else {
+            
+            NSLog(@"da co bai hat co luot nghe nay!");
+        }
+    } else { //highest index means object not yet existed
+        
+        [_medias insertObject:video atIndex:newIndex];
+    }
+}
+
+
+-(int)getIndexOfLeastGreaterObject:(LBVideo *)video {
+    
+    for (int i=0; i< _medias.count; i++) {
+        
+        if ([video.id intValue] == [[_medias objectAtIndex:i].id intValue]) {
+            
+            return i + 1 > [_medias count] - 1 ? 0 : i+1;
+        }
+    }
+    
+    
+    return 0; //no videos has higher listen_no => play from the beginning of list
+}
+
+//-(int)getIndexOfLeastGreaterObject:(LBVideo *)video {
+//    
+//    for (int i=0; i< _medias.count; i++) {
+//        
+//        if ([video.listen_no intValue] <= [[[_medias objectAtIndex:i] listen_no] intValue]) {
+//            
+//            return [video.id isEqualToString:[[_medias objectAtIndex:i] id]] ? (i+1 >= [_medias count] ? -1 : i+1) : i;
+//        }
+//    }
+//    
+//    
+//    return 0; //no videos has higher listen_no => play from the beginning of list
+//}
 
 
 
@@ -267,55 +392,4 @@ static const int NUM_ROW_PER_PAGE = 10;
  }
  */
 
-#pragma mark - Load table data
--(void)loadHomePage:(int)page size:(int)size {
-    
-    
-    NSDictionary *queryParams = @{@"page" : [NSNumber numberWithInt:page],
-                                  @"num": [NSNumber numberWithInt:size]};
-    
-    
-    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] appropriateObjectRequestOperationWithObject:nil method:RKRequestMethodGET path:KEENG_API_GET_HOME parameters:queryParams];
-    
-    [operation setCompletionBlockWithSuccess:nil failure:nil];
-    // [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
-    
-    
-    // [NSThread sleepForTimeInterval:10];
-    [operation start];
-    [operation waitUntilFinished];
-    
-    if (!operation.error) {
-        
-        for (LBMedia *media in operation.mappingResult.array) {
-            
-            if ([media isKindOfClass:[LBVideo class]]) {
-                
-                if (![media.id isEqualToString:_mainVideo.id]) {
-             
-                    [self.medias addObject:media];
-                }
-            }
-        }
-    }
-}
-
-#pragma mark - Delegates
--(void)moviePlayerWillExit:(NSNotification *)notification {
-    
-    NSLog(@"%@", notification.object);
-    
-    if ([notification.object isKindOfClass:[ALMoviePlayerController class]]) {
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MPMoviePlayerPlaybackDidFinishNotification" object:_videoPlayer.moviePlayer];
-    }
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
--(void)dealloc {
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 @end

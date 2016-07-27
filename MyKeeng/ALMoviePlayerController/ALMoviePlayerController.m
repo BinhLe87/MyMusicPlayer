@@ -299,6 +299,10 @@ static const NSTimeInterval fullscreenAnimationDuration = 0.15;
     
     [self stop];
     
+    if ([_delegate respondsToSelector:@selector(exitMoviePlayer)]) {
+        
+        [_delegate exitMoviePlayer];
+    }
 }
 
 

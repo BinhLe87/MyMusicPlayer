@@ -11,8 +11,7 @@
 #import "LBVideoCell.h"
 #import "LBVideoCellPlayer.h"
 
-@interface LBVideoPlayerViewController : UIViewController 
-
+@interface LBVideoPlayerViewController : UIViewController <LBVideoCellPlayerDelegate>
 
 @property (nonatomic) LBVideo *mainVideo;
 @property (nonatomic, retain) IBOutlet UITableView *tableview;
@@ -32,6 +31,8 @@
 
 -(void)enterFullScreen;
 
--(void)moviePlayerWillExit:(NSNotification *)notification;
+-(void)finishPlayCurrentMovie;
+
+-(int)getIndexOfLeastGreaterObject:(LBVideo *)video;
 
 @end

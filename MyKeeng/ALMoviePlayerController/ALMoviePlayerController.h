@@ -14,6 +14,7 @@ static NSString * const ALMoviePlayerContentURLDidChangeNotification = @"ALMovie
 @protocol ALMoviePlayerControllerDelegate <NSObject>
 @optional
 - (void)movieTimedOut;
+- (void)exitMoviePlayer;
 @required
 - (void)moviePlayerWillMoveFromWindow;
 @end

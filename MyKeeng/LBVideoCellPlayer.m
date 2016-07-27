@@ -50,8 +50,6 @@
 }
 
 
-
-
 -(void)layoutSubviews {
     
     
@@ -97,4 +95,15 @@
     [self layoutIfNeeded];
     
 }
+
+-(void)exitMoviePlayer {
+    
+    if ([_delegate respondsToSelector:@selector(exitVideoPlayer)]) {
+        
+        [_delegate exitVideoPlayer];
+    }
+    
+}
+
+
 @end

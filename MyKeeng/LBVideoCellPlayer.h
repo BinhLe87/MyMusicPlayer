@@ -9,9 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "ALMoviePlayerController/ALMoviePlayerController.h"
 
+
+@protocol LBVideoCellPlayerDelegate <NSObject>
+
+-(void)exitVideoPlayer;
+
+@end
+
 @interface LBVideoCellPlayer : UIView <ALMoviePlayerControllerDelegate>
 
 @property (nonatomic) ALMoviePlayerController *moviePlayer;
+@property (nonatomic,weak) id<LBVideoCellPlayerDelegate> delegate;
 
 -(void)setContentURL:(NSURL *)contentURL;
 
