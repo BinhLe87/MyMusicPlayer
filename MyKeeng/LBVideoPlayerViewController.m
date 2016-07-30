@@ -24,6 +24,7 @@ enum SECTION_TYPE {
 @end
 
 @implementation LBVideoPlayerViewController
+@synthesize managedObjectContext = _managedObjectContext;
 
 static int HOMENEW_CELL_WIDTH = 320;
 

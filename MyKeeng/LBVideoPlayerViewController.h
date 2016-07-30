@@ -11,10 +11,14 @@
 #import "LBVideoCell.h"
 #import "LBVideoCellPlayer.h"
 
-@interface LBVideoPlayerViewController : UIViewController <LBVideoCellPlayerDelegate>
+@interface LBVideoPlayerViewController : UIViewController <LBVideoCellPlayerDelegate> {
+    
+    NSManagedObjectContext *_managedObjectContext;
+}
 
 @property (nonatomic) LBVideo *mainVideo;
 @property (nonatomic, retain) IBOutlet UITableView *tableview;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic) NSMutableArray <LBMedia *> *medias;
 

@@ -23,6 +23,8 @@
 
 @implementation LBHomeNewVC
 
+@synthesize managedObjectContext = _managedObjectContext;
+
 int HOMENEW_CELL_WIDTH = 320;
 
 #pragma mark - Constant variables
@@ -70,14 +72,14 @@ static const int NUM_ROW_PER_PAGE = 10;
 
 
 -(void)viewWillAppear:(BOOL)animated {
-
+    
     [super viewWillAppear:animated];
-        
-      [self.navigationController setNavigationBarHidden:YES];
+    
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 //-(void)viewWillDisappear:(BOOL)animated {
-//    
+//
 //    [self.navigationController setNavigationBarHidden:NO];
 //}
 
@@ -164,7 +166,7 @@ static const int NUM_ROW_PER_PAGE = 10;
         
         videoCell = (LBVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
         
-
+        
         // Configure the cell...
         videoCell.cellSize = CGSizeMake(HOMENEW_CELL_WIDTH, [LBVideoCell heightForVideoCell]);
         
@@ -172,7 +174,7 @@ static const int NUM_ROW_PER_PAGE = 10;
         
         videoCell.VideoNameLbl.text = media.name;
         
-
+        
         videoCell.SingerLbl.text = media.singer;
         videoCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
         videoCell.NumLikeLbl.text = @"New Video";
@@ -211,7 +213,7 @@ static const int NUM_ROW_PER_PAGE = 10;
         
         LBVideoPlayerViewController *videoPlayerVC = [[LBVideoPlayerViewController alloc] initWithNibName:@"LBVideoPlayerViewController" bundle:nil];
         videoPlayerVC.mainVideo = (LBVideo*) media;
-      
+        
         
         [self.navigationController pushViewController:videoPlayerVC animated:YES];
     }
@@ -295,22 +297,44 @@ static const int NUM_ROW_PER_PAGE = 10;
     
     RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] appropriateObjectRequestOperationWithObject:nil method:RKRequestMethodGET path:KEENG_API_GET_HOME parameters:queryParams];
     
-    [operation setCompletionBlockWithSuccess:nil failure:nil];
-    // [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
-    
-    
-    // [NSThread sleepForTimeInterval:10];
-    [operation start];
-    [operation waitUntilFinished];
-    
-    if (!operation.error) {
+    [operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
         for (LBMedia *media in operation.mappingResult.array) {
             
             [self.medias addObject:media];
+            
+            if(media) {
+                
+                //TODO: add to core date
+                NSEntityDescription *videoEntity = [NSEntityDescription entityForName:@"LBVideo" inManagedObjectContext:self.managedObjectContext];
+                
+                NSManagedObject *videoMO = [NSEntityDescription insertNewObjectForEntityForName:[videoEntity name] inManagedObjectContext:self.managedObjectContext];
+                
+                [videoMO setValue:media.name forKey:@"name"];
+                [videoMO setValue:media.id forKey:@"id"];
+                
+                
+            }
         }
+        
+        //save the context
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) {
+            
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        
+    }];
+    // [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
+    
+    [operation start];
+    [operation waitUntilFinished];
+    
+    
     }
-}
 
 
-@end
+    @end

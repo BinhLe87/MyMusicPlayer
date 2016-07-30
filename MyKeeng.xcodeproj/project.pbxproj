@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B60A9120B7A62BB61C668B6 /* libPods-MyKeeng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F382DB8352B54C427A82D9B /* libPods-MyKeeng.a */; };
+		AB06E1571D499ED000B9B59B /* MyKeeng.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB06E1551D499ED000B9B59B /* MyKeeng.xcdatamodeld */; };
 		AB1FC7221D372E5F006A6059 /* LBVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1FC7211D372E5F006A6059 /* LBVideo.m */; };
 		AB1FC7261D37715A006A6059 /* LBVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1FC7241D37715A006A6059 /* LBVideoCell.m */; };
 		AB1FC7271D37715A006A6059 /* LBVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1FC7251D37715A006A6059 /* LBVideoCell.xib */; };
@@ -413,6 +414,7 @@
 		0F382DB8352B54C427A82D9B /* libPods-MyKeeng.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyKeeng.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34ACE6209E8CE486AD265874 /* Pods-MyKeeng.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyKeeng.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyKeeng/Pods-MyKeeng.debug.xcconfig"; sourceTree = "<group>"; };
 		799DD9B57227CE5012F5BD4B /* Pods-MyKeeng.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyKeeng.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyKeeng/Pods-MyKeeng.release.xcconfig"; sourceTree = "<group>"; };
+		AB06E1561D499ED000B9B59B /* MyKeeng.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyKeeng.xcdatamodel; sourceTree = "<group>"; };
 		AB1FC7201D372E5F006A6059 /* LBVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVideo.h; sourceTree = "<group>"; };
 		AB1FC7211D372E5F006A6059 /* LBVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBVideo.m; sourceTree = "<group>"; };
 		AB1FC7231D37715A006A6059 /* LBVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVideoCell.h; sourceTree = "<group>"; };
@@ -879,6 +881,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AB06E1541D499EA700B9B59B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				AB06E1551D499ED000B9B59B /* MyKeeng.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		AB380EC01D38A3810082C339 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -1258,6 +1268,7 @@
 		AB7CB9AA1D349BE0007BF344 /* MyKeeng */ = {
 			isa = PBXGroup;
 			children = (
+				AB06E1541D499EA700B9B59B /* CoreData */,
 				AB380EC01D38A3810082C339 /* images */,
 				ABD9BD5B1D363D1400D8FCF4 /* Libs */,
 				AB7CBA001D34AB09007BF344 /* Model */,
@@ -2008,6 +2019,7 @@
 				AB34B5FC1D3534B100F4047C /* LBHomeNewSongCell.m in Sources */,
 				AB7CBA0B1D34ABA3007BF344 /* LBSong.m in Sources */,
 				ABEE96791D3E70B100C72213 /* ALButton.m in Sources */,
+				AB06E1571D499ED000B9B59B /* MyKeeng.xcdatamodeld in Sources */,
 				AB7CB9AD1D349BE0007BF344 /* main.m in Sources */,
 				ABD9BD5F1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m in Sources */,
 				ABE762431D3E2A93008C3B72 /* LBVideoPlayerViewController.m in Sources */,
@@ -2184,6 +2196,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AB06E1551D499ED000B9B59B /* MyKeeng.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AB06E1561D499ED000B9B59B /* MyKeeng.xcdatamodel */,
+			);
+			currentVersion = AB06E1561D499ED000B9B59B /* MyKeeng.xcdatamodel */;
+			path = MyKeeng.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AB7CB9A01D349BE0007BF344 /* Project object */;
 }

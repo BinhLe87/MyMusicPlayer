@@ -11,10 +11,14 @@
 #import "LBSong.h"
 #import "LBVideo.h"
 
-@interface LBHomeNewVC : UIViewController
+@interface LBHomeNewVC : UIViewController {
+    
+    NSManagedObjectContext *_managedObjectContext;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic) NSMutableArray <LBMedia *> *medias;
+@property (nonatomic) NSManagedObjectContext *managedObjectContext;
 
 -(void)loadHomePage:(int)page size:(int)size;
 

@@ -21,19 +21,23 @@
 
 @implementation AppDelegate
 
+@synthesize managedObjectContext = __managedObjectContext;
+@synthesize managedObjectModel = __managedObjectModel;
+@synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
- originFrameInPortrait = CGRectMake(0, 0, MIN(self.window.frame.size.height, self.window.frame.size.width), MAX(self.window.frame.size.height, self.window.frame.size.width));
+    originFrameInPortrait = CGRectMake(0, 0, MIN(self.window.frame.size.height, self.window.frame.size.width), MAX(self.window.frame.size.height, self.window.frame.size.width));
     
     
-   
     
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:@"UIApplicationWillChangeStatusBarOrientationNotification" object:nil];
+    
+    //
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:@"UIApplicationWillChangeStatusBarOrientationNotification" object:nil];
     
     //    if (isLandscape) {
     //
@@ -63,6 +67,7 @@
     [LBRestKitConn configureRestKit];
     
     LBHomeNewVC *homeNewVC = [[LBHomeNewVC alloc] initWithNibName:@"LBHomeNew" bundle:nil];
+    homeNewVC.managedObjectContext = self.managedObjectContext;
     
     UINavigationController *navigationCtrl = [[UINavigationController alloc] initWithRootViewController:homeNewVC];
     
@@ -119,5 +124,140 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - Core Data stack
+-(NSManagedObjectContext *)managedObjectContext {
+    
+    if (__managedObjectContext != nil) {
+        
+        return __managedObjectContext;
+    }
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil) {
+        
+        __managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [__managedObjectContext setPersistentStoreCoordinator:coordinator];
+    }
+    
+    return __managedObjectContext;
+}
+
+-(NSManagedObjectModel *)managedObjectModel {
+    
+    if (__managedObjectModel != nil) {
+        
+        return __managedObjectModel;
+    }
+    
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"MyKeeng" withExtension:@"momd"];
+    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    
+    return __managedObjectModel;
+}
+
+-(NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    
+    if (__persistentStoreCoordinator != nil) {
+        
+        return __persistentStoreCoordinator;
+    }
+    
+    //NSURL *storeURL = [self getPersistSQLFilePath];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"MyKeeng.sqlite"];
+    
+    
+    NSError *error = nil;
+    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    
+    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return __persistentStoreCoordinator;
+    
+}
+
+- (void)saveContext {
+    
+    NSError *error = nil; NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil) {
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
+        { NSLog(@"Unresolved error %@, %@", error, [error userInfo]); abort(); } }
+    
+}
+
+#pragma mark - Application's Documents directory
+
+- (NSData*)bookmarkForURL:(NSURL*)url {
+    NSError* theError = nil;
+    NSData* bookmark = [url bookmarkDataWithOptions:NSURLBookmarkCreationSuitableForBookmarkFile
+                     includingResourceValuesForKeys:nil
+                                      relativeToURL:nil
+                                              error:&theError];
+    if (theError || (bookmark == nil)) {
+        // Handle any errors.
+        return nil;
+    }
+    return bookmark;
+}
+
+- (NSURL*)urlForBookmark:(NSData*)bookmark {
+    BOOL bookmarkIsStale = NO;
+    NSError* theError = nil;
+    NSURL* bookmarkURL = [NSURL URLByResolvingBookmarkData:bookmark
+                                                   options:NSURLBookmarkResolutionWithoutUI
+                                             relativeToURL:nil
+                                       bookmarkDataIsStale:&bookmarkIsStale
+                                                     error:&theError];
+    
+    if (bookmarkIsStale || (theError != nil)) {
+        // Handle any errors
+        return nil;
+    }
+    return bookmarkURL;
+}
+
+
+-(NSURL *)applicationDocumentsDirectory {
+    
+    NSArray<NSURL *> *documentDirs = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+    
+    return [documentDirs lastObject];
+}
+
+-(NSURL*) getPersistSQLFilePath {
+    
+    //read SqlFile location that was bookmarked from NSUserDefault
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *bookmarkDocURL = [defaults objectForKey:@"bookmarkSqlFile"];
+    NSURL *docURL = nil;
+    
+    if (!bookmarkDocURL) { //not yet existing url bookmark
+        
+        docURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"MyKeeng.sqlite"];
+        
+        //convert to nsdata bookmark
+        bookmarkDocURL = [self bookmarkForURL:docURL];
+        
+        //save into NSUserDefault
+        if (bookmarkDocURL) {
+            [defaults setObject:bookmarkDocURL forKey:@"bookmarkSqlFile"];
+        }
+    } else { //extract bookmark into NSURL
+        
+        docURL = [self urlForBookmark:bookmarkDocURL];
+    }
+    
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[docURL path]];
+    
+    return docURL;
+
+}
+
+
+
 
 @end
