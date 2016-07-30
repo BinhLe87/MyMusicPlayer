@@ -7,6 +7,7 @@
 //
 
 #import "LBMedia.h"
+#import <MTLValueTransformer.h>
 
 @implementation LBMedia
 
@@ -34,5 +35,22 @@
         
     }
 }
+
++(NSDictionary *)JSONKeyPathsByPropertyKey {
+    
+    return @{@"id":@"id", @"name":@"name", @"singer":@"singer", @"listen_no":@"listen_no", @"image":@"image", @"image310":@"image310", @"url":@"url", @"price":@"price", @"item_type":@"item_type"};
+}
+
++(NSValueTransformer*) idJSONTransformer {
+
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error) {
+        
+        return [value stringValue];
+    }];
+
+}
+
+
+
 
 @end

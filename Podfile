@@ -3,6 +3,7 @@
 
 def sharedpods
 pod 'RestKit', '~> 0.24.0' 
+pod 'Mantle'
 end
 
 target 'MyKeeng' do 

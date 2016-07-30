@@ -11,6 +11,7 @@
 #import "LBVideoCell.h"
 #import "LBVideoPlayerViewController.h"
 #import "MyKeengUtilities.h"
+#import <NSValueTransformer+MTLPredefinedTransformerAdditions.h>
 
 
 @interface LBHomeNewVC () {
@@ -56,7 +57,8 @@ static const int NUM_ROW_PER_PAGE = 10;
     _medias = [[NSMutableArray alloc] init];
     //load first page
     curPageIdx = 1;
-    [self loadHomePage:curPageIdx size:NUM_ROW_PER_PAGE];
+    [self loadHomePage:curPageIdx size:NUM_ROW_PER_PAGE isFirstLoad:YES];
+    [self.tableview reloadData];
     
     
     //set status bar
@@ -228,7 +230,7 @@ static const int NUM_ROW_PER_PAGE = 10;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             
             curPageIdx++;
-            [self loadHomePage:curPageIdx size:NUM_ROW_PER_PAGE];
+            [self loadHomePage:curPageIdx size:NUM_ROW_PER_PAGE isFirstLoad:NO];
         });
     }
 }
@@ -288,53 +290,131 @@ static const int NUM_ROW_PER_PAGE = 10;
  */
 
 #pragma mark - Load table data
--(void)loadHomePage:(int)page size:(int)size {
-    
-    
-    NSDictionary *queryParams = @{@"page" : [NSNumber numberWithInt:page],
-                                  @"num": [NSNumber numberWithInt:size]};
-    
-    
-    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] appropriateObjectRequestOperationWithObject:nil method:RKRequestMethodGET path:KEENG_API_GET_HOME parameters:queryParams];
-    
-    [operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
-        for (LBMedia *media in operation.mappingResult.array) {
-            
-            [self.medias addObject:media];
-            
-            if(media) {
-                
-                //TODO: add to core date
-                NSEntityDescription *videoEntity = [NSEntityDescription entityForName:@"LBVideo" inManagedObjectContext:self.managedObjectContext];
-                
-                NSManagedObject *videoMO = [NSEntityDescription insertNewObjectForEntityForName:[videoEntity name] inManagedObjectContext:self.managedObjectContext];
-                
-                [videoMO setValue:media.name forKey:@"name"];
-                [videoMO setValue:media.id forKey:@"id"];
-                
-                
-            }
-        }
-        
-        //save the context
-        NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) {
-            
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        
-    }];
-    // [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
-    
-    [operation start];
-    [operation waitUntilFinished];
-    
-    
-    }
+//-(void)loadHomePage:(int)page size:(int)size {
+//
+//
+//    NSDictionary *queryParams = @{@"page" : [NSNumber numberWithInt:page],
+//                                  @"num": [NSNumber numberWithInt:size]};
+//
+//
+//    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] appropriateObjectRequestOperationWithObject:nil method:RKRequestMethodGET path:KEENG_API_GET_HOME parameters:queryParams];
+//
+//    [operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+//
+//        for (LBMedia *media in operation.mappingResult.array) {
+//
+//            [self.medias addObject:media];
+//
+//            if(media) {
+//
+//                //TODO: add to core date
+//                NSEntityDescription *videoEntity = [NSEntityDescription entityForName:@"LBVideo" inManagedObjectContext:self.managedObjectContext];
+//
+//                NSManagedObject *videoMO = [NSEntityDescription insertNewObjectForEntityForName:[videoEntity name] inManagedObjectContext:self.managedObjectContext];
+//
+//                [videoMO setValue:media.name forKey:@"name"];
+//                [videoMO setValue:media.id forKey:@"id"];
+//
+//
+//            }
+//        }
+//
+//        //save the context
+//        NSError *error = nil;
+//        if (![self.managedObjectContext save:&error]) {
+//
+//            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//            abort();
+//        }
+//
+//    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+//
+//    }];
+//    // [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
+//
+//    [operation start];
+//    [operation waitUntilFinished];
+//
+//
+//    }
 
 
-    @end
+//-(void)loadHomePage:(int)page size:(int)size {
+//
+//    __block  NSArray *mediaArr = [[NSArray alloc] init];
+//
+//          NSURL *url = [NSURL URLWithString:KEENG_WS_URL];
+//
+//        AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:url];
+//
+//
+//        [client getPath:KEENG_API_GET_HOME parameters:@{@"page" : [NSNumber numberWithInt:page],
+//                                                        @"num": [NSNumber numberWithInt:size]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//
+//                                                            NSError *error;
+//
+//                                                            NSDictionary *dic = (NSDictionary*) [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&error];
+//
+//
+//                                                            NSArray *results = (NSArray*)[dic objectForKey:@"data"];
+//                                                            mediaArr = [MTLJSONAdapter modelsOfClass:[LBMedia class] fromJSONArray:results error:&error];
+//
+//                                                            if (error != nil) {
+//
+//                                                                NSLog(@"Error: %@", error);
+//                                                            }
+//
+//
+//                                                            for (LBMedia *media in mediaArr) {
+//
+//                                                                [self.medias addObject:media];
+//                                                            }
+//
+//                                                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                                                            NSLog(@"Error: %@", error);
+//                                                        }];
+//
+//
+//}
+
+-(void)loadHomePage:(int)page size:(int)size isFirstLoad:(BOOL)isFirstLoad{
+
+__block  NSArray *mediaArr = [[NSArray alloc] init];
+__weak LBHomeNewVC *weakSelf = self;
+
+NSURL *url = [NSURL URLWithString:KEENG_WS_URL];
+
+AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:url];
+
+
+[client getPath:KEENG_API_GET_HOME parameters:@{@"page" : [NSNumber numberWithInt:page],
+            @"num": [NSNumber numberWithInt:size]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                
+                NSError *error;
+                
+                NSDictionary *dic = (NSDictionary*) [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&error];
+                
+                NSArray *results = (NSArray*)[dic objectForKey:@"data"];
+                
+                for (NSDictionary *mediaDic in results) {
+                    
+                    if ([[mediaDic valueForKey:@"item_type"] integerValue] == 1) { //song
+                        
+                        [_medias addObject:(LBSong *)[MTLJSONAdapter modelOfClass:[LBSong class] fromJSONDictionary:mediaDic error:&error]];
+                    } else if ([[mediaDic valueForKey:@"item_type"] integerValue] == 3) { //video
+                        
+                        [_medias addObject:(LBVideo *)[MTLJSONAdapter modelOfClass:[LBVideo class] fromJSONDictionary:mediaDic error:&error]];
+                    }
+                }
+                
+                if (isFirstLoad) {
+                    
+                    [weakSelf.tableview reloadData];
+                }
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Error: %@", error);
+            }];
+}
+
+@end

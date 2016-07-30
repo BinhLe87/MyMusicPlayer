@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LBMedia.h"
 
+
 @interface LBVideo : LBMedia
 
 @property (nonatomic, retain) NSString * media_url;

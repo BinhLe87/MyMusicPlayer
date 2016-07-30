@@ -20,7 +20,7 @@
 @property (nonatomic) NSMutableArray <LBMedia *> *medias;
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 
--(void)loadHomePage:(int)page size:(int)size;
+-(void)loadHomePage:(int)page size:(int)size isFirstLoad:(BOOL)isFirstLoad;
 
 
 

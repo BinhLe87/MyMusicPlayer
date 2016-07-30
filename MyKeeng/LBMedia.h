@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Mantle/MTLModel.h>
+#import <Mantle/MTLJSONAdapter.h>
 
-@interface LBMedia : NSObject
+
+
+@interface LBMedia :MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, retain) NSString * image;
 @property (nonatomic, retain) NSString * image310;

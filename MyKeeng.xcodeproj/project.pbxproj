@@ -363,6 +363,7 @@
 		AB3811741D38A3830082C339 /* welcom_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB3810191D38A3820082C339 /* welcom_3.jpg */; };
 		AB3811751D38A3830082C339 /* welcom_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB38101A1D38A3820082C339 /* welcom_4.jpg */; };
 		AB3811761D38A3830082C339 /* welcom_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB38101B1D38A3820082C339 /* welcom_5.jpg */; };
+		AB3EE6DB1D4C708D00CAEB99 /* libMantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB3EE6DA1D4C708D00CAEB99 /* libMantle.a */; };
 		AB5B21581D3F14470071357A /* LBVideoCellPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5B21571D3F14470071357A /* LBVideoCellPlayer.m */; };
 		AB5DE9B11D406E9B00007210 /* track_player_outside.png in Resources */ = {isa = PBXBuildFile; fileRef = AB5DE9B01D406E9B00007210 /* track_player_outside.png */; };
 		AB5DE9B31D406ED200007210 /* track_player_outside@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB5DE9B21D406ED200007210 /* track_player_outside@2x.png */; };
@@ -773,6 +774,7 @@
 		AB3810191D38A3820082C339 /* welcom_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcom_3.jpg; sourceTree = "<group>"; };
 		AB38101A1D38A3820082C339 /* welcom_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcom_4.jpg; sourceTree = "<group>"; };
 		AB38101B1D38A3820082C339 /* welcom_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcom_5.jpg; sourceTree = "<group>"; };
+		AB3EE6DA1D4C708D00CAEB99 /* libMantle.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMantle.a; path = "Pods/../build/Debug-iphoneos/libMantle.a"; sourceTree = "<group>"; };
 		AB5B21561D3F14470071357A /* LBVideoCellPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVideoCellPlayer.h; sourceTree = "<group>"; };
 		AB5B21571D3F14470071357A /* LBVideoCellPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBVideoCellPlayer.m; sourceTree = "<group>"; };
 		AB5DE9B01D406E9B00007210 /* track_player_outside.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = track_player_outside.png; path = "../../../../../../SourceCode Ref/ObjectC/Keeng_mobile/iOS_KeengV2_Peru/Keeng/KNews/images/icon/track_player_outside.png"; sourceTree = "<group>"; };
@@ -841,6 +843,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3EE6DB1D4C708D00CAEB99 /* libMantle.a in Frameworks */,
 				ABEE968F1D3E70D100C72213 /* MediaPlayer.framework in Frameworks */,
 				ABEE968D1D3E70C800C72213 /* QuartzCore.framework in Frameworks */,
 				AB7CBA1A1D34D02E007BF344 /* SystemConfiguration.framework in Frameworks */,
@@ -859,6 +862,7 @@
 		56B70105E3CCF36DE709533A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB3EE6DA1D4C708D00CAEB99 /* libMantle.a */,
 				ABEE968E1D3E70D100C72213 /* MediaPlayer.framework */,
 				ABEE968C1D3E70C800C72213 /* QuartzCore.framework */,
 				AB7CBA191D34D02E007BF344 /* SystemConfiguration.framework */,
