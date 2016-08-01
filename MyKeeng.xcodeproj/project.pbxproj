@@ -383,6 +383,9 @@
 		AB7CBA1A1D34D02E007BF344 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA191D34D02E007BF344 /* SystemConfiguration.framework */; };
 		AB7CBA1D1D34D112007BF344 /* LBRestKitConn.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CBA1C1D34D112007BF344 /* LBRestKitConn.m */; };
 		AB7CBA221D34F5AA007BF344 /* LBMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CBA211D34F5AA007BF344 /* LBMedia.m */; };
+		AB8519E91D4EE3D500B6B0A5 /* LBRestfulConn.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8519E81D4EE3D400B6B0A5 /* LBRestfulConn.m */; };
+		AB8519EC1D4EEA1A00B6B0A5 /* LBConnManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8519EB1D4EEA1A00B6B0A5 /* LBConnManager.m */; };
+		AB8519F51D4EFD3100B6B0A5 /* LBDataConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8519F41D4EFD3100B6B0A5 /* LBDataConnection.m */; };
 		ABD9BD5F1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD9BD5E1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m */; };
 		ABE7623C1D3DD714008C3B72 /* MyKeengUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7623B1D3DD714008C3B72 /* MyKeengUtilities.m */; };
 		ABE762431D3E2A93008C3B72 /* LBVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE762421D3E2A93008C3B72 /* LBVideoPlayerViewController.m */; };
@@ -803,6 +806,12 @@
 		AB7CBA1E1D34D3DD007BF344 /* MyKeeng-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyKeeng-PrefixHeader.pch"; sourceTree = "<group>"; };
 		AB7CBA201D34F5AA007BF344 /* LBMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMedia.h; sourceTree = "<group>"; };
 		AB7CBA211D34F5AA007BF344 /* LBMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMedia.m; sourceTree = "<group>"; };
+		AB8519E71D4EE3D400B6B0A5 /* LBRestfulConn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRestfulConn.h; sourceTree = "<group>"; };
+		AB8519E81D4EE3D400B6B0A5 /* LBRestfulConn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRestfulConn.m; sourceTree = "<group>"; };
+		AB8519EA1D4EEA1A00B6B0A5 /* LBConnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBConnManager.h; sourceTree = "<group>"; };
+		AB8519EB1D4EEA1A00B6B0A5 /* LBConnManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBConnManager.m; sourceTree = "<group>"; };
+		AB8519F31D4EFD3100B6B0A5 /* LBDataConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDataConnection.h; sourceTree = "<group>"; };
+		AB8519F41D4EFD3100B6B0A5 /* LBDataConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDataConnection.m; sourceTree = "<group>"; };
 		ABD9BD5D1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+dynamicSizeMe.h"; sourceTree = "<group>"; };
 		ABD9BD5E1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+dynamicSizeMe.m"; sourceTree = "<group>"; };
 		ABE7623A1D3DD714008C3B72 /* MyKeengUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKeengUtilities.h; sourceTree = "<group>"; };
@@ -1319,6 +1328,7 @@
 		AB7CB9D51D349E35007BF344 /* Data Source Manager */ = {
 			isa = PBXGroup;
 			children = (
+				AB8519E61D4EE3AE00B6B0A5 /* DataConnection */,
 				AB7CB9D61D349E35007BF344 /* Connection Manager */,
 				AB7CB9D91D349E35007BF344 /* Constants */,
 			);
@@ -1330,6 +1340,8 @@
 			children = (
 				AB7CBA1B1D34D112007BF344 /* LBRestKitConn.h */,
 				AB7CBA1C1D34D112007BF344 /* LBRestKitConn.m */,
+				AB8519EA1D4EEA1A00B6B0A5 /* LBConnManager.h */,
+				AB8519EB1D4EEA1A00B6B0A5 /* LBConnManager.m */,
 			);
 			path = "Connection Manager";
 			sourceTree = "<group>";
@@ -1409,6 +1421,17 @@
 				AB7CBA211D34F5AA007BF344 /* LBMedia.m */,
 			);
 			name = Media;
+			sourceTree = "<group>";
+		};
+		AB8519E61D4EE3AE00B6B0A5 /* DataConnection */ = {
+			isa = PBXGroup;
+			children = (
+				AB8519E71D4EE3D400B6B0A5 /* LBRestfulConn.h */,
+				AB8519E81D4EE3D400B6B0A5 /* LBRestfulConn.m */,
+				AB8519F31D4EFD3100B6B0A5 /* LBDataConnection.h */,
+				AB8519F41D4EFD3100B6B0A5 /* LBDataConnection.m */,
+			);
+			name = DataConnection;
 			sourceTree = "<group>";
 		};
 		ABD9BD5B1D363D1400D8FCF4 /* Libs */ = {
@@ -2014,8 +2037,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABEE967B1D3E70B100C72213 /* ALMoviePlayerControls.m in Sources */,
+				AB8519F51D4EFD3100B6B0A5 /* LBDataConnection.m in Sources */,
 				ABE7623C1D3DD714008C3B72 /* MyKeengUtilities.m in Sources */,
 				AB7CB9B01D349BE0007BF344 /* AppDelegate.m in Sources */,
+				AB8519E91D4EE3D500B6B0A5 /* LBRestfulConn.m in Sources */,
 				ABEE96781D3E70B100C72213 /* ALAirplayView.m in Sources */,
 				AB7CBA1D1D34D112007BF344 /* LBRestKitConn.m in Sources */,
 				ABEE967A1D3E70B100C72213 /* ALMoviePlayerController.m in Sources */,
@@ -2031,6 +2056,7 @@
 				AB1FC7221D372E5F006A6059 /* LBVideo.m in Sources */,
 				AB34B6051D35399E00F4047C /* LBHomeNewVC.m in Sources */,
 				AB1FC7261D37715A006A6059 /* LBVideoCell.m in Sources */,
+				AB8519EC1D4EEA1A00B6B0A5 /* LBConnManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
