@@ -2,8 +2,8 @@
 # platform :ios, '8.0'
 
 def sharedpods
-pod 'RestKit', '~> 0.24.0' 
 pod 'Mantle'
+pod 'AFNetworking', '~> 3.0'
 end
 
 target 'MyKeeng' do 

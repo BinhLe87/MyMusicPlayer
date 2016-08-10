@@ -133,33 +133,33 @@ static const int NUM_ROW_PER_PAGE = 10;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    LBVideo *media = [self.medias objectAtIndex:indexPath.row];
+//    LBVideo *media = [self.medias objectAtIndex:indexPath.row];
+//    
+//    LBVideoCell *videoCell;
+//    
+//    videoCell = (LBVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
+//    
+//    
+//    // Configure the cell...
+//    videoCell.cellSize = CGSizeMake(HOMENEW_CELL_WIDTH, [LBVideoCell heightForVideoCell]);
+//    
+//    [videoCell.VideoImg setImageWithURL:[NSURL URLWithString:media.image]];
+//    
+//    videoCell.VideoNameLbl.text = media.name;
+//    
+//    
+//    videoCell.SingerLbl.text = media.singer;
+//    videoCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
+//    videoCell.NumLikeLbl.text = @"New Video";
+//    videoCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
+//    
+//    //display seperator image at the bottom of cell
+//    UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
+//    seperatorImgView.frame = CGRectMake(0, [LBVideoCell heightForVideoCell] - 1 , HOMENEW_CELL_WIDTH, 1);
+//    
+//    [videoCell.contentView addSubview:seperatorImgView];
     
-    LBVideoCell *videoCell;
-    
-    videoCell = (LBVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
-    
-    
-    // Configure the cell...
-    videoCell.cellSize = CGSizeMake(HOMENEW_CELL_WIDTH, [LBVideoCell heightForVideoCell]);
-    
-    [videoCell.VideoImg setImageWithURL:[NSURL URLWithString:media.image]];
-    
-    videoCell.VideoNameLbl.text = media.name;
-    
-    
-    videoCell.SingerLbl.text = media.singer;
-    videoCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
-    videoCell.NumLikeLbl.text = @"New Video";
-    videoCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
-    
-    //display seperator image at the bottom of cell
-    UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
-    seperatorImgView.frame = CGRectMake(0, [LBVideoCell heightForVideoCell] - 1 , HOMENEW_CELL_WIDTH, 1);
-    
-    [videoCell.contentView addSubview:seperatorImgView];
-    
-    return videoCell;
+    return nil;
     
 }
 
@@ -205,31 +205,31 @@ static const int NUM_ROW_PER_PAGE = 10;
 -(void)loadHomePage:(int)page size:(int)size {
     
     
-    NSDictionary *queryParams = @{@"page" : [NSNumber numberWithInt:page],
-                                  @"num": [NSNumber numberWithInt:size]};
-    
-    
-    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] appropriateObjectRequestOperationWithObject:nil method:RKRequestMethodGET path:KEENG_API_GET_HOME parameters:queryParams];
-    
-    [operation setCompletionBlockWithSuccess:nil failure:nil];
-    // [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
-    
-    
-    // [NSThread sleepForTimeInterval:10];
-    [operation start];
-    [operation waitUntilFinished];
-    
-    if (!operation.error) {
-        
-        for (LBMedia *media in operation.mappingResult.array) {
-            
-            if ([media isKindOfClass:[LBVideo class]]) {
-                
-                [self.medias addObject:media];
-                //[self addMediaIntoArray:(LBVideo*)media];
-            }
-        }
-    }
+//    NSDictionary *queryParams = @{@"page" : [NSNumber numberWithInt:page],
+//                                  @"num": [NSNumber numberWithInt:size]};
+//    
+//    
+//    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] appropriateObjectRequestOperationWithObject:nil method:RKRequestMethodGET path:KEENG_API_GET_HOME parameters:queryParams];
+//    
+//    [operation setCompletionBlockWithSuccess:nil failure:nil];
+//    // [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
+//    
+//    
+//    // [NSThread sleepForTimeInterval:10];
+//    [operation start];
+//    [operation waitUntilFinished];
+//    
+//    if (!operation.error) {
+//        
+//        for (LBMedia *media in operation.mappingResult.array) {
+//            
+//            if ([media isKindOfClass:[LBVideo class]]) {
+//                
+//                [self.medias addObject:media];
+//                //[self addMediaIntoArray:(LBVideo*)media];
+//            }
+//        }
+//    }
 }
 
 #pragma mark - Delegates

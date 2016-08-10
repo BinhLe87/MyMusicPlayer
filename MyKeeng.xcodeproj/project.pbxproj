@@ -369,24 +369,29 @@
 		AB5DE9B31D406ED200007210 /* track_player_outside@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB5DE9B21D406ED200007210 /* track_player_outside@2x.png */; };
 		AB5DE9B61D406EFD00007210 /* track_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = AB5DE9B41D406EFD00007210 /* track_normal.png */; };
 		AB5DE9B71D406EFD00007210 /* track_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB5DE9B51D406EFD00007210 /* track_normal@2x.png */; };
+		AB5FEF601D59CE8000BAB66E /* LBPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5FEF5F1D59CE8000BAB66E /* LBPhoto.m */; };
+		AB5FEF641D59CF7D00BAB66E /* LBPhotoOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5FEF631D59CF7D00BAB66E /* LBPhotoOperations.m */; };
+		AB69B8501D5AC3B7001C77CC /* LBPhotoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69B84F1D5AC3B7001C77CC /* LBPhotoDownloader.m */; };
+		AB69B8531D5ACD89001C77CC /* LBPhotoFiltration.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69B8521D5ACD89001C77CC /* LBPhotoFiltration.m */; };
+		AB69B8551D5B18EB001C77CC /* image_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = AB69B8541D5B18EB001C77CC /* image_placeholder.png */; };
+		AB69B8571D5B19C7001C77CC /* image_unavailable.png in Resources */ = {isa = PBXBuildFile; fileRef = AB69B8561D5B19C7001C77CC /* image_unavailable.png */; };
 		AB7CB9AD1D349BE0007BF344 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CB9AC1D349BE0007BF344 /* main.m */; };
 		AB7CB9B01D349BE0007BF344 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CB9AF1D349BE0007BF344 /* AppDelegate.m */; };
 		AB7CB9B61D349BE0007BF344 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7CB9B41D349BE0007BF344 /* Main.storyboard */; };
 		AB7CB9B81D349BE0007BF344 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB7CB9B71D349BE0007BF344 /* Assets.xcassets */; };
 		AB7CB9BB1D349BE0007BF344 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7CB9B91D349BE0007BF344 /* LaunchScreen.storyboard */; };
 		AB7CBA0B1D34ABA3007BF344 /* LBSong.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CBA071D34ABA3007BF344 /* LBSong.m */; };
-		AB7CBA101D34CFF1007BF344 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA0F1D34CFF1007BF344 /* libRestKit.a */; };
 		AB7CBA121D34D005007BF344 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA111D34D005007BF344 /* CFNetwork.framework */; };
 		AB7CBA141D34D00D007BF344 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA131D34D00D007BF344 /* CoreData.framework */; };
 		AB7CBA161D34D018007BF344 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA151D34D018007BF344 /* MobileCoreServices.framework */; };
 		AB7CBA181D34D020007BF344 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA171D34D020007BF344 /* Security.framework */; };
 		AB7CBA1A1D34D02E007BF344 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7CBA191D34D02E007BF344 /* SystemConfiguration.framework */; };
-		AB7CBA1D1D34D112007BF344 /* LBRestKitConn.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CBA1C1D34D112007BF344 /* LBRestKitConn.m */; };
 		AB7CBA221D34F5AA007BF344 /* LBMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CBA211D34F5AA007BF344 /* LBMedia.m */; };
 		AB8519E91D4EE3D500B6B0A5 /* LBRestfulConn.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8519E81D4EE3D400B6B0A5 /* LBRestfulConn.m */; };
 		AB8519EC1D4EEA1A00B6B0A5 /* LBConnManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8519EB1D4EEA1A00B6B0A5 /* LBConnManager.m */; };
 		AB8519F51D4EFD3100B6B0A5 /* LBDataConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8519F41D4EFD3100B6B0A5 /* LBDataConnection.m */; };
 		ABD9BD5F1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD9BD5E1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m */; };
+		ABDC620A1D5087B3001608C9 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDC62091D5087B3001608C9 /* libAFNetworking.a */; };
 		ABE7623C1D3DD714008C3B72 /* MyKeengUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7623B1D3DD714008C3B72 /* MyKeengUtilities.m */; };
 		ABE762431D3E2A93008C3B72 /* LBVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE762421D3E2A93008C3B72 /* LBVideoPlayerViewController.m */; };
 		ABE762451D3E2B0C008C3B72 /* LBVideoPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE762441D3E2B0C008C3B72 /* LBVideoPlayerViewController.xib */; };
@@ -784,6 +789,16 @@
 		AB5DE9B21D406ED200007210 /* track_player_outside@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "track_player_outside@2x.png"; path = "../../../../../../SourceCode Ref/ObjectC/Keeng_mobile/iOS_KeengV2_Peru/Keeng/KNews/images/icon/track_player_outside@2x.png"; sourceTree = "<group>"; };
 		AB5DE9B41D406EFD00007210 /* track_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = track_normal.png; path = "../../../../../../SourceCode Ref/ObjectC/Keeng_mobile/iOS_KeengV2_Peru/Keeng/KNews/images/Player/track_normal.png"; sourceTree = "<group>"; };
 		AB5DE9B51D406EFD00007210 /* track_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "track_normal@2x.png"; path = "../../../../../../SourceCode Ref/ObjectC/Keeng_mobile/iOS_KeengV2_Peru/Keeng/KNews/images/Player/track_normal@2x.png"; sourceTree = "<group>"; };
+		AB5FEF5E1D59CE8000BAB66E /* LBPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhoto.h; sourceTree = "<group>"; };
+		AB5FEF5F1D59CE8000BAB66E /* LBPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhoto.m; sourceTree = "<group>"; };
+		AB5FEF621D59CF7D00BAB66E /* LBPhotoOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LBPhotoOperations.h; path = ../LBPhotoOperations.h; sourceTree = "<group>"; };
+		AB5FEF631D59CF7D00BAB66E /* LBPhotoOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LBPhotoOperations.m; path = ../LBPhotoOperations.m; sourceTree = "<group>"; };
+		AB69B84E1D5AC3B7001C77CC /* LBPhotoDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoDownloader.h; sourceTree = "<group>"; };
+		AB69B84F1D5AC3B7001C77CC /* LBPhotoDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoDownloader.m; sourceTree = "<group>"; };
+		AB69B8511D5ACD89001C77CC /* LBPhotoFiltration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoFiltration.h; sourceTree = "<group>"; };
+		AB69B8521D5ACD89001C77CC /* LBPhotoFiltration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoFiltration.m; sourceTree = "<group>"; };
+		AB69B8541D5B18EB001C77CC /* image_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_placeholder.png; path = "../../../../../../Photo/Screen shot/image_placeholder.png"; sourceTree = "<group>"; };
+		AB69B8561D5B19C7001C77CC /* image_unavailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_unavailable.png; path = "../../../../../../Photo/Screen shot/image_unavailable.png"; sourceTree = "<group>"; };
 		AB7CB9A81D349BE0007BF344 /* MyKeeng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKeeng.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7CB9AC1D349BE0007BF344 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB7CB9AE1D349BE0007BF344 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -801,8 +816,6 @@
 		AB7CBA151D34D018007BF344 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		AB7CBA171D34D020007BF344 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		AB7CBA191D34D02E007BF344 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		AB7CBA1B1D34D112007BF344 /* LBRestKitConn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRestKitConn.h; sourceTree = "<group>"; };
-		AB7CBA1C1D34D112007BF344 /* LBRestKitConn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRestKitConn.m; sourceTree = "<group>"; };
 		AB7CBA1E1D34D3DD007BF344 /* MyKeeng-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyKeeng-PrefixHeader.pch"; sourceTree = "<group>"; };
 		AB7CBA201D34F5AA007BF344 /* LBMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMedia.h; sourceTree = "<group>"; };
 		AB7CBA211D34F5AA007BF344 /* LBMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMedia.m; sourceTree = "<group>"; };
@@ -814,6 +827,7 @@
 		AB8519F41D4EFD3100B6B0A5 /* LBDataConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDataConnection.m; sourceTree = "<group>"; };
 		ABD9BD5D1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+dynamicSizeMe.h"; sourceTree = "<group>"; };
 		ABD9BD5E1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+dynamicSizeMe.m"; sourceTree = "<group>"; };
+		ABDC62091D5087B3001608C9 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../../../../Library/Developer/Xcode/DerivedData/MyKeeng-aodzkjyfmtuhipcencwtbvnqxjjp/Build/Products/Debug-iphonesimulator/libAFNetworking.a"; sourceTree = "<group>"; };
 		ABE7623A1D3DD714008C3B72 /* MyKeengUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKeengUtilities.h; sourceTree = "<group>"; };
 		ABE7623B1D3DD714008C3B72 /* MyKeengUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyKeengUtilities.m; sourceTree = "<group>"; };
 		ABE762411D3E2A93008C3B72 /* LBVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVideoPlayerViewController.h; sourceTree = "<group>"; };
@@ -852,6 +866,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABDC620A1D5087B3001608C9 /* libAFNetworking.a in Frameworks */,
 				AB3EE6DB1D4C708D00CAEB99 /* libMantle.a in Frameworks */,
 				ABEE968F1D3E70D100C72213 /* MediaPlayer.framework in Frameworks */,
 				ABEE968D1D3E70C800C72213 /* QuartzCore.framework in Frameworks */,
@@ -860,7 +875,6 @@
 				AB7CBA161D34D018007BF344 /* MobileCoreServices.framework in Frameworks */,
 				AB7CBA141D34D00D007BF344 /* CoreData.framework in Frameworks */,
 				AB7CBA121D34D005007BF344 /* CFNetwork.framework in Frameworks */,
-				AB7CBA101D34CFF1007BF344 /* libRestKit.a in Frameworks */,
 				5B60A9120B7A62BB61C668B6 /* libPods-MyKeeng.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -871,6 +885,7 @@
 		56B70105E3CCF36DE709533A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ABDC62091D5087B3001608C9 /* libAFNetworking.a */,
 				AB3EE6DA1D4C708D00CAEB99 /* libMantle.a */,
 				ABEE968E1D3E70D100C72213 /* MediaPlayer.framework */,
 				ABEE968C1D3E70C800C72213 /* QuartzCore.framework */,
@@ -905,11 +920,13 @@
 		AB380EC01D38A3810082C339 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				AB69B8541D5B18EB001C77CC /* image_placeholder.png */,
 				AB380EC11D38A3820082C339 /* action_play_next.png */,
 				AB380EC21D38A3820082C339 /* action_play_next@2x.png */,
 				AB380EC31D38A3820082C339 /* back.png */,
 				AB380EC41D38A3820082C339 /* back@2x.png */,
 				AB380EC51D38A3820082C339 /* back_white.png */,
+				AB69B8561D5B19C7001C77CC /* image_unavailable.png */,
 				AB380EC61D38A3820082C339 /* back_white@2x.png */,
 				AB380EC71D38A3820082C339 /* back_white_small.png */,
 				AB380EC81D38A3820082C339 /* back_white_small1@2x.png */,
@@ -1260,6 +1277,36 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		AB5FEF5D1D59CE6400BAB66E /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				AB5FEF5E1D59CE8000BAB66E /* LBPhoto.h */,
+				AB5FEF5F1D59CE8000BAB66E /* LBPhoto.m */,
+			);
+			name = Photo;
+			sourceTree = "<group>";
+		};
+		AB5FEF651D59D2F000BAB66E /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				AB5FEF661D59D3A000BAB66E /* Photo */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
+		AB5FEF661D59D3A000BAB66E /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				AB5FEF621D59CF7D00BAB66E /* LBPhotoOperations.h */,
+				AB5FEF631D59CF7D00BAB66E /* LBPhotoOperations.m */,
+				AB69B84E1D5AC3B7001C77CC /* LBPhotoDownloader.h */,
+				AB69B84F1D5AC3B7001C77CC /* LBPhotoDownloader.m */,
+				AB69B8511D5ACD89001C77CC /* LBPhotoFiltration.h */,
+				AB69B8521D5ACD89001C77CC /* LBPhotoFiltration.m */,
+			);
+			name = Photo;
+			sourceTree = "<group>";
+		};
 		AB7CB99F1D349BE0007BF344 = {
 			isa = PBXGroup;
 			children = (
@@ -1319,6 +1366,7 @@
 		AB7CB9D11D349E35007BF344 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AB5FEF651D59D2F000BAB66E /* Operations */,
 				ABE762391D3DD6EE008C3B72 /* Utilities */,
 				AB7CB9D51D349E35007BF344 /* Data Source Manager */,
 			);
@@ -1338,8 +1386,6 @@
 		AB7CB9D61D349E35007BF344 /* Connection Manager */ = {
 			isa = PBXGroup;
 			children = (
-				AB7CBA1B1D34D112007BF344 /* LBRestKitConn.h */,
-				AB7CBA1C1D34D112007BF344 /* LBRestKitConn.m */,
 				AB8519EA1D4EEA1A00B6B0A5 /* LBConnManager.h */,
 				AB8519EB1D4EEA1A00B6B0A5 /* LBConnManager.m */,
 			);
@@ -1372,6 +1418,7 @@
 		AB7CBA001D34AB09007BF344 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AB5FEF5D1D59CE6400BAB66E /* Photo */,
 				AB7CBA1F1D34F598007BF344 /* Media */,
 				AB7CBA0E1D34ABB6007BF344 /* Album */,
 				AB7CBA0D1D34ABAD007BF344 /* Video */,
@@ -1881,6 +1928,7 @@
 				AB3810461D38A3820082C339 /* bg_navigation@2x.png in Resources */,
 				ABE762451D3E2B0C008C3B72 /* LBVideoPlayerViewController.xib in Resources */,
 				AB3811391D38A3830082C339 /* icon_mocha_small@2x.png in Resources */,
+				AB69B8551D5B18EB001C77CC /* image_placeholder.png in Resources */,
 				AB3810CD1D38A3820082C339 /* ic_menu_upload.png in Resources */,
 				AB3810341D38A3820082C339 /* bg_action_green@2x.png in Resources */,
 				AB3810C71D38A3820082C339 /* ic_menu_playlist.png in Resources */,
@@ -1976,6 +2024,7 @@
 				AB3810F21D38A3820082C339 /* ic_repeat.png in Resources */,
 				AB38108F1D38A3820082C339 /* ft_favorite@2x.png in Resources */,
 				AB3810D11D38A3820082C339 /* ic_more.png in Resources */,
+				AB69B8571D5B19C7001C77CC /* image_unavailable.png in Resources */,
 				AB3810ED1D38A3820082C339 /* ic_pre_player@2x.png in Resources */,
 				AB3811401D38A3830082C339 /* icon_play_green.png in Resources */,
 				AB3811411D38A3830082C339 /* icon_play_green@2x.png in Resources */,
@@ -2037,12 +2086,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABEE967B1D3E70B100C72213 /* ALMoviePlayerControls.m in Sources */,
+				AB5FEF641D59CF7D00BAB66E /* LBPhotoOperations.m in Sources */,
+				AB69B8531D5ACD89001C77CC /* LBPhotoFiltration.m in Sources */,
 				AB8519F51D4EFD3100B6B0A5 /* LBDataConnection.m in Sources */,
 				ABE7623C1D3DD714008C3B72 /* MyKeengUtilities.m in Sources */,
 				AB7CB9B01D349BE0007BF344 /* AppDelegate.m in Sources */,
 				AB8519E91D4EE3D500B6B0A5 /* LBRestfulConn.m in Sources */,
 				ABEE96781D3E70B100C72213 /* ALAirplayView.m in Sources */,
-				AB7CBA1D1D34D112007BF344 /* LBRestKitConn.m in Sources */,
 				ABEE967A1D3E70B100C72213 /* ALMoviePlayerController.m in Sources */,
 				AB5B21581D3F14470071357A /* LBVideoCellPlayer.m in Sources */,
 				AB34B5FC1D3534B100F4047C /* LBHomeNewSongCell.m in Sources */,
@@ -2053,6 +2103,8 @@
 				ABD9BD5F1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m in Sources */,
 				ABE762431D3E2A93008C3B72 /* LBVideoPlayerViewController.m in Sources */,
 				AB7CBA221D34F5AA007BF344 /* LBMedia.m in Sources */,
+				AB69B8501D5AC3B7001C77CC /* LBPhotoDownloader.m in Sources */,
+				AB5FEF601D59CE8000BAB66E /* LBPhoto.m in Sources */,
 				AB1FC7221D372E5F006A6059 /* LBVideo.m in Sources */,
 				AB34B6051D35399E00F4047C /* LBHomeNewVC.m in Sources */,
 				AB1FC7261D37715A006A6059 /* LBVideoCell.m in Sources */,
@@ -2173,7 +2225,12 @@
 			baseConfigurationReference = 34ACE6209E8CE486AD265874 /* Pods-MyKeeng.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyKeeng/MyKeeng-PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}\"/**",
+				);
 				INFOPLIST_FILE = MyKeeng/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2191,7 +2248,12 @@
 			baseConfigurationReference = 799DD9B57227CE5012F5BD4B /* Pods-MyKeeng.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyKeeng/MyKeeng-PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}\"/**",
+				);
 				INFOPLIST_FILE = MyKeeng/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

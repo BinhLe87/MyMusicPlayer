@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "LBRestKitConn.h"
 #import "LBHomeNewVC.h"
 
 @interface AppDelegate () {
@@ -63,17 +62,16 @@
     
     
     
-    
-    [LBRestKitConn configureRestKit];
-    
     LBHomeNewVC *homeNewVC = [[LBHomeNewVC alloc] initWithNibName:@"LBHomeNew" bundle:nil];
-    homeNewVC.managedObjectContext = self.managedObjectContext;
+    //homeNewVC.managedObjectContext = self.managedObjectContext;
     
     UINavigationController *navigationCtrl = [[UINavigationController alloc] initWithRootViewController:homeNewVC];
     
     
     
     self.window.rootViewController = navigationCtrl;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMemoryWarning:) name: UIApplicationDidReceiveMemoryWarningNotification object:nil];
     
     return YES;
 }
@@ -225,6 +223,8 @@
     
     NSArray<NSURL *> *documentDirs = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
     
+    NSLog(@"DocumentDir: %@", [documentDirs lastObject]);
+    
     return [documentDirs lastObject];
 }
 
@@ -258,6 +258,18 @@
 }
 
 
+#pragma mark - Processing Notifications
+- (void) handleMemoryWarning:(NSNotification *)notification
+{
+    
+    NSLog(@"WARNING: Device Low memory: %@", notification);
+}
+
+-(void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    
+    NSLog(@"WARNING: Device Low memory: %@");
+
+}
 
 
 @end

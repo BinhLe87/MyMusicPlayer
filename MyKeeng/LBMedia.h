@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <Mantle/MTLModel.h>
 #import <Mantle/MTLJSONAdapter.h>
+#import "LBPhoto.h"
 
 
 
 @interface LBMedia :MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, retain) NSString * image;
-@property (nonatomic, retain) NSString * image310;
+@property (nonatomic, retain) LBPhoto * image;
+@property (nonatomic, retain) LBPhoto * image310;
 @property (nonatomic, retain) NSNumber * listen_no;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * singer;

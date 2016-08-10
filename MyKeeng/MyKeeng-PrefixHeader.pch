@@ -14,7 +14,7 @@
 
 #ifdef __OBJC__
 #import "LBConstants.h"
-#import <RestKit/RestKit.h>
+#import <AFNetworking.h>
 
 #endif
 
