@@ -26,7 +26,7 @@
         
         _downloadQueue = [[NSOperationQueue alloc] init];
         _downloadQueue.name = @"Download Queue";
-        _downloadQueue.maxConcurrentOperationCount = 1;
+        _downloadQueue.maxConcurrentOperationCount = 10;
     }
     
     return _downloadQueue;
@@ -48,7 +48,7 @@
         
         _filterQueue = [[NSOperationQueue alloc] init];
         _filterQueue.name = @"Image Filtration Queue";
-        _filterQueue.maxConcurrentOperationCount = 1;
+        _filterQueue.maxConcurrentOperationCount = 10;
     }
     
     return _filterQueue;

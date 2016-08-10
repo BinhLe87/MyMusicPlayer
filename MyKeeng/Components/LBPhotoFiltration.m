@@ -9,7 +9,9 @@
 #import "LBPhotoFiltration.h"
 #import "LBPhoto.h"
 
-@implementation LBPhotoFiltration 
+@implementation LBPhotoFiltration
+@synthesize executing = _executing;
+@synthesize finished = _finished;
 
 -(instancetype)initWithPhoto:(LBPhoto *)iPhoto indexPath:(NSIndexPath *)iIndexPath delegate:(id<LBPhotoFiltrationDelegate>)iDelegate {
     
@@ -25,17 +27,24 @@
 
 -(void)main {
     
-    if (self.isCancelled)
+    if (self.isCancelled) {
+        self.executing = NO;
+        self.finished = YES;
         return;
+    }
     
     if (!self.photo.hasImage)
         return;
     
     UIImage *rawImage = self.photo.image;
+    //intensive task
     UIImage *processedImage = [self applySepiaFilterToImage:rawImage];
     
-    if (self.isCancelled)
+    if (self.isCancelled) {
+        self.executing = NO;
+        self.finished = YES;
         return;
+    }
     
     if (processedImage) {
         
@@ -44,9 +53,15 @@
         
         if ([self.delegate respondsToSelector:@selector(LBPhotoFiltrationDidFinish:)]) {
             
-            [self.delegate LBPhotoFiltrationDidFinish:self];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.delegate LBPhotoFiltrationDidFinish:self];
+            });
         }
     }
+    
+    self.executing = NO;
+    self.finished = YES;
 }
 
 #pragma mark -
@@ -81,6 +96,23 @@
     sepiaImage = [UIImage imageWithCGImage:outputImageRef];
     CGImageRelease(outputImageRef);
     return sepiaImage;
+}
+
+#pragma mark - Config operation queue
+- (void)setFinished:(BOOL)finished {
+    [self willChangeValueForKey:@"isFinished"];
+    _finished = finished;
+    [self didChangeValueForKey:@"isFinished"];
+}
+
+- (void)setExecuting:(BOOL)executing {
+    [self willChangeValueForKey:@"isExecuting"];
+    _executing = executing;
+    [self didChangeValueForKey:@"isExecuting"];
+}
+
+- (BOOL)isConcurrent {
+    return YES;
 }
 
 @end

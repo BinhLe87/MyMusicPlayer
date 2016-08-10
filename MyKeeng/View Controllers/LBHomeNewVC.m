@@ -19,7 +19,7 @@
 
 @interface LBHomeNewVC () {
     
-    
+    int curPageIdx;
 }
 
 
@@ -34,7 +34,6 @@ int HOMENEW_CELL_WIDTH = 320;
 #pragma mark - Constant variables
 static const int HOMENEW_SONGCELL_HEIGHT = 120;
 
-static int curPageIdx = 0;
 static const int NUM_ROW_PER_PAGE = 10;
 
 
@@ -71,12 +70,10 @@ static const int NUM_ROW_PER_PAGE = 10;
     //load first page
     curPageIdx = 1;
     
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
         [connManager getHomeNewMedias:curPageIdx size:NUM_ROW_PER_PAGE performWithCompletion:^(BOOL succeed, NSError *error, NSMutableArray<LBMedia *> *medias) {
-            
-            NSLog(@"Error: %@", error);
-            
             
             if (succeed) {
                 
@@ -164,7 +161,6 @@ static const int NUM_ROW_PER_PAGE = 10;
          
      } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-         NSLog(@"Xoay hoan tat");
          
          [self.tableview reloadData];
      }];
@@ -251,7 +247,7 @@ static const int NUM_ROW_PER_PAGE = 10;
         
         videoCell.VideoImg.image = [UIImage imageNamed:@"image_placeholder.png"];
         [videoCell.VideoImg addSubview:activityIndicatorView];
-
+        
         
         if (photo) {
             
@@ -337,36 +333,29 @@ static const int NUM_ROW_PER_PAGE = 10;
 }
 
 #pragma mark - Scroll view
-
+//
 //-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//
+//    
 //    __weak LBHomeNewVC *myWeak = self;
-//
+//    
 //    if (indexPath.row % NUM_ROW_PER_PAGE == 1) { //when at the first row of every page, will load next page on background
-//
+//        
 //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-//
-//            NSLog(@"stop point 1");
-//
+//            
 //            curPageIdx++;
 //            //[self loadHomePage:curPageIdx size:NUM_ROW_PER_PAGE isFirstLoad:NO];
 //            [connManager getHomeNewMedias:curPageIdx size:NUM_ROW_PER_PAGE performWithCompletion:^(BOOL succeed, NSError *error, NSMutableArray<LBMedia *> *medias) {
-//
-//
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//
+//                
+//                if (succeed) {
+//                    
 //                    for (LBMedia *media in medias) {
-//
+//                        
 //                        [myWeak.medias addObject:media];
 //                    }
-//                });
+//                }
+//                
 //            }];
-//
-//            NSLog(@"stop point 2");
-//
 //        });
-//
-//
 //    }
 //}
 
@@ -374,7 +363,32 @@ static const int NUM_ROW_PER_PAGE = 10;
     
     if (self.tableview.contentOffset.y > self.tableview.contentSize.height - self.tableview.bounds.size.height) {
         
-        [self.tableview reloadData];
+        curPageIdx++;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            
+            [connManager getHomeNewMedias:curPageIdx size:NUM_ROW_PER_PAGE performWithCompletion:^(BOOL succeed, NSError *error, NSMutableArray<LBMedia *> *medias) {
+                
+                if (succeed) {
+                    
+                    for (LBMedia *media in medias) {
+                        
+                        [self.medias addObject:media];
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.tableview reloadData];
+                        
+                    });
+                    
+                } else {
+                    
+                    [self showMessageInPopup:(error ? error.localizedDescription : @"Error fetching data from server!") withTitle:@"Warning!"];
+                    
+                }
+            }];
+            
+            
+        });
     }
 }
 
@@ -431,10 +445,10 @@ static const int NUM_ROW_PER_PAGE = 10;
     
     NSIndexPath *indexPath = downloader.indexPathInTableView;
     
-    NSLog(@"%@", indexPath);
-    
     [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [self.photoOperations.downloadOperations removeObjectForKey:indexPath];
+    
+    
 }
 
 -(void)LBPhotoFiltrationDidFinish:(LBPhotoFiltration *)filtrator {
