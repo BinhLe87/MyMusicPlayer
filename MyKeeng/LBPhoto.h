@@ -10,8 +10,6 @@
 
 @interface LBPhoto : NSObject
 
-
-
 @property (nonatomic, strong) NSString *name;  // To store the name of image
 @property (nonatomic, strong) UIImage *image; // To store the actual image
 @property (nonatomic, strong) NSURL *URL; // To store the URL of the image

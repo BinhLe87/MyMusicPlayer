@@ -7,18 +7,20 @@
 //
 
 #import "LBVideoCell.h"
+#import "LBVideo.h"
 
 @implementation LBVideoCell
 
-
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    
+    NSLog(@"init video cell");
+    return [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+}
 
 - (void)awakeFromNib {
     
     // Initialization code
-  
-    
     [super awakeFromNib];
-    
 }
 
 -(void)layoutSubviews {
@@ -26,7 +28,6 @@
     self.infoView.layer.sublayers = nil;
     
     CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame =  CGRectMake(0, 0, _cellSize.width, self.infoView.bounds.size.height);
     
     gradient.colors = @ [(id)[[UIColor clearColor] CGColor],(id)[[UIColor colorWithWhite:0.3 alpha:0.1] CGColor],
                          (id)[[UIColor clearColor] CGColor], (id)[[UIColor colorWithWhite:0.3 alpha:0.1] CGColor], (id)[[UIColor clearColor] CGColor]];
@@ -35,7 +36,6 @@
     gradient.endPoint = CGPointMake(0.5, 1.0);
     
     [self.infoView.layer insertSublayer:gradient atIndex:0];
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -53,5 +53,11 @@
     
     return 200;
 }
+
+-(void)setupUI {
+    
+    
+}
+
 
 @end

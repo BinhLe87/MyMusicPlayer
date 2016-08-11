@@ -16,12 +16,19 @@
 @protocol LBPhotoDownloaderDelegate;
 @protocol LBPhotoFiltrationDelegate;
 
+typedef NS_OPTIONS(NSUInteger, FetchDataState) {
+    
+    FetchDataStateNotStarted = 0,
+    FetchDataStateIsExecuting = 1 << 0,
+    FetchDataStateDone = 1 << 1
+};
+
 
 @interface LBHomeNewVC : UIViewController <LBPhotoDownloaderDelegate, LBPhotoFiltrationDelegate> {
     
     NSManagedObjectContext *_managedObjectContext;
     LBConnManager *connManager;
-    
+    FetchDataState fetchDataState;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
@@ -29,10 +36,16 @@
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) LBPhotoOperations *photoOperations;
 
+-(void)loadDataAtPage:(int)iPage size:(int)iSize completion:(void(^)(BOOL succeed, NSError *error))iCompletion;
+
 #pragma mark - Image downloader and image filtration
--(void)startOperationsAtIndexPath:(LBPhoto *)iPhoto indexPath:(NSIndexPath*)iIndexPath;
+-(void)loadImagesForOnScreenCells;
+-(void)startOperationsAtIndexPath:(LBPhoto *)iPhoto fromIndexPath:(NSIndexPath*)iIndexPath;
 -(void)startImageDownloadingAtIndexPath:(LBPhoto *)iPhoto indexPath:(NSIndexPath*)iIndexPath;
 -(void)startImageFiltrationAtIndexPath:(LBPhoto *)iPhoto indexPath:(NSIndexPath*)iIndexPath;
+-(void)suspendAllOperations;
+-(void)resumeAllOperations;
+-(void)cancellAllOperations;
 
 #pragma mark - Popup message
 -(void)showMessageInPopup:(NSString*)message withTitle:(NSString*)title;

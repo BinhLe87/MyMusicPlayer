@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LBVideo.h"
 
 @interface LBHomeNewSongCell : UITableViewCell
 
@@ -24,5 +25,9 @@
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *SongImg;
+
+
+
+@property (weak, nonatomic) LBVideo* videoInfo;
 
 @end
