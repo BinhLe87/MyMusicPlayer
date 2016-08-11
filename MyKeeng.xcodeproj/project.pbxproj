@@ -375,6 +375,7 @@
 		AB69B8531D5ACD89001C77CC /* LBPhotoFiltration.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69B8521D5ACD89001C77CC /* LBPhotoFiltration.m */; };
 		AB69B8551D5B18EB001C77CC /* image_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = AB69B8541D5B18EB001C77CC /* image_placeholder.png */; };
 		AB69B8571D5B19C7001C77CC /* image_unavailable.png in Resources */ = {isa = PBXBuildFile; fileRef = AB69B8561D5B19C7001C77CC /* image_unavailable.png */; };
+		AB6FF5DF1D5C9D040055953A /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = AB6FF5DE1D5C9D040055953A /* loading.gif */; };
 		AB7CB9AD1D349BE0007BF344 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CB9AC1D349BE0007BF344 /* main.m */; };
 		AB7CB9B01D349BE0007BF344 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7CB9AF1D349BE0007BF344 /* AppDelegate.m */; };
 		AB7CB9B61D349BE0007BF344 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7CB9B41D349BE0007BF344 /* Main.storyboard */; };
@@ -799,6 +800,7 @@
 		AB69B8521D5ACD89001C77CC /* LBPhotoFiltration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoFiltration.m; sourceTree = "<group>"; };
 		AB69B8541D5B18EB001C77CC /* image_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_placeholder.png; path = "../../../../../../Photo/Screen shot/image_placeholder.png"; sourceTree = "<group>"; };
 		AB69B8561D5B19C7001C77CC /* image_unavailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_unavailable.png; path = "../../../../../../Photo/Screen shot/image_unavailable.png"; sourceTree = "<group>"; };
+		AB6FF5DE1D5C9D040055953A /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading.gif; path = "../../../../../../Photo/Screen shot/loading.gif"; sourceTree = "<group>"; };
 		AB7CB9A81D349BE0007BF344 /* MyKeeng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKeeng.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7CB9AC1D349BE0007BF344 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB7CB9AE1D349BE0007BF344 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -920,6 +922,7 @@
 		AB380EC01D38A3810082C339 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				AB6FF5DE1D5C9D040055953A /* loading.gif */,
 				AB69B8541D5B18EB001C77CC /* image_placeholder.png */,
 				AB380EC11D38A3820082C339 /* action_play_next.png */,
 				AB380EC21D38A3820082C339 /* action_play_next@2x.png */,
@@ -1857,6 +1860,7 @@
 				AB38105D1D38A3820082C339 /* btn_pause_video@2x.png in Resources */,
 				AB3810881D38A3820082C339 /* ft_add_playlist_a.png in Resources */,
 				AB3810A91D38A3820082C339 /* ic_collapse.png in Resources */,
+				AB6FF5DF1D5C9D040055953A /* loading.gif in Resources */,
 				AB3811331D38A3830082C339 /* icon_listen_with_other.png in Resources */,
 				AB38106E1D38A3820082C339 /* default_album.jpg in Resources */,
 				AB3810C11D38A3820082C339 /* ic_menu_history.png in Resources */,

@@ -39,6 +39,13 @@
     return _image != nil;
 }
 
+-(void)setFailed:(BOOL)failed {
+    
+    [self willChangeValueForKey:@"failed"];
+    _failed = failed;
+    [self didChangeValueForKey:@"failed"];
+}
+
 
 
 @end

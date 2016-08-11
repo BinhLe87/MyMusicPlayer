@@ -11,16 +11,13 @@
 
 @implementation LBVideoCell
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    
-    NSLog(@"init video cell");
-    return [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-}
 
 - (void)awakeFromNib {
     
     // Initialization code
     [super awakeFromNib];
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 -(void)layoutSubviews {
@@ -54,9 +51,66 @@
     return 200;
 }
 
+#pragma mark - Observing value change of properties
+-(void)setVideoInfo:(LBVideo *)videoInfo {
+ 
+    _videoInfo = videoInfo;
+    [self addObserver:self forKeyPath:@"videoInfo.image.hasImage" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    [self addObserver:self forKeyPath:@"videoInfo.image.failed" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    
+    if ([keyPath isEqualToString:@"videoInfo.image.hasImage"] || [keyPath isEqualToString:@"videoInfo.image.failed"]) {
+        
+        [self setupUI];
+    }
+    
+
+}
+
+
+#pragma mark - Interal methods
+
 -(void)setupUI {
+  
+    self.VideoNameLbl.text = _videoInfo.name;
+    self.SingerLbl.text = _videoInfo.singer;
+    self.NumListenLbl.text = [NSString stringWithFormat:@"%d", [_videoInfo.listen_no intValue]];
+    self.NumLikeLbl.text = @"New Video";
+    self.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [_videoInfo.price intValue]];
     
+    if (self.videoInfo.image.hasImage) {
+        
+        //return font color to white
+        [self.VideoNameLbl setTextColor:[UIColor whiteColor]];
+        [self.SingerLbl setTextColor:[UIColor whiteColor]];
+        [self.NumListenLbl setTextColor:[UIColor whiteColor]];
+        
+        [self.activityIndicatorView stopAnimating];
+        self.VideoImg.image = self.videoInfo.image.image;
+    } else if (self.videoInfo.image.isFailed) {
+        
+        [self.activityIndicatorView stopAnimating];
+        self.VideoImg.image = [UIImage imageNamed:@"image_unavailable.png"];
+    } else { //photo is not yet downloaded
+        
+        //set font color is back for displaying on white background of placeholder image
+        [self.VideoNameLbl setTextColor:[UIColor blackColor]];
+         [self.SingerLbl setTextColor:[UIColor blackColor]];
+        [self.NumListenLbl setTextColor:[UIColor blackColor]];
+        
+        
+        [self.activityIndicatorView startAnimating];
+        self.VideoImg.image = [UIImage imageNamed:@"default_video.png"];
+    }
+}
+
+#pragma mark - dealloc
+-(void)dealloc {
     
+    [self removeObserver:self forKeyPath:@"videoInfo.image.hasImage"];
+    [self removeObserver:self forKeyPath:@"videoInfo.image.failed"];
 }
 
 

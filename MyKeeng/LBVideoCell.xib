@@ -38,8 +38,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_video.png" translatesAutoresizingMaskIntoConstraints="NO" id="zFj-dL-LXV">
                                 <rect key="frame" x="0.0" y="0.0" width="421" height="169"/>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="a1o-5t-TnG">
-                                <rect key="frame" x="189" y="66" width="37" height="37"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="a1o-5t-TnG">
+                                <rect key="frame" x="198" y="74" width="20" height="20"/>
                             </activityIndicatorView>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRi-8L-bq3">
                                 <rect key="frame" x="0.0" y="118" width="421" height="50.5"/>

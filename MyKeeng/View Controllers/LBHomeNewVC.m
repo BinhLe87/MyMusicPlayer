@@ -222,43 +222,42 @@ static const int NUM_ROW_PER_PAGE = 10;
         videoCell = (LBVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
         
         [videoCell setVideoInfo:(LBVideo *)media];
-        
-        videoCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        
-        UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        activityIndicatorView.center = CGPointMake(CGRectGetMidX(videoCell.VideoImg.bounds), CGRectGetMidY(videoCell.VideoImg.bounds));
+        [videoCell setupUI];
         
         
         
-        [videoCell.VideoImg addSubview:activityIndicatorView];
+        [((LBVideo *)media) setValue:@"123" forKey:@"media_url"];
+         [((LBVideo *)media) setValue:@"456" forKey:@"media_url"];
+        //videoCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        
-        if (photo) {
+        if (photo && !photo.hasImage) {
             
-            if (photo.hasImage) {
-                
-                [activityIndicatorView stopAnimating];
-                videoCell.VideoImg.image = photo.image;
-            } else if (photo.isFailed) {
-                
-                [activityIndicatorView stopAnimating];
-                videoCell.VideoImg.image = [UIImage imageNamed:@"image_unavailable.png"];
-            } else { //photo is not yet downloaded
-                
-                videoCell.VideoImg.image = [UIImage imageNamed:@"image_placeholder.png"];
-                [activityIndicatorView startAnimating];
-                if (!self.tableview.isDragging && !self.tableview.decelerating) {
-                    [self startOperationsAtIndexPath:photo indexPath:indexPath];
-                }
+            if (!self.tableview.isDragging && !self.tableview.decelerating) {
+                [self startOperationsAtIndexPath:photo indexPath:indexPath];
             }
         }
         
-        videoCell.VideoNameLbl.text = media.name;
-        videoCell.SingerLbl.text = media.singer;
-        videoCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
-        videoCell.NumLikeLbl.text = @"New Video";
-        videoCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
+        //
+        //        if (photo) {
+        //
+        //            if (photo.hasImage) {
+        //
+        //                [activityIndicatorView stopAnimating];
+        //                videoCell.VideoImg.image = photo.image;
+        //            } else if (photo.isFailed) {
+        //
+        //                [activityIndicatorView stopAnimating];
+        //                videoCell.VideoImg.image = [UIImage imageNamed:@"image_unavailable.png"];
+        //            } else { //photo is not yet downloaded
+        //
+        //                videoCell.VideoImg.image = [UIImage imageNamed:@"image_placeholder.png"];
+        //                [activityIndicatorView startAnimating];
+        //                if (!self.tableview.isDragging && !self.tableview.decelerating) {
+        //                    [self startOperationsAtIndexPath:photo indexPath:indexPath];
+        //                }
+        //            }
+        //        }
+        
         
         //display seperator image at the bottom of cell
         UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
@@ -312,11 +311,11 @@ static const int NUM_ROW_PER_PAGE = 10;
                         [insertIndexPaths addObject:[NSIndexPath indexPathForRow:curRowCount+i inSection:0]];
                     }
                     
-                    [weakself.tableview beginUpdates];
+                  //  [weakself.tableview beginUpdates];
                     
                     [weakself.tableview insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationFade];
                     
-                    [weakself.tableview endUpdates];
+                 //   [weakself.tableview endUpdates];
                     
                     fetchDataState = FetchDataStateDone;
                     
