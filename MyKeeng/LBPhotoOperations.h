@@ -15,4 +15,6 @@
 
 @property (nonatomic) NSMutableDictionary *filterOperations;
 @property (nonatomic) NSOperationQueue *filterQueue;
+
+
 @end

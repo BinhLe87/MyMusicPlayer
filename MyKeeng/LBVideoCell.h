@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @class LBVideo;
 
 @interface LBVideoCell : UITableViewCell
 
 +(NSString *)reusableCellWithIdentifier;
 +(CGFloat) heightForVideoCell;
+
+
 
 @property (strong, nonatomic) IBOutlet UILabel *VideoNameLbl;
 @property (weak, nonatomic) IBOutlet UILabel *SingerLbl;

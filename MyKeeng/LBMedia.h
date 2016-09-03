@@ -13,6 +13,7 @@
 
 
 
+
 @interface LBMedia :MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, retain) LBPhoto * image;
@@ -24,5 +25,10 @@
 @property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) NSNumber * item_type;
 @property (nonatomic, retain) NSNumber *price;
+@property (nonatomic, retain) NSDate *fetch_datetime;
+
+
+
+-(NSString*) primaryKey;
 
 @end

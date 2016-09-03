@@ -36,6 +36,8 @@ typedef NS_OPTIONS(NSUInteger, FetchDataState) {
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) LBPhotoOperations *photoOperations;
 
+@property (nonatomic) NSOperationQueue *LBMediaCoreDataQueue;
+
 -(void)loadDataAtPage:(int)iPage size:(int)iSize completion:(void(^)(BOOL succeed, NSError *error))iCompletion;
 
 #pragma mark - Image downloader and image filtration

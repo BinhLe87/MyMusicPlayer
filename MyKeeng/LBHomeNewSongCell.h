@@ -30,4 +30,6 @@
 
 @property (weak, nonatomic) LBVideo* videoInfo;
 
+@property (nonatomic) NSString *songname;
+
 @end

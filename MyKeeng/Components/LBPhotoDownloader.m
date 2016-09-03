@@ -43,7 +43,7 @@
             return;
         }
         
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.photo.URL];
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.photo.url];
         
         if (self.isCancelled) {
             self.executing = NO;

@@ -15,6 +15,9 @@
 #import "LBPhoto.h"
 #import "LBPhotoDownloader.h"
 #import "LBPhotoFiltration.h"
+#import "UIImageView+WebCache.h"
+#import "LBMediaCoreDataOperation.h"
+#import "LBCoreDataConn.h"
 
 
 @interface LBHomeNewVC () {
@@ -45,6 +48,17 @@ static const int NUM_ROW_PER_PAGE = 10;
     }
     
     return _medias;
+}
+
+-(NSOperationQueue *)LBMediaCoreDataQueue {
+    
+    if (!_LBMediaCoreDataQueue) {
+        _LBMediaCoreDataQueue = [[NSOperationQueue alloc] init];
+        _LBMediaCoreDataQueue.name = @"LBMediaCoreData Queue";
+        _LBMediaCoreDataQueue.maxConcurrentOperationCount = 10;
+    }
+    
+    return _LBMediaCoreDataQueue;
 }
 
 #pragma mark - Load view
@@ -92,6 +106,33 @@ static const int NUM_ROW_PER_PAGE = 10;
         }
     }];
     
+    
+    //clear cache
+    [[SDImageCache sharedImageCache] clearMemory];
+    [[SDImageCache sharedImageCache] clearDisk];
+    
+//    //fetch from core data
+//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"LBMedia" inManagedObjectContext:[[LBCoreDataConn sharedLBDataConnection] managedObjectContext]];
+//    
+//    [request setEntity:entity];
+//    
+//    NSError *error;
+//    NSArray *results =  [[[LBCoreDataConn sharedLBDataConnection] managedObjectContext] executeFetchRequest:request error:&error];
+//    
+//    if (results.count > 0) {
+//        
+//        for (NSManagedObject *media in results) {
+//            
+//            LBPhoto *photo = (LBPhoto*)[media valueForKey:@"image"];
+//            
+//            if (photo) {
+//                
+//                NSLog(@"photo url cached:%@",photo.URL);
+//            }
+//        }
+//    }
+//    NSLog(@"end fetched!");
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -174,30 +215,10 @@ static const int NUM_ROW_PER_PAGE = 10;
         songCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         
-        UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        activityIndicatorView.center = CGPointMake(CGRectGetMidX(songCell.SongImg.bounds), CGRectGetMidY(songCell.SongImg.bounds));
+        [songCell.SongImg sd_setImageWithURL:photo.url placeholderImage:[UIImage imageNamed:@"image_placeholder.png"]];
         
+        [songCell.SongImg setShowActivityIndicatorView:YES];
         
-        songCell.SongImg.image = [UIImage imageNamed:@"image_placeholder.png"];
-        [activityIndicatorView setTag:[media.id integerValue]];
-        [songCell.SongImg addSubview:activityIndicatorView];
-        
-        if (photo) {
-            
-            if (photo.hasImage) {
-                
-                [activityIndicatorView stopAnimating];
-                songCell.SongImg.image = photo.image;
-            } else if (photo.isFailed) {
-                
-                [activityIndicatorView stopAnimating];
-                songCell.SongImg.image = [UIImage imageNamed:@"image_unavailable.png"];
-            } else { //photo is not yet downloaded
-                
-                [activityIndicatorView startAnimating];
-                [self startOperationsAtIndexPath:photo indexPath:indexPath];
-            }
-        }
         
         songCell.SongNameLbl.text = media.name;
         songCell.SingerLbl.text = media.singer;
@@ -221,40 +242,28 @@ static const int NUM_ROW_PER_PAGE = 10;
         
         videoCell = (LBVideoCell *)[tableView dequeueReusableCellWithIdentifier:[LBVideoCell reusableCellWithIdentifier] forIndexPath:indexPath];
         
+        SDWebImageOptions videoDownloadOptions = SDWebImageProgressiveDownload | SDWebImageContinueInBackground | SDWebImageTransformAnimatedImage;
+        
+        [videoCell.VideoImg sd_setImageWithURL:photo.url placeholderImage:[UIImage imageNamed:@"image_placeholder.png"] options:videoDownloadOptions progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            
+            NSLog(@"%@:%@:%d/%d", media.name, media.image.url, receivedSize, expectedSize);
+            
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            
+        }];
+        [videoCell.VideoImg setShowActivityIndicatorView:YES];
+        
         [videoCell setVideoInfo:(LBVideo *)media];
         [videoCell setupUI];
-        
-        
-        
-        [((LBVideo *)media) setValue:@"123" forKey:@"media_url"];
-         [((LBVideo *)media) setValue:@"456" forKey:@"media_url"];
-        //videoCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        if (photo && !photo.hasImage) {
-            
-            if (!self.tableview.isDragging && !self.tableview.decelerating) {
-                [self startOperationsAtIndexPath:photo indexPath:indexPath];
-            }
-        }
-        
         //
-        //        if (photo) {
         //
-        //            if (photo.hasImage) {
         //
-        //                [activityIndicatorView stopAnimating];
-        //                videoCell.VideoImg.image = photo.image;
-        //            } else if (photo.isFailed) {
+        //                //videoCell.selectionStyle = UITableViewCellSelectionStyleNone;
         //
-        //                [activityIndicatorView stopAnimating];
-        //                videoCell.VideoImg.image = [UIImage imageNamed:@"image_unavailable.png"];
-        //            } else { //photo is not yet downloaded
+        //        if (photo && !photo.hasImage) {
         //
-        //                videoCell.VideoImg.image = [UIImage imageNamed:@"image_placeholder.png"];
-        //                [activityIndicatorView startAnimating];
-        //                if (!self.tableview.isDragging && !self.tableview.decelerating) {
-        //                    [self startOperationsAtIndexPath:photo indexPath:indexPath];
-        //                }
+        //            if (!self.tableview.isDragging && !self.tableview.decelerating) {
+        //                [self startOperationsAtIndexPath:photo indexPath:indexPath];
         //            }
         //        }
         
@@ -302,6 +311,11 @@ static const int NUM_ROW_PER_PAGE = 10;
                     for (LBMedia *media in medias) {
                         
                         [weakself.medias addObject:media];
+                        
+                        //insert row into core data
+                        LBMediaCoreDataOperation *mediaCoreDataOperation = [[LBMediaCoreDataOperation alloc] initWithMedia:media coreDataAction:LBMediaCoreDataActionInsert];
+                        
+                        [self.LBMediaCoreDataQueue addOperation:mediaCoreDataOperation];
                     }
                     
                     NSMutableArray *insertIndexPaths = [[NSMutableArray alloc] init];
@@ -311,11 +325,11 @@ static const int NUM_ROW_PER_PAGE = 10;
                         [insertIndexPaths addObject:[NSIndexPath indexPathForRow:curRowCount+i inSection:0]];
                     }
                     
-                  //  [weakself.tableview beginUpdates];
+                    //  [weakself.tableview beginUpdates];
                     
                     [weakself.tableview insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationFade];
                     
-                 //   [weakself.tableview endUpdates];
+                    //   [weakself.tableview endUpdates];
                     
                     fetchDataState = FetchDataStateDone;
                     
@@ -416,6 +430,8 @@ static const int NUM_ROW_PER_PAGE = 10;
 -(void)loadImagesForOnScreenCells {
     
     NSSet *visibleRows = [NSSet setWithArray:[self.tableview indexPathsForVisibleRows]];
+    
+    
     
     NSMutableSet *pendingOperations = [NSMutableSet setWithArray:[self.photoOperations.downloadOperations allKeys]];
     [pendingOperations addObjectsFromArray:[self.photoOperations.filterOperations allKeys]];

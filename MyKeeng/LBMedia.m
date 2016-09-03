@@ -8,8 +8,24 @@
 
 #import "LBMedia.h"
 #import <MTLValueTransformer.h>
+#import "NSString+MD5.h"
 
 @implementation LBMedia
+
+-(instancetype)init {
+    
+    if (self = [super init]) {
+        
+        _fetch_datetime = [NSDate date];
+    }
+    
+    return self;
+}
+
+-(void)setFetch_datetime:(NSDate *)fetch_datetime {
+    
+    _fetch_datetime = fetch_datetime;
+}
 
 //-(void)setImage:(NSString *)image {
 //    
@@ -71,7 +87,12 @@
 
 }
 
-
+-(NSString *)primaryKey {
+    
+    NSString *infoToGenerateKey = [NSString stringWithFormat:@"%@_%@", _id, _name];
+    
+    return [infoToGenerateKey MD5];
+}
 
 
 @end

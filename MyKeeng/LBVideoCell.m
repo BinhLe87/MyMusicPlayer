@@ -55,8 +55,8 @@
 -(void)setVideoInfo:(LBVideo *)videoInfo {
  
     _videoInfo = videoInfo;
-    [self addObserver:self forKeyPath:@"videoInfo.image.hasImage" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-    [self addObserver:self forKeyPath:@"videoInfo.image.failed" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+//    [self addObserver:self forKeyPath:@"videoInfo.image.hasImage" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+//    [self addObserver:self forKeyPath:@"videoInfo.image.failed" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
@@ -79,38 +79,38 @@
     self.NumListenLbl.text = [NSString stringWithFormat:@"%d", [_videoInfo.listen_no intValue]];
     self.NumLikeLbl.text = @"New Video";
     self.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [_videoInfo.price intValue]];
-    
-    if (self.videoInfo.image.hasImage) {
-        
-        //return font color to white
-        [self.VideoNameLbl setTextColor:[UIColor whiteColor]];
-        [self.SingerLbl setTextColor:[UIColor whiteColor]];
-        [self.NumListenLbl setTextColor:[UIColor whiteColor]];
-        
-        [self.activityIndicatorView stopAnimating];
-        self.VideoImg.image = self.videoInfo.image.image;
-    } else if (self.videoInfo.image.isFailed) {
-        
-        [self.activityIndicatorView stopAnimating];
-        self.VideoImg.image = [UIImage imageNamed:@"image_unavailable.png"];
-    } else { //photo is not yet downloaded
-        
-        //set font color is back for displaying on white background of placeholder image
-        [self.VideoNameLbl setTextColor:[UIColor blackColor]];
-         [self.SingerLbl setTextColor:[UIColor blackColor]];
-        [self.NumListenLbl setTextColor:[UIColor blackColor]];
-        
-        
-        [self.activityIndicatorView startAnimating];
-        self.VideoImg.image = [UIImage imageNamed:@"default_video.png"];
-    }
+//    
+//    if (self.videoInfo.image.hasImage) {
+//        
+//        //return font color to white
+//        [self.VideoNameLbl setTextColor:[UIColor whiteColor]];
+//        [self.SingerLbl setTextColor:[UIColor whiteColor]];
+//        [self.NumListenLbl setTextColor:[UIColor whiteColor]];
+//        
+//        [self.activityIndicatorView stopAnimating];
+//        self.VideoImg.image = self.videoInfo.image.image;
+//    } else if (self.videoInfo.image.isFailed) {
+//        
+//        [self.activityIndicatorView stopAnimating];
+//        self.VideoImg.image = [UIImage imageNamed:@"image_unavailable.png"];
+//    } else { //photo is not yet downloaded
+//        
+//        //set font color is back for displaying on white background of placeholder image
+//        [self.VideoNameLbl setTextColor:[UIColor blackColor]];
+//         [self.SingerLbl setTextColor:[UIColor blackColor]];
+//        [self.NumListenLbl setTextColor:[UIColor blackColor]];
+//        
+//        
+//        [self.activityIndicatorView startAnimating];
+//        self.VideoImg.image = [UIImage imageNamed:@"default_video.png"];
+//    }
 }
 
 #pragma mark - dealloc
 -(void)dealloc {
     
-    [self removeObserver:self forKeyPath:@"videoInfo.image.hasImage"];
-    [self removeObserver:self forKeyPath:@"videoInfo.image.failed"];
+//    [self removeObserver:self forKeyPath:@"videoInfo.image.hasImage"];
+//    [self removeObserver:self forKeyPath:@"videoInfo.image.failed"];
 }
 
 

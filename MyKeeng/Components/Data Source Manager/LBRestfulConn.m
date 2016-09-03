@@ -7,6 +7,7 @@
 //
 
 #import "LBRestfulConn.h"
+#import "HCDCoreDataStack.h"
 
 
 

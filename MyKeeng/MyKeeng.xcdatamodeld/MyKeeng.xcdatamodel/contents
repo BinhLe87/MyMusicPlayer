@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
     <entity name="LBMedia" syncable="YES">
+        <attribute name="attribute" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="fetch_datetime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image310" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="item_type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="listen_no" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="singer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LBPhoto" inverseName="media_image" inverseEntity="LBPhoto" syncable="YES"/>
+        <relationship name="image310" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LBPhoto" inverseName="media_image310" inverseEntity="LBPhoto" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="LBPhoto" syncable="YES">
+        <attribute name="failed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="filtered" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="url_string" optional="YES" attributeType="String" valueTransformerName="LBURLToNSDataTransformer" syncable="YES"/>
+        <relationship name="media_image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LBMedia" inverseName="image" inverseEntity="LBMedia" syncable="YES"/>
+        <relationship name="media_image310" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LBMedia" inverseName="image310" inverseEntity="LBMedia" syncable="YES"/>
+    </entity>
+    <entity name="LBSong" parentEntity="LBMedia" syncable="YES">
+        <attribute name="download_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locate_path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="media_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="media_url_mono" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="media_url_pre" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="LBVideo" parentEntity="LBMedia" syncable="YES">
         <attribute name="download_url" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,7 +38,9 @@
     </entity>
     <fetchRequest name="FetchRequest" entity="LBVideo" predicateString="TRUEPREDICATE"/>
     <elements>
-        <element name="LBMedia" positionX="-56" positionY="-183" width="128" height="178"/>
+        <element name="LBMedia" positionX="-56" positionY="-183" width="128" height="195"/>
+        <element name="LBPhoto" positionX="-144" positionY="-27" width="128" height="120"/>
+        <element name="LBSong" positionX="-144" positionY="-27" width="128" height="120"/>
         <element name="LBVideo" positionX="-225" positionY="147" width="128" height="88"/>
     </elements>
 </model>
