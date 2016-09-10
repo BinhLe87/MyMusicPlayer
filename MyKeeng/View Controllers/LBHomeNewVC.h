@@ -24,14 +24,14 @@ typedef NS_OPTIONS(NSUInteger, FetchDataState) {
 };
 
 
-@interface LBHomeNewVC : UIViewController <LBPhotoDownloaderDelegate, LBPhotoFiltrationDelegate> {
+@interface LBHomeNewVC : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     
     NSManagedObjectContext *_managedObjectContext;
     LBConnManager *connManager;
     FetchDataState fetchDataState;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (nonatomic) UITableView *tableview;
 @property (nonatomic) NSMutableArray <LBMedia *> *medias;
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) LBPhotoOperations *photoOperations;

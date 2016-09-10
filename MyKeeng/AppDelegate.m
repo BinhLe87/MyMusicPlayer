@@ -9,10 +9,14 @@
 #import "AppDelegate.h"
 #import "LBHomeNewVC.h"
 #import "SDImageCache.h"
+#import "LBHomeGeneralViewController.h"
+#import <FBMemoryProfiler/FBMemoryProfiler.h>
+
 
 @interface AppDelegate () {
     
     CGRect originFrameInPortrait;
+    FBMemoryProfiler *_memoryProfiler;
 }
 
 
@@ -21,8 +25,13 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    //TODO: Enable FacebookMemoryProfiler
+    _memoryProfiler = [FBMemoryProfiler new];
+    
+    [_memoryProfiler enable];
+    
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -59,16 +68,15 @@
     //    }
     
     
+    LBHomeGeneralViewController *homeGeneralVC = [[LBHomeGeneralViewController alloc] init];
     
-    
-    LBHomeNewVC *homeNewVC = [[LBHomeNewVC alloc] initWithNibName:@"LBHomeNew" bundle:nil];
+    //LBHomeNewVC *homeNewVC = [[LBHomeNewVC alloc] init];
     //homeNewVC.managedObjectContext = self.managedObjectContext;
     
-    UINavigationController *navigationCtrl = [[UINavigationController alloc] initWithRootViewController:homeNewVC];
     
     
-    
-    self.window.rootViewController = navigationCtrl;
+    self.window.rootViewController = homeGeneralVC;
+    [self.window makeKeyAndVisible];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMemoryWarning:) name: UIApplicationDidReceiveMemoryWarningNotification object:nil];
     

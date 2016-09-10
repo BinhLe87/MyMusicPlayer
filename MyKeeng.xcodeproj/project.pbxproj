@@ -15,7 +15,6 @@
 		AB34B5F91D3533F500F4047C /* LBHomeNewSongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB34B5F81D3533F500F4047C /* LBHomeNewSongCell.xib */; };
 		AB34B5FC1D3534B100F4047C /* LBHomeNewSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34B5FB1D3534B100F4047C /* LBHomeNewSongCell.m */; };
 		AB34B6051D35399E00F4047C /* LBHomeNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AB34B6041D35399E00F4047C /* LBHomeNewVC.m */; };
-		AB34B6071D3539F900F4047C /* LBHomeNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB34B6061D3539F900F4047C /* LBHomeNew.xib */; };
 		AB38101C1D38A3820082C339 /* action_play_next.png in Resources */ = {isa = PBXBuildFile; fileRef = AB380EC11D38A3820082C339 /* action_play_next.png */; };
 		AB38101D1D38A3820082C339 /* action_play_next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB380EC21D38A3820082C339 /* action_play_next@2x.png */; };
 		AB38101E1D38A3820082C339 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = AB380EC31D38A3820082C339 /* back.png */; };
@@ -380,6 +379,9 @@
 		AB4E59211D5D743300912D80 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4E590F1D5D743300912D80 /* UIImageView+HighlightedWebCache.m */; };
 		AB4E59221D5D743300912D80 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4E59111D5D743300912D80 /* UIImageView+WebCache.m */; };
 		AB4E59231D5D743300912D80 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4E59131D5D743300912D80 /* UIView+WebCacheOperation.m */; };
+		AB54722A1D7D1A8B001CED26 /* LBHomeGeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5472291D7D1A8B001CED26 /* LBHomeGeneralViewController.m */; };
+		AB54722E1D7D1BE8001CED26 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = AB54722D1D7D1BE8001CED26 /* CAPSPageMenu.m */; };
+		AB5472311D7D2742001CED26 /* LBPageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5472301D7D2742001CED26 /* LBPageMenuViewController.m */; };
 		AB5B21581D3F14470071357A /* LBVideoCellPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5B21571D3F14470071357A /* LBVideoCellPlayer.m */; };
 		AB5DE9B11D406E9B00007210 /* track_player_outside.png in Resources */ = {isa = PBXBuildFile; fileRef = AB5DE9B01D406E9B00007210 /* track_player_outside.png */; };
 		AB5DE9B31D406ED200007210 /* track_player_outside@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB5DE9B21D406ED200007210 /* track_player_outside@2x.png */; };
@@ -458,7 +460,6 @@
 		AB34B5FB1D3534B100F4047C /* LBHomeNewSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeNewSongCell.m; sourceTree = "<group>"; };
 		AB34B6031D35399E00F4047C /* LBHomeNewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LBHomeNewVC.h; path = "View Controllers/LBHomeNewVC.h"; sourceTree = "<group>"; };
 		AB34B6041D35399E00F4047C /* LBHomeNewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LBHomeNewVC.m; path = "View Controllers/LBHomeNewVC.m"; sourceTree = "<group>"; };
-		AB34B6061D3539F900F4047C /* LBHomeNew.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBHomeNew.xib; sourceTree = "<group>"; };
 		AB380EC11D38A3820082C339 /* action_play_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_play_next.png; sourceTree = "<group>"; };
 		AB380EC21D38A3820082C339 /* action_play_next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action_play_next@2x.png"; sourceTree = "<group>"; };
 		AB380EC31D38A3820082C339 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -840,6 +841,12 @@
 		AB4E59111D5D743300912D80 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		AB4E59121D5D743300912D80 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		AB4E59131D5D743300912D80 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		AB5472281D7D1A8B001CED26 /* LBHomeGeneralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeGeneralViewController.h; sourceTree = "<group>"; };
+		AB5472291D7D1A8B001CED26 /* LBHomeGeneralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeGeneralViewController.m; sourceTree = "<group>"; };
+		AB54722C1D7D1BE8001CED26 /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSPageMenu.h; sourceTree = "<group>"; };
+		AB54722D1D7D1BE8001CED26 /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSPageMenu.m; sourceTree = "<group>"; };
+		AB54722F1D7D2742001CED26 /* LBPageMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPageMenuViewController.h; sourceTree = "<group>"; };
+		AB5472301D7D2742001CED26 /* LBPageMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPageMenuViewController.m; sourceTree = "<group>"; };
 		AB5B21561D3F14470071357A /* LBVideoCellPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVideoCellPlayer.h; sourceTree = "<group>"; };
 		AB5B21571D3F14470071357A /* LBVideoCellPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBVideoCellPlayer.m; sourceTree = "<group>"; };
 		AB5DE9B01D406E9B00007210 /* track_player_outside.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = track_player_outside.png; path = "../../../../../../SourceCode Ref/ObjectC/Keeng_mobile/iOS_KeengV2_Peru/Keeng/KNews/images/icon/track_player_outside.png"; sourceTree = "<group>"; };
@@ -1392,6 +1399,15 @@
 			path = "../../../../../../Downloads/Download-Internet/SDWebImage-3.8.1/SDWebImage";
 			sourceTree = "<group>";
 		};
+		AB54722B1D7D1BD3001CED26 /* CAPSPageMenu */ = {
+			isa = PBXGroup;
+			children = (
+				AB54722C1D7D1BE8001CED26 /* CAPSPageMenu.h */,
+				AB54722D1D7D1BE8001CED26 /* CAPSPageMenu.m */,
+			);
+			name = CAPSPageMenu;
+			sourceTree = "<group>";
+		};
 		AB5FEF5D1D59CE6400BAB66E /* Photo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1462,7 +1478,6 @@
 				ABD9BD5B1D363D1400D8FCF4 /* Libs */,
 				AB7CBA001D34AB09007BF344 /* Model */,
 				AB7CBA011D34AB11007BF344 /* View */,
-				AB7CB9E91D349E35007BF344 /* View Controllers */,
 				AB7CB9C21D349E35007BF344 /* App Delegate */,
 				AB7CB9D11D349E35007BF344 /* Components */,
 				AB7CB9B41D349BE0007BF344 /* Main.storyboard */,
@@ -1529,21 +1544,6 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		AB7CB9E91D349E35007BF344 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				AB7CB9ED1D349E35007BF344 /* Protocols */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		AB7CB9ED1D349E35007BF344 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		AB7CBA001D34AB09007BF344 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1561,6 +1561,8 @@
 			children = (
 				ABE7623D1D3DE1AC008C3B72 /* LBHomeNew */,
 				ABE762351D3DC405008C3B72 /* LBMediaView */,
+				AB5472281D7D1A8B001CED26 /* LBHomeGeneralViewController.h */,
+				AB5472291D7D1A8B001CED26 /* LBHomeGeneralViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1627,6 +1629,7 @@
 		ABD9BD5B1D363D1400D8FCF4 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				AB54722B1D7D1BD3001CED26 /* CAPSPageMenu */,
 				AB92B2671D62FB9C00AC2C14 /* HardCoreData */,
 				AB4E58F21D5D743300912D80 /* SDWebImage */,
 				ABEE965E1D3E70B100C72213 /* ALMoviePlayerController */,
@@ -1691,6 +1694,8 @@
 				ABE7623B1D3DD714008C3B72 /* MyKeengUtilities.m */,
 				AB7914BF1D5EC31C00387A88 /* NSString+MD5.h */,
 				AB7914C01D5EC31C00387A88 /* NSString+MD5.m */,
+				AB54722F1D7D2742001CED26 /* LBPageMenuViewController.h */,
+				AB5472301D7D2742001CED26 /* LBPageMenuViewController.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1700,7 +1705,6 @@
 			children = (
 				AB34B6031D35399E00F4047C /* LBHomeNewVC.h */,
 				AB34B6041D35399E00F4047C /* LBHomeNewVC.m */,
-				AB34B6061D3539F900F4047C /* LBHomeNew.xib */,
 			);
 			name = LBHomeNew;
 			sourceTree = "<group>";
@@ -2178,7 +2182,6 @@
 				AB3811411D38A3830082C339 /* icon_play_green@2x.png in Resources */,
 				AB38115C1D38A3830082C339 /* login-background3@2x.png in Resources */,
 				AB3811561D38A3830082C339 /* keyboard2@2x.png in Resources */,
-				AB34B6071D3539F900F4047C /* LBHomeNew.xib in Resources */,
 				AB3810CB1D38A3820082C339 /* ic_menu_tv.png in Resources */,
 				AB38115A1D38A3830082C339 /* login-background1@2x.png in Resources */,
 				AB3810DC1D38A3820082C339 /* ic_next_player.png in Resources */,
@@ -2243,9 +2246,11 @@
 				AB69B8531D5ACD89001C77CC /* LBPhotoFiltration.m in Sources */,
 				AB8519F51D4EFD3100B6B0A5 /* LBDataConnection.m in Sources */,
 				AB4E59191D5D743300912D80 /* SDWebImageDownloader.m in Sources */,
+				AB5472311D7D2742001CED26 /* LBPageMenuViewController.m in Sources */,
 				ABE7623C1D3DD714008C3B72 /* MyKeengUtilities.m in Sources */,
 				AB4E59171D5D743300912D80 /* SDWebImageCompat.m in Sources */,
 				AB92B2711D63168400AC2C14 /* LBURLToNSDataTransformer.m in Sources */,
+				AB54722E1D7D1BE8001CED26 /* CAPSPageMenu.m in Sources */,
 				AB7CB9B01D349BE0007BF344 /* AppDelegate.m in Sources */,
 				AB8519E91D4EE3D500B6B0A5 /* LBRestfulConn.m in Sources */,
 				AB92B26D1D62FBB500AC2C14 /* HCDCoreDataStack.m in Sources */,
@@ -2277,6 +2282,7 @@
 				AB34B6051D35399E00F4047C /* LBHomeNewVC.m in Sources */,
 				AB1FC7261D37715A006A6059 /* LBVideoCell.m in Sources */,
 				AB4E591C1D5D743300912D80 /* SDWebImagePrefetcher.m in Sources */,
+				AB54722A1D7D1A8B001CED26 /* LBHomeGeneralViewController.m in Sources */,
 				AB4E59141D5D743300912D80 /* MKAnnotationView+WebCache.m in Sources */,
 				AB4E591E1D5D743300912D80 /* UIImage+GIF.m in Sources */,
 				AB8519EC1D4EEA1A00B6B0A5 /* LBConnManager.m in Sources */,

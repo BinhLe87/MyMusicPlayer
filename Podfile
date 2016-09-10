@@ -4,6 +4,7 @@
 def sharedpods
 pod 'Mantle'
 pod 'AFNetworking', '~> 3.0'
+pod 'FBMemoryProfiler'
 end
 
 target 'MyKeeng' do 

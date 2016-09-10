@@ -9,6 +9,8 @@
 #import "UILabel+dynamicSizeMe.h"
 
 
+
+
 @implementation UILabel (dynamicSizeMe)
 
 -(float)resizeToFit{

@@ -79,6 +79,11 @@ static const int NUM_ROW_PER_PAGE = 10;
     HOMENEW_CELL_WIDTH = CGRectGetWidth(self.view.bounds);
     
     //register LBHomeNewSongCell nib file
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
+    _tableview.delegate = self;
+    _tableview.dataSource = self;
+    [self.view addSubview:_tableview];
+    
     UINib *songCellNib = [UINib nibWithNibName:@"LBHomeNewSongCell" bundle:nil];
     [self.tableview registerNib:songCellNib forCellReuseIdentifier:[LBHomeNewSongCell reusableCellWithIdentifier]];
     
@@ -111,28 +116,28 @@ static const int NUM_ROW_PER_PAGE = 10;
     [[SDImageCache sharedImageCache] clearMemory];
     [[SDImageCache sharedImageCache] clearDisk];
     
-//    //fetch from core data
-//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"LBMedia" inManagedObjectContext:[[LBCoreDataConn sharedLBDataConnection] managedObjectContext]];
-//    
-//    [request setEntity:entity];
-//    
-//    NSError *error;
-//    NSArray *results =  [[[LBCoreDataConn sharedLBDataConnection] managedObjectContext] executeFetchRequest:request error:&error];
-//    
-//    if (results.count > 0) {
-//        
-//        for (NSManagedObject *media in results) {
-//            
-//            LBPhoto *photo = (LBPhoto*)[media valueForKey:@"image"];
-//            
-//            if (photo) {
-//                
-//                NSLog(@"photo url cached:%@",photo.URL);
-//            }
-//        }
-//    }
-//    NSLog(@"end fetched!");
+    //    //fetch from core data
+    //    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    //    NSEntityDescription *entity = [NSEntityDescription entityForName:@"LBMedia" inManagedObjectContext:[[LBCoreDataConn sharedLBDataConnection] managedObjectContext]];
+    //
+    //    [request setEntity:entity];
+    //
+    //    NSError *error;
+    //    NSArray *results =  [[[LBCoreDataConn sharedLBDataConnection] managedObjectContext] executeFetchRequest:request error:&error];
+    //
+    //    if (results.count > 0) {
+    //
+    //        for (NSManagedObject *media in results) {
+    //
+    //            LBPhoto *photo = (LBPhoto*)[media valueForKey:@"image"];
+    //
+    //            if (photo) {
+    //
+    //                NSLog(@"photo url cached:%@",photo.URL);
+    //            }
+    //        }
+    //    }
+    //    NSLog(@"end fetched!");
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -214,8 +219,10 @@ static const int NUM_ROW_PER_PAGE = 10;
         songCell = (LBHomeNewSongCell *)[tableView dequeueReusableCellWithIdentifier:[LBHomeNewSongCell reusableCellWithIdentifier] forIndexPath:indexPath];
         songCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        SDWebImageOptions songDownloadOptions = SDWebImageProgressiveDownload | SDWebImageContinueInBackground | SDWebImageTransformAnimatedImage;
         
-        [songCell.SongImg sd_setImageWithURL:photo.url placeholderImage:[UIImage imageNamed:@"image_placeholder.png"]];
+        
+        [songCell.SongImg sd_setImageWithURL:photo.url placeholderImage:[UIImage imageNamed:@"image_placeholder.png"] options:songDownloadOptions];
         
         [songCell.SongImg setShowActivityIndicatorView:YES];
         
