@@ -88,12 +88,6 @@
                             <constraint firstAttribute="height" constant="16" id="ujV-He-Ebj"/>
                             <constraint firstAttribute="width" constant="4" id="z4h-fs-BaH"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ujV-He-Ebj"/>
-                                <exclude reference="z4h-fs-BaH"/>
-                            </mask>
-                        </variation>
                     </imageView>
                 </subviews>
                 <constraints>

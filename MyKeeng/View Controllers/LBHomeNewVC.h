@@ -17,6 +17,11 @@
 @protocol LBPhotoFiltrationDelegate;
 @protocol LBHomeNewSongCellDelegate;
 
+
+@interface LBTableView : UITableView
+
+@end
+
 typedef NS_OPTIONS(NSUInteger, FetchDataState) {
     
     FetchDataStateNotStarted = 0,
@@ -32,7 +37,7 @@ typedef NS_OPTIONS(NSUInteger, FetchDataState) {
     FetchDataState fetchDataState;
 }
 
-@property (nonatomic) UITableView *tableview;
+@property (nonatomic) LBTableView *tableview;
 @property (nonatomic) NSMutableArray <LBMedia *> *medias;
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) LBPhotoOperations *photoOperations;

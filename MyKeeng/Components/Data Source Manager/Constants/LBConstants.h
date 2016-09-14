@@ -12,8 +12,8 @@
 
 #pragma mark - Restful 
 //#define KEENG_WS_URL @"http://vip.service.keeng.vn/KeengWSRestfulV3/ws/"
-//#define KEENG_WS_URL @"http://service.keeng.pe.onbox.vn:8082/KeengWSRestful/ws/"
-#define KEENG_WS_URL @"http://service.keeng.la.onbox.vn:8082/KeengWSRestful/ws/"
+#define KEENG_WS_URL @"http://service.keeng.pe.onbox.vn:8082/KeengWSRestful/ws/"
+//#define KEENG_WS_URL @"http://service.keeng.la.onbox.vn:8082/KeengWSRestful/ws/"
 #define KEENG_API_GET_HOME @"common/getHome"
 #define KEENG_API_GET_HOME_FULLPATH KEENG_WS_URL @"common/getHome"
 static const int KEENG_MAX_TOTAL_COST_MEM_CACHE = 5*1024*1024; //mb

@@ -22,13 +22,23 @@
 #import "UIView+Extensions.h"
 #import "UIResponder+Extensions.h"
 
+@implementation LBTableView
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.nextResponder touchesBegan:touches withEvent:event];
+}
+
+
+
+@end
+
+
 @interface LBHomeNewVC () {
     
     int curPageIdx;
     LBMenuView *menuPopupView;
 }
-
-
 @end
 
 @implementation LBHomeNewVC
@@ -82,7 +92,7 @@ static const int NUM_ROW_PER_PAGE = 10;
     HOMENEW_CELL_WIDTH = CGRectGetWidth(self.view.bounds);
     
     //register LBHomeNewSongCell nib file
-    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
+    _tableview = [[LBTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
     _tableview.delegate = self;
     _tableview.dataSource = self;
     [self.view addSubview:_tableview];
@@ -127,13 +137,6 @@ static const int NUM_ROW_PER_PAGE = 10;
     [menuitems addObjectsFromArray:@[menuItemShare, menuItemAddFavourite]];
     
     menuPopupView = [[LBMenuView alloc] initWithMenuItems:menuitems];
-    
-    
-    //find first responder
-    UIView *viewHasFirstResponder = [UIResponder currentFirstResponder];
-    NSLog(@"%@", viewHasFirstResponder);
-    
-
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -229,14 +232,7 @@ static const int NUM_ROW_PER_PAGE = 10;
         songCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
         songCell.NumLikeLbl.text = @"New Song";
         songCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
-        songCell.song = media;
-
-        
-        UITapGestureRecognizer
-        *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnMenuPopup:)];
-        
-        singleTap.numberOfTapsRequired = 1;
-        [songCell.menuMoreImg addGestureRecognizer:singleTap];
+        songCell.song = (LBSong*)media;
         
         //display seperator image at the bottom of cell
         UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
@@ -594,10 +590,10 @@ static const int NUM_ROW_PER_PAGE = 10;
 }
 
 #pragma mark - LBHomeNewSongCellDelegate
--(void)tapOnMenuPopup:(UITapGestureRecognizer *)tapGesture {
+-(void)tapOnMenuPopup:(UITapGestureRecognizer *)tapGesture fromTouchPoint:(CGPoint)fromTouchPoint {
     
     NSLog(@"Da tap menupopup");
-    CGPoint point = [tapGesture locationInView:self.view];
+    CGPoint point = (tapGesture ? [tapGesture locationInView:self.view] : fromTouchPoint);
 
     [menuPopupView showMenuInView:self.view fromOwnerRect:(CGRect){point, CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height)}];
 }
@@ -617,9 +613,13 @@ static const int NUM_ROW_PER_PAGE = 10;
         LBHomeNewSongCell *songCell = (LBHomeNewSongCell*)tappedCell;
         CGPoint pointTappedInMenuIconRect = [songCell.menuMoreImg convertPoint:locationInTableView fromView:self.tableview];
         
-        if ([songCell.menuMoreImg pointInside:pointTappedInMenuIconRect withEvent:nil]) {
+        CGRect extendedMenuIconRect = CGRectInset(songCell.menuMoreImg.bounds, -10, -10);
+        
+        if (CGRectContainsPoint(extendedMenuIconRect, pointTappedInMenuIconRect)) {
             
-            NSLog(@"Da nhan trung!!!");
+            CGRect menuIconRectInCellView = songCell.menuMoreImg.frame;
+            
+            [self tapOnMenuPopup:nil fromTouchPoint:[songCell.contentView convertPoint:CGPointMake(menuIconRectInCellView.origin.x, menuIconRectInCellView.origin.y) toView:self.view]];
         }
     }
     

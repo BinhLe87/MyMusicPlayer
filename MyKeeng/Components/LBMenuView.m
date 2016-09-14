@@ -54,7 +54,7 @@
 @end
 
 
-const CGFloat kArrowSize = 12.f;
+const CGFloat kArrowSize = 2.f;
 @interface LBMenuView() {
     
     UIView *menuOverlayView;
@@ -95,6 +95,8 @@ const CGFloat kArrowSize = 12.f;
 }
 
 -(void)showMenuInView:(UIView *)view fromOwnerRect:(CGRect)fromOwnerRect {
+    
+    
     
     rootView = view;
     
@@ -148,7 +150,7 @@ const CGFloat kArrowSize = 12.f;
             self.frame = toFrame;
         } completion:^(BOOL finished) {
             
-            [self.superview removeFromSuperview]; // dismiss MenuOverlayView
+            [menuOverlayView removeFromSuperview]; // dismiss MenuOverlayView
             [self removeFromSuperview]; //dismiss menuview from menuOverlayView
         }];
     }
