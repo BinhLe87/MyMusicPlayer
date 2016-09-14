@@ -14,8 +14,19 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
+    
+    [_menuMoreImg setUserInteractionEnabled:YES];
+    
     // Initialization code
 
+    /*UITapGestureRecognizer
+     *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    
+    singleTap.numberOfTapsRequired = 1;
+    [_menuMoreImg setUserInteractionEnabled:YES];
+    [_menuMoreImg addGestureRecognizer:singleTap];*/
+    
+    
 }
 
 -(void)layoutSubviews {
@@ -36,6 +47,13 @@
     
 }
 
+-(void)singleTap:(UITapGestureRecognizer*)tapRecognizer {
+    
+    if ([self.delegate respondsToSelector:@selector(tapOnMenuPopup:)]) {
+        
+        [self.delegate tapOnMenuPopup:_song];
+    }
+}
 
 
 @end

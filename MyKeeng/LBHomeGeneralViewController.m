@@ -8,10 +8,12 @@
 
 #import "LBHomeGeneralViewController.h"
 #import "LBHomeNewVC.h"
-#import "LBPageMenuViewController.h"
+#import "CAPSPageMenu.h"
+
+
 
 @interface LBHomeGeneralViewController ()
-@property (nonatomic) LBPageMenuViewController *pageMenu;
+@property (nonatomic) CAPSPageMenu *pageMenu;
 
 @end
 
@@ -21,24 +23,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-
+    LBHomeNewVC *pageView_home = [[LBHomeNewVC alloc] init];
+    pageView_home.title = @"HOME MAIN";
     
-    LBPageViewInPageMenu *pageView_home = [[LBPageViewInPageMenu alloc] initWithViewController:[[LBHomeNewVC alloc] init] menuTitle:@"HOME_MAIN" menuImage:[UIImage imageNamed:@"icon_mocha_small.png"]];
     
+    LBHomeNewVC *pageView_sub1 = [[LBHomeNewVC alloc] init];
+    pageView_sub1.title = @"HOME_SUB HOME_SUB";
     
-    LBPageViewInPageMenu *pageView_sub1 = [[LBPageViewInPageMenu alloc] initWithViewController:[[LBHomeNewVC alloc] init] menuTitle:@"HOME_SUB HOME_SUB" menuImage:[UIImage imageNamed:@"icon.png"]];
-    LBPageViewInPageMenu *pageView_sub2 = [[LBPageViewInPageMenu alloc] initWithViewController:[[LBHomeNewVC alloc] init] menuTitle:@"HOME_LOWEST_SUB HOME_LOWEST_SUB" menuImage:[UIImage imageNamed:@"icon.png"]];
+    LBHomeNewVC *pageView_sub2 = [[LBHomeNewVC alloc] init];
+    pageView_sub2.title = @"HOME_LOWEST_SUB HOME_LOWEST_SUB";
     
     NSDictionary *parameters = @{
-                                 LBPageMenuOptionScrollMenuBackgroundColor: [UIColor colorWithRed:30.0/255.0 green:30.0/255.0 blue:30.0/255.0 alpha:1.0],
-                                 LBPageMenuOptionSelectionIndicatorColor: [UIColor orangeColor],
-                                 LBPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue" size:13.0],
-                                 LBPageMenuOptionMenuHeight: @(40.0),
-                                 LBPageMenuOptionMenuItemImageWidth: @(30.0),
-                                 LBPageMenuOptionCenterMenuItems: @(YES)
+                                 CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor colorWithRed:30.0/255.0 green:30.0/255.0 blue:30.0/255.0 alpha:1.0],
+                                 CAPSPageMenuOptionViewBackgroundColor: [UIColor colorWithRed:20.0/255.0 green:20.0/255.0 blue:20.0/255.0 alpha:1.0],
+                                 CAPSPageMenuOptionSelectionIndicatorColor: [UIColor orangeColor],
+                                 CAPSPageMenuOptionBottomMenuHairlineColor: [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0],
+                                 CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue" size:13.0],
+                                 CAPSPageMenuOptionMenuHeight: @(40.0),
+                                 CAPSPageMenuOptionMenuItemWidth: @(90.0),
+                                 CAPSPageMenuOptionCenterMenuItems: @(YES),
+                                 CAPSPageMenuOptionMenuItemSeparatorWidth: @(2.0),
+                                 CAPSPageMenuOptionMenuItemSeparatorColor: [UIColor yellowColor],
+                                 CAPSPageMenuOptionMenuItemSeparatorRoundEdges: @(YES)
                                  };
     
-    _pageMenu = [[LBPageMenuViewController alloc] initWithViewControllers:@[pageView_home, pageView_sub1, pageView_sub2] frame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) options:parameters];
+    _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:@[pageView_home, pageView_sub1, pageView_sub2] frame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) options:parameters];
     
     [self.view addSubview:_pageMenu.view];
 }
@@ -48,14 +57,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

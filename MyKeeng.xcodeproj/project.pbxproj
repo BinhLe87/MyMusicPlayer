@@ -363,6 +363,10 @@
 		AB3811751D38A3830082C339 /* welcom_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB38101A1D38A3820082C339 /* welcom_4.jpg */; };
 		AB3811761D38A3830082C339 /* welcom_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AB38101B1D38A3820082C339 /* welcom_5.jpg */; };
 		AB3EE6DB1D4C708D00CAEB99 /* libMantle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB3EE6DA1D4C708D00CAEB99 /* libMantle.a */; };
+		AB4D164B1D83D243005797F7 /* LBContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4D164A1D83D243005797F7 /* LBContainerViewController.m */; };
+		AB4D164F1D83D5D7005797F7 /* LBFloatingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4D164E1D83D5D7005797F7 /* LBFloatingWindow.m */; };
+		AB4D16521D83D6AD005797F7 /* LBFloatingButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4D16511D83D6AD005797F7 /* LBFloatingButtonViewController.m */; };
+		AB4D16571D83F79B005797F7 /* LBHomeNewFloatingWindowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4D16561D83F79B005797F7 /* LBHomeNewFloatingWindowVC.m */; };
 		AB4E59141D5D743300912D80 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4E58F41D5D743300912D80 /* MKAnnotationView+WebCache.m */; };
 		AB4E59151D5D743300912D80 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4E58F61D5D743300912D80 /* NSData+ImageContentType.m */; };
 		AB4E59161D5D743300912D80 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4E58F81D5D743300912D80 /* SDImageCache.m */; };
@@ -418,6 +422,7 @@
 		AB92B2711D63168400AC2C14 /* LBURLToNSDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB92B2701D63168400AC2C14 /* LBURLToNSDataTransformer.m */; };
 		ABD9BD5F1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD9BD5E1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m */; };
 		ABDC620A1D5087B3001608C9 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDC62091D5087B3001608C9 /* libAFNetworking.a */; };
+		ABE731D01D879F5200DB8FBC /* LBMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE731CF1D879F5200DB8FBC /* LBMenuView.m */; };
 		ABE7623C1D3DD714008C3B72 /* MyKeengUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE7623B1D3DD714008C3B72 /* MyKeengUtilities.m */; };
 		ABE762431D3E2A93008C3B72 /* LBVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE762421D3E2A93008C3B72 /* LBVideoPlayerViewController.m */; };
 		ABE762451D3E2B0C008C3B72 /* LBVideoPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE762441D3E2B0C008C3B72 /* LBVideoPlayerViewController.xib */; };
@@ -443,6 +448,8 @@
 		ABEE968B1D3E70B100C72213 /* moviePlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEE96771D3E70B100C72213 /* moviePlay@2x.png */; };
 		ABEE968D1D3E70C800C72213 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEE968C1D3E70C800C72213 /* QuartzCore.framework */; };
 		ABEE968F1D3E70D100C72213 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEE968E1D3E70D100C72213 /* MediaPlayer.framework */; };
+		ABF6AFB61D8952B100769A8F /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF6AFB51D8952B100769A8F /* UIView+Extensions.m */; };
+		ABF6AFB91D89557500769A8F /* UIResponder+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF6AFB81D89557500769A8F /* UIResponder+Extensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -808,6 +815,17 @@
 		AB38101A1D38A3820082C339 /* welcom_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcom_4.jpg; sourceTree = "<group>"; };
 		AB38101B1D38A3820082C339 /* welcom_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcom_5.jpg; sourceTree = "<group>"; };
 		AB3EE6DA1D4C708D00CAEB99 /* libMantle.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMantle.a; path = "Pods/../build/Debug-iphoneos/libMantle.a"; sourceTree = "<group>"; };
+		AB4D16491D83D243005797F7 /* LBContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBContainerViewController.h; sourceTree = "<group>"; };
+		AB4D164A1D83D243005797F7 /* LBContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBContainerViewController.m; sourceTree = "<group>"; };
+		AB4D164C1D83D2F7005797F7 /* LBMovableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBMovableViewController.h; sourceTree = "<group>"; };
+		AB4D164D1D83D5D7005797F7 /* LBFloatingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBFloatingWindow.h; sourceTree = "<group>"; };
+		AB4D164E1D83D5D7005797F7 /* LBFloatingWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBFloatingWindow.m; sourceTree = "<group>"; };
+		AB4D16501D83D6AD005797F7 /* LBFloatingButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBFloatingButtonViewController.h; sourceTree = "<group>"; };
+		AB4D16511D83D6AD005797F7 /* LBFloatingButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBFloatingButtonViewController.m; sourceTree = "<group>"; };
+		AB4D16531D83D800005797F7 /* LBPresentationModeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBPresentationModeDelegate.h; sourceTree = "<group>"; };
+		AB4D16541D83F494005797F7 /* LBWindowTouchesHandling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBWindowTouchesHandling.h; sourceTree = "<group>"; };
+		AB4D16551D83F79B005797F7 /* LBHomeNewFloatingWindowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeNewFloatingWindowVC.h; sourceTree = "<group>"; };
+		AB4D16561D83F79B005797F7 /* LBHomeNewFloatingWindowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeNewFloatingWindowVC.m; sourceTree = "<group>"; };
 		AB4E58F31D5D743300912D80 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		AB4E58F41D5D743300912D80 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		AB4E58F51D5D743300912D80 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -908,6 +926,8 @@
 		ABD9BD5D1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+dynamicSizeMe.h"; sourceTree = "<group>"; };
 		ABD9BD5E1D363D4300D8FCF4 /* UILabel+dynamicSizeMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+dynamicSizeMe.m"; sourceTree = "<group>"; };
 		ABDC62091D5087B3001608C9 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../../../../Library/Developer/Xcode/DerivedData/MyKeeng-aodzkjyfmtuhipcencwtbvnqxjjp/Build/Products/Debug-iphonesimulator/libAFNetworking.a"; sourceTree = "<group>"; };
+		ABE731CE1D879F5200DB8FBC /* LBMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMenuView.h; sourceTree = "<group>"; };
+		ABE731CF1D879F5200DB8FBC /* LBMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMenuView.m; sourceTree = "<group>"; };
 		ABE7623A1D3DD714008C3B72 /* MyKeengUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKeengUtilities.h; sourceTree = "<group>"; };
 		ABE7623B1D3DD714008C3B72 /* MyKeengUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyKeengUtilities.m; sourceTree = "<group>"; };
 		ABE762411D3E2A93008C3B72 /* LBVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVideoPlayerViewController.h; sourceTree = "<group>"; };
@@ -939,6 +959,10 @@
 		ABEE96771D3E70B100C72213 /* moviePlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moviePlay@2x.png"; sourceTree = "<group>"; };
 		ABEE968C1D3E70C800C72213 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ABEE968E1D3E70D100C72213 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		ABF6AFB41D8952B100769A8F /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
+		ABF6AFB51D8952B100769A8F /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
+		ABF6AFB71D89557500769A8F /* UIResponder+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Extensions.h"; sourceTree = "<group>"; };
+		ABF6AFB81D89557500769A8F /* UIResponder+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+Extensions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1358,6 +1382,22 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		AB4D16481D83D1FD005797F7 /* ViewControllerContainer */ = {
+			isa = PBXGroup;
+			children = (
+				AB4D16541D83F494005797F7 /* LBWindowTouchesHandling.h */,
+				AB4D164C1D83D2F7005797F7 /* LBMovableViewController.h */,
+				AB4D16491D83D243005797F7 /* LBContainerViewController.h */,
+				AB4D164A1D83D243005797F7 /* LBContainerViewController.m */,
+				AB4D164D1D83D5D7005797F7 /* LBFloatingWindow.h */,
+				AB4D164E1D83D5D7005797F7 /* LBFloatingWindow.m */,
+				AB4D16501D83D6AD005797F7 /* LBFloatingButtonViewController.h */,
+				AB4D16511D83D6AD005797F7 /* LBFloatingButtonViewController.m */,
+				AB4D16531D83D800005797F7 /* LBPresentationModeDelegate.h */,
+			);
+			name = ViewControllerContainer;
+			sourceTree = "<group>";
+		};
 		AB4E58F21D5D743300912D80 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1561,8 +1601,6 @@
 			children = (
 				ABE7623D1D3DE1AC008C3B72 /* LBHomeNew */,
 				ABE762351D3DC405008C3B72 /* LBMediaView */,
-				AB5472281D7D1A8B001CED26 /* LBHomeGeneralViewController.h */,
-				AB5472291D7D1A8B001CED26 /* LBHomeGeneralViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1647,6 +1685,15 @@
 			name = "UILabel-dynamicSize";
 			sourceTree = "<group>";
 		};
+		ABE731CA1D879EF800DB8FBC /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				ABE731CE1D879F5200DB8FBC /* LBMenuView.h */,
+				ABE731CF1D879F5200DB8FBC /* LBMenuView.m */,
+			);
+			name = MenuView;
+			sourceTree = "<group>";
+		};
 		ABE7622F1D3DC21E008C3B72 /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1690,12 +1737,18 @@
 		ABE762391D3DD6EE008C3B72 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ABE731CA1D879EF800DB8FBC /* MenuView */,
+				AB4D16481D83D1FD005797F7 /* ViewControllerContainer */,
 				ABE7623A1D3DD714008C3B72 /* MyKeengUtilities.h */,
 				ABE7623B1D3DD714008C3B72 /* MyKeengUtilities.m */,
 				AB7914BF1D5EC31C00387A88 /* NSString+MD5.h */,
 				AB7914C01D5EC31C00387A88 /* NSString+MD5.m */,
 				AB54722F1D7D2742001CED26 /* LBPageMenuViewController.h */,
 				AB5472301D7D2742001CED26 /* LBPageMenuViewController.m */,
+				ABF6AFB41D8952B100769A8F /* UIView+Extensions.h */,
+				ABF6AFB51D8952B100769A8F /* UIView+Extensions.m */,
+				ABF6AFB71D89557500769A8F /* UIResponder+Extensions.h */,
+				ABF6AFB81D89557500769A8F /* UIResponder+Extensions.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1705,6 +1758,10 @@
 			children = (
 				AB34B6031D35399E00F4047C /* LBHomeNewVC.h */,
 				AB34B6041D35399E00F4047C /* LBHomeNewVC.m */,
+				AB5472281D7D1A8B001CED26 /* LBHomeGeneralViewController.h */,
+				AB5472291D7D1A8B001CED26 /* LBHomeGeneralViewController.m */,
+				AB4D16551D83F79B005797F7 /* LBHomeNewFloatingWindowVC.h */,
+				AB4D16561D83F79B005797F7 /* LBHomeNewFloatingWindowVC.m */,
 			);
 			name = LBHomeNew;
 			sourceTree = "<group>";
@@ -2242,6 +2299,7 @@
 				AB4E591B1D5D743300912D80 /* SDWebImageManager.m in Sources */,
 				AB7914BA1D5EBBE000387A88 /* LBCoreDataConn.m in Sources */,
 				AB5FEF641D59CF7D00BAB66E /* LBPhotoOperations.m in Sources */,
+				ABE731D01D879F5200DB8FBC /* LBMenuView.m in Sources */,
 				AB7914C41D5EEBF900387A88 /* LBPhotoToDataTransformer.m in Sources */,
 				AB69B8531D5ACD89001C77CC /* LBPhotoFiltration.m in Sources */,
 				AB8519F51D4EFD3100B6B0A5 /* LBDataConnection.m in Sources */,
@@ -2256,6 +2314,7 @@
 				AB92B26D1D62FBB500AC2C14 /* HCDCoreDataStack.m in Sources */,
 				ABEE96781D3E70B100C72213 /* ALAirplayView.m in Sources */,
 				AB4E59231D5D743300912D80 /* UIView+WebCacheOperation.m in Sources */,
+				AB4D16571D83F79B005797F7 /* LBHomeNewFloatingWindowVC.m in Sources */,
 				ABEE967A1D3E70B100C72213 /* ALMoviePlayerController.m in Sources */,
 				AB5B21581D3F14470071357A /* LBVideoCellPlayer.m in Sources */,
 				AB4E59221D5D743300912D80 /* UIImageView+WebCache.m in Sources */,
@@ -2275,6 +2334,7 @@
 				AB4E59151D5D743300912D80 /* NSData+ImageContentType.m in Sources */,
 				ABE762431D3E2A93008C3B72 /* LBVideoPlayerViewController.m in Sources */,
 				AB7CBA221D34F5AA007BF344 /* LBMedia.m in Sources */,
+				ABF6AFB91D89557500769A8F /* UIResponder+Extensions.m in Sources */,
 				AB69B8501D5AC3B7001C77CC /* LBPhotoDownloader.m in Sources */,
 				AB4E59181D5D743300912D80 /* SDWebImageDecoder.m in Sources */,
 				AB5FEF601D59CE8000BAB66E /* LBPhoto.m in Sources */,
@@ -2283,9 +2343,13 @@
 				AB1FC7261D37715A006A6059 /* LBVideoCell.m in Sources */,
 				AB4E591C1D5D743300912D80 /* SDWebImagePrefetcher.m in Sources */,
 				AB54722A1D7D1A8B001CED26 /* LBHomeGeneralViewController.m in Sources */,
+				AB4D164F1D83D5D7005797F7 /* LBFloatingWindow.m in Sources */,
+				ABF6AFB61D8952B100769A8F /* UIView+Extensions.m in Sources */,
 				AB4E59141D5D743300912D80 /* MKAnnotationView+WebCache.m in Sources */,
 				AB4E591E1D5D743300912D80 /* UIImage+GIF.m in Sources */,
 				AB8519EC1D4EEA1A00B6B0A5 /* LBConnManager.m in Sources */,
+				AB4D164B1D83D243005797F7 /* LBContainerViewController.m in Sources */,
+				AB4D16521D83D6AD005797F7 /* LBFloatingButtonViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

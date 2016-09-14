@@ -6,15 +6,15 @@
  * the root directory of this source tree.
  */
 
-#import "FBMemoryProfilerContainerViewController.h"
+#import "LBContainerViewController.h"
+#import <tgmath.h>
+#import "LBMovableViewController.h"
 
-#import "FBMemoryProfiler.h"
-#import "FBMemoryProfilerMathUtils.h"
-#import "FBMemoryProfilerMovableViewController.h"
 
-@implementation FBMemoryProfilerContainerViewController
+
+@implementation LBContainerViewController
 {
-  UIViewController<FBMemoryProfilerMovableViewController> *_presentedViewController;
+  UIViewController<LBMovableViewController> *_presentedViewController;
   UIPanGestureRecognizer *_panGestureRecognizer;
 
   UIPinchGestureRecognizer *_pinchGestureRecognizer;
@@ -44,7 +44,7 @@
                                                 object:nil];
 }
 
-- (void)presentViewController:(UIViewController<FBMemoryProfilerMovableViewController> *)viewController
+- (void)presentViewController:(UIViewController<LBMovableViewController> *)viewController
                      withSize:(CGSize)size
 {
   if (_presentedViewController) {
@@ -58,7 +58,7 @@
 
   // Put content right under status bar, in the middle
   CGFloat heightOffset = 20;
-  CGFloat widthOffset = FBMemoryProfilerRoundPixelValue((CGRectGetWidth(self.view.bounds) - adjustedSize.width) / 2.0);
+  CGFloat widthOffset = LBRoundPixelValue((CGRectGetWidth(self.view.bounds) - adjustedSize.width) / 2.0);
 
   CGRect frame = CGRectMake(widthOffset, heightOffset, adjustedSize.width, adjustedSize.height);
 
@@ -108,7 +108,28 @@
   center.x += translation.x;
   center.y += translation.y;
 
-    _presentedViewController.view.center = center;
+  CGFloat centerHeightOffset = LBRoundPixelValue(CGRectGetHeight(_presentedViewController.view.frame) / 2.0);
+  CGFloat centerWidthOffset = LBRoundPixelValue(CGRectGetWidth(_presentedViewController.view.frame) / 2.0);
+
+  // Make sure it stays on screen
+  if (center.y - centerHeightOffset < 0) {
+    center.y = centerHeightOffset;
+  }
+  if (center.x - centerWidthOffset < 0) {
+    center.x = centerWidthOffset;
+  }
+
+  CGFloat maximumY = CGRectGetHeight(self.view.bounds) -  CGRectGetHeight(_presentedViewController.view.frame);
+  if (center.y - centerHeightOffset > maximumY) {
+    center.y = maximumY + centerHeightOffset;
+  }
+
+  CGFloat maximumX = CGRectGetWidth(self.view.bounds) - CGRectGetWidth(_presentedViewController.view.frame);
+  if (center.x - centerWidthOffset > maximumX) {
+    center.x = maximumX + centerWidthOffset;
+  }
+
+  _presentedViewController.view.center = center;
 
   [_panGestureRecognizer setTranslation:CGPointZero inView:self.view];
 }
@@ -244,5 +265,11 @@
   }];
 
 }
+
+CGFloat LBRoundPixelValue(CGFloat value) {
+    CGFloat scale = [[UIScreen mainScreen] scale];
+    return roundf(value * scale) / scale;
+}
+
 
 @end

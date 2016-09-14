@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LBVideo.h"
+#import "LBSong.h"
+
+@protocol LBHomeNewSongCellDelegate <NSObject>
+
+-(void)tapOnMenuPopup:(LBSong*)song;
+
+@end
+
 
 @interface LBHomeNewSongCell : UITableViewCell
 
@@ -27,9 +34,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *SongImg;
 
 
-
-@property (weak, nonatomic) LBVideo* videoInfo;
-
 @property (nonatomic) NSString *songname;
+
+@property (nonatomic, weak) LBSong *song;
+
+@property (weak, nonatomic) IBOutlet UIImageView *menuMoreImg;
+
+@property (nonatomic) id<LBHomeNewSongCellDelegate> delegate;
+
 
 @end

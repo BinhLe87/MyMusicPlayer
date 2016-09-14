@@ -8,6 +8,7 @@
 
 #import "CAPSPageMenu.h"
 
+
 @interface MenuItemView ()
 
 @end
@@ -44,6 +45,9 @@ typedef NS_ENUM(NSUInteger, CAPSPageMenuScrollDirection) {
     CAPSPageMenuScrollDirectionRight,
     CAPSPageMenuScrollDirectionOther
 };
+
+
+
 
 @interface CAPSPageMenu ()
 
@@ -917,6 +921,8 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
 {
     return YES;
 }
+
+
 
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer

@@ -126,7 +126,7 @@
                         
                         for (NSMergeConflict* conflict in [error.userInfo valueForKey:@"conflictList"]) {
                             
-                            NSLog(@"MyKeeng Conflicted: %@", conflict);
+                           // NSLog(@"MyKeeng Conflicted: %@", conflict);
                         }
                     }
                 }];
@@ -178,7 +178,7 @@
                         
                         for (NSMergeConflict* conflict in [error.userInfo valueForKey:@"conflictList"]) {
                             
-                            NSLog(@"MyKeeng Conflicted: %@", conflict);
+                          //  NSLog(@"MyKeeng Conflicted: %@", conflict);
                         }
                         
                     }

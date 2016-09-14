@@ -18,11 +18,14 @@
 #import "UIImageView+WebCache.h"
 #import "LBMediaCoreDataOperation.h"
 #import "LBCoreDataConn.h"
-
+#import "LBMenuView.h"
+#import "UIView+Extensions.h"
+#import "UIResponder+Extensions.h"
 
 @interface LBHomeNewVC () {
     
     int curPageIdx;
+    LBMenuView *menuPopupView;
 }
 
 
@@ -116,34 +119,28 @@ static const int NUM_ROW_PER_PAGE = 10;
     [[SDImageCache sharedImageCache] clearMemory];
     [[SDImageCache sharedImageCache] clearDisk];
     
-    //    //fetch from core data
-    //    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    //    NSEntityDescription *entity = [NSEntityDescription entityForName:@"LBMedia" inManagedObjectContext:[[LBCoreDataConn sharedLBDataConnection] managedObjectContext]];
-    //
-    //    [request setEntity:entity];
-    //
-    //    NSError *error;
-    //    NSArray *results =  [[[LBCoreDataConn sharedLBDataConnection] managedObjectContext] executeFetchRequest:request error:&error];
-    //
-    //    if (results.count > 0) {
-    //
-    //        for (NSManagedObject *media in results) {
-    //
-    //            LBPhoto *photo = (LBPhoto*)[media valueForKey:@"image"];
-    //
-    //            if (photo) {
-    //
-    //                NSLog(@"photo url cached:%@",photo.URL);
-    //            }
-    //        }
-    //    }
-    //    NSLog(@"end fetched!");
+    //initiate menu popup view
+    NSMutableArray<LBMenuItem *> *menuitems = [NSMutableArray array];
+    LBMenuItem *menuItemShare = [[LBMenuItem alloc] initMenuItem:@"Chia sẻ" target:self action:@selector(tapMenuShare:)];
+    LBMenuItem *menuItemAddFavourite = [[LBMenuItem alloc] initMenuItem:@"Lưu vào danh sách Yêu thích" target:self action:@selector(tapMenuAddFavourite:)];
+    
+    [menuitems addObjectsFromArray:@[menuItemShare, menuItemAddFavourite]];
+    
+    menuPopupView = [[LBMenuView alloc] initWithMenuItems:menuitems];
+    
+    
+    //find first responder
+    UIView *viewHasFirstResponder = [UIResponder currentFirstResponder];
+    NSLog(@"%@", viewHasFirstResponder);
+    
+
 }
 
 -(BOOL)prefersStatusBarHidden {
     
     return YES;
 }
+
 
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -232,6 +229,14 @@ static const int NUM_ROW_PER_PAGE = 10;
         songCell.NumListenLbl.text = [NSString stringWithFormat:@"%d", [media.listen_no intValue]];
         songCell.NumLikeLbl.text = @"New Song";
         songCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
+        songCell.song = media;
+
+        
+        UITapGestureRecognizer
+        *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnMenuPopup:)];
+        
+        singleTap.numberOfTapsRequired = 1;
+        [songCell.menuMoreImg addGestureRecognizer:singleTap];
         
         //display seperator image at the bottom of cell
         UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
@@ -253,7 +258,7 @@ static const int NUM_ROW_PER_PAGE = 10;
         
         [videoCell.VideoImg sd_setImageWithURL:photo.url placeholderImage:[UIImage imageNamed:@"image_placeholder.png"] options:videoDownloadOptions progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             
-            NSLog(@"%@:%@:%d/%d", media.name, media.image.url, receivedSize, expectedSize);
+          //  NSLog(@"%@:%@:%d/%d", media.name, media.image.url, receivedSize, expectedSize);
             
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
@@ -587,6 +592,53 @@ static const int NUM_ROW_PER_PAGE = 10;
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+#pragma mark - LBHomeNewSongCellDelegate
+-(void)tapOnMenuPopup:(UITapGestureRecognizer *)tapGesture {
+    
+    NSLog(@"Da tap menupopup");
+    CGPoint point = [tapGesture locationInView:self.view];
+
+    [menuPopupView showMenuInView:self.view fromOwnerRect:(CGRect){point, CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height)}];
+}
+
+#pragma mark - Gestures
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [touches anyObject];
+    
+    //TODO: Expand touch area for menu icon in table cell if exists
+    CGPoint locationInTableView = [touch locationInView:self.tableview];
+    NSIndexPath *tappedIndexPath = [self.tableview indexPathForRowAtPoint:locationInTableView];
+    
+    UITableViewCell *tappedCell = [self.tableview cellForRowAtIndexPath:tappedIndexPath];
+    if ([tappedCell isKindOfClass:[LBHomeNewSongCell class]]) {
+        
+        LBHomeNewSongCell *songCell = (LBHomeNewSongCell*)tappedCell;
+        CGPoint pointTappedInMenuIconRect = [songCell.menuMoreImg convertPoint:locationInTableView fromView:self.tableview];
+        
+        if ([songCell.menuMoreImg pointInside:pointTappedInMenuIconRect withEvent:nil]) {
+            
+            NSLog(@"Da nhan trung!!!");
+        }
+    }
+    
+    [super touchesBegan:touches withEvent:event];
+}
+
+
+
+#pragma mark - Menu popup actions
+-(void)tapMenuShare:(id)sender {
+ 
+    NSLog(@"Da tap 'Chia sẻ'");
+}
+
+-(void)tapMenuAddFavourite:(id)sender {
+    
+    NSLog(@"Da tap 'Lưu vào danh sách Yêu thích'");
+}
+
 
 
 @end

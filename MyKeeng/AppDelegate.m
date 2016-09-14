@@ -10,13 +10,13 @@
 #import "LBHomeNewVC.h"
 #import "SDImageCache.h"
 #import "LBHomeGeneralViewController.h"
-#import <FBMemoryProfiler/FBMemoryProfiler.h>
+#import "LBHomeNewFloatingWindowVC.h"
 
 
 @interface AppDelegate () {
     
     CGRect originFrameInPortrait;
-    FBMemoryProfiler *_memoryProfiler;
+    LBHomeNewFloatingWindowVC *homeNewFloatingWindowVC;
 }
 
 
@@ -28,9 +28,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     //TODO: Enable FacebookMemoryProfiler
-    _memoryProfiler = [FBMemoryProfiler new];
-    
-    [_memoryProfiler enable];
+    homeNewFloatingWindowVC = [LBHomeNewFloatingWindowVC new];
+    [homeNewFloatingWindowVC enable];
     
     // Override point for customization after application launch.
     

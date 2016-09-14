@@ -15,6 +15,7 @@
 
 @protocol LBPhotoDownloaderDelegate;
 @protocol LBPhotoFiltrationDelegate;
+@protocol LBHomeNewSongCellDelegate;
 
 typedef NS_OPTIONS(NSUInteger, FetchDataState) {
     
@@ -24,7 +25,7 @@ typedef NS_OPTIONS(NSUInteger, FetchDataState) {
 };
 
 
-@interface LBHomeNewVC : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface LBHomeNewVC : UIViewController <UITableViewDelegate, UITableViewDataSource, LBHomeNewSongCellDelegate> {
     
     NSManagedObjectContext *_managedObjectContext;
     LBConnManager *connManager;
