@@ -383,6 +383,8 @@
 		AB4E59211D5D743300912D80 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4E590F1D5D743300912D80 /* UIImageView+HighlightedWebCache.m */; };
 		AB4E59221D5D743300912D80 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4E59111D5D743300912D80 /* UIImageView+WebCache.m */; };
 		AB4E59231D5D743300912D80 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4E59131D5D743300912D80 /* UIView+WebCacheOperation.m */; };
+		AB52FD161D8A942B00B45E83 /* LBHomeNewWithFavouriteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AB52FD151D8A942B00B45E83 /* LBHomeNewWithFavouriteVC.m */; };
+		AB52FD1B1D8A958A00B45E83 /* LBFavouriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB52FD1A1D8A958A00B45E83 /* LBFavouriteCell.m */; };
 		AB54722A1D7D1A8B001CED26 /* LBHomeGeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5472291D7D1A8B001CED26 /* LBHomeGeneralViewController.m */; };
 		AB54722E1D7D1BE8001CED26 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = AB54722D1D7D1BE8001CED26 /* CAPSPageMenu.m */; };
 		AB5472311D7D2742001CED26 /* LBPageMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5472301D7D2742001CED26 /* LBPageMenuViewController.m */; };
@@ -859,6 +861,10 @@
 		AB4E59111D5D743300912D80 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		AB4E59121D5D743300912D80 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		AB4E59131D5D743300912D80 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		AB52FD151D8A942B00B45E83 /* LBHomeNewWithFavouriteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LBHomeNewWithFavouriteVC.m; path = "View Controllers/LBHomeNewWithFavouriteVC.m"; sourceTree = "<group>"; };
+		AB52FD171D8A943C00B45E83 /* LBHomeNewWithFavouriteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeNewWithFavouriteVC.h; sourceTree = "<group>"; };
+		AB52FD191D8A958A00B45E83 /* LBFavouriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBFavouriteCell.h; sourceTree = "<group>"; };
+		AB52FD1A1D8A958A00B45E83 /* LBFavouriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBFavouriteCell.m; sourceTree = "<group>"; };
 		AB5472281D7D1A8B001CED26 /* LBHomeGeneralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeGeneralViewController.h; sourceTree = "<group>"; };
 		AB5472291D7D1A8B001CED26 /* LBHomeGeneralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeGeneralViewController.m; sourceTree = "<group>"; };
 		AB54722C1D7D1BE8001CED26 /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSPageMenu.h; sourceTree = "<group>"; };
@@ -1439,6 +1445,15 @@
 			path = "../../../../../../Downloads/Download-Internet/SDWebImage-3.8.1/SDWebImage";
 			sourceTree = "<group>";
 		};
+		AB52FD181D8A954900B45E83 /* FavouriteView */ = {
+			isa = PBXGroup;
+			children = (
+				AB52FD191D8A958A00B45E83 /* LBFavouriteCell.h */,
+				AB52FD1A1D8A958A00B45E83 /* LBFavouriteCell.m */,
+			);
+			name = FavouriteView;
+			sourceTree = "<group>";
+		};
 		AB54722B1D7D1BD3001CED26 /* CAPSPageMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1707,6 +1722,7 @@
 		ABE762351D3DC405008C3B72 /* LBMediaView */ = {
 			isa = PBXGroup;
 			children = (
+				AB52FD181D8A954900B45E83 /* FavouriteView */,
 				ABE7623E1D3DE1E9008C3B72 /* SongView */,
 				ABE7622F1D3DC21E008C3B72 /* VideoPlayer */,
 				ABE762371D3DC462008C3B72 /* VideoView */,
@@ -1758,6 +1774,8 @@
 			children = (
 				AB34B6031D35399E00F4047C /* LBHomeNewVC.h */,
 				AB34B6041D35399E00F4047C /* LBHomeNewVC.m */,
+				AB52FD171D8A943C00B45E83 /* LBHomeNewWithFavouriteVC.h */,
+				AB52FD151D8A942B00B45E83 /* LBHomeNewWithFavouriteVC.m */,
 				AB5472281D7D1A8B001CED26 /* LBHomeGeneralViewController.h */,
 				AB5472291D7D1A8B001CED26 /* LBHomeGeneralViewController.m */,
 				AB4D16551D83F79B005797F7 /* LBHomeNewFloatingWindowVC.h */,
@@ -2301,6 +2319,7 @@
 				AB5FEF641D59CF7D00BAB66E /* LBPhotoOperations.m in Sources */,
 				ABE731D01D879F5200DB8FBC /* LBMenuView.m in Sources */,
 				AB7914C41D5EEBF900387A88 /* LBPhotoToDataTransformer.m in Sources */,
+				AB52FD161D8A942B00B45E83 /* LBHomeNewWithFavouriteVC.m in Sources */,
 				AB69B8531D5ACD89001C77CC /* LBPhotoFiltration.m in Sources */,
 				AB8519F51D4EFD3100B6B0A5 /* LBDataConnection.m in Sources */,
 				AB4E59191D5D743300912D80 /* SDWebImageDownloader.m in Sources */,
@@ -2325,6 +2344,7 @@
 				AB7914C11D5EC31C00387A88 /* NSString+MD5.m in Sources */,
 				AB4E591F1D5D743300912D80 /* UIImage+MultiFormat.m in Sources */,
 				AB4E591A1D5D743300912D80 /* SDWebImageDownloaderOperation.m in Sources */,
+				AB52FD1B1D8A958A00B45E83 /* LBFavouriteCell.m in Sources */,
 				AB7CBA0B1D34ABA3007BF344 /* LBSong.m in Sources */,
 				AB4E59211D5D743300912D80 /* UIImageView+HighlightedWebCache.m in Sources */,
 				ABEE96791D3E70B100C72213 /* ALButton.m in Sources */,

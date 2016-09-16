@@ -9,6 +9,7 @@
 #import "LBHomeGeneralViewController.h"
 #import "LBHomeNewVC.h"
 #import "CAPSPageMenu.h"
+#import "LBHomeNewWithFavouriteVC.h"
 
 
 
@@ -27,11 +28,10 @@
     pageView_home.title = @"HOME MAIN";
     
     
-    LBHomeNewVC *pageView_sub1 = [[LBHomeNewVC alloc] init];
-    pageView_sub1.title = @"HOME_SUB HOME_SUB";
+    LBHomeNewWithFavouriteVC *pageView_homewithfavourite = [[LBHomeNewWithFavouriteVC alloc] init];
+    pageView_homewithfavourite.title = @"FAVOURITE";
     
-    LBHomeNewVC *pageView_sub2 = [[LBHomeNewVC alloc] init];
-    pageView_sub2.title = @"HOME_LOWEST_SUB HOME_LOWEST_SUB";
+
     
     NSDictionary *parameters = @{
                                  CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor colorWithRed:30.0/255.0 green:30.0/255.0 blue:30.0/255.0 alpha:1.0],
@@ -47,7 +47,7 @@
                                  CAPSPageMenuOptionMenuItemSeparatorRoundEdges: @(YES)
                                  };
     
-    _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:@[pageView_home, pageView_sub1, pageView_sub2] frame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) options:parameters];
+    _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:@[pageView_homewithfavourite, pageView_home] frame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) options:parameters];
     
     [self.view addSubview:_pageMenu.view];
 }

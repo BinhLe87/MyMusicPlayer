@@ -42,5 +42,6 @@
 
 @property (nonatomic) id<LBHomeNewSongCellDelegate> delegate;
 
++(CGFloat)heightForSongCell;
 
 @end

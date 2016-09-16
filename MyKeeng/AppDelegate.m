@@ -28,8 +28,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     //TODO: Enable FacebookMemoryProfiler
-  //  homeNewFloatingWindowVC = [LBHomeNewFloatingWindowVC new];
-  //  [homeNewFloatingWindowVC enable];
+    homeNewFloatingWindowVC = [LBHomeNewFloatingWindowVC new];
+    [homeNewFloatingWindowVC enable];
     
     // Override point for customization after application launch.
     

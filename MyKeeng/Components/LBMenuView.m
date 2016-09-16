@@ -57,7 +57,7 @@
 const CGFloat kArrowSize = 2.f;
 @interface LBMenuView() {
     
-    UIView *menuOverlayView;
+    LBOverlayView *menuOverlayView;
     UIView *rootView;
     UIView *_contentView;
     CGRect menuOwnerRect;
@@ -71,6 +71,12 @@ const CGFloat kArrowSize = 2.f;
     KxMenuViewArrowDirection _arrowDirection;
     CGFloat _arrowPosition;
 }
+
+@end
+
+@implementation LBOverlayView
+
+
 
 @end
 
@@ -96,11 +102,18 @@ const CGFloat kArrowSize = 2.f;
 
 -(void)showMenuInView:(UIView *)view fromOwnerRect:(CGRect)fromOwnerRect {
     
+    for (UIView *v in view.subviews) {
+        
+        if ([v isKindOfClass:[LBOverlayView class]]) {
+            
+            [v removeFromSuperview];
+        }
+    }
     
     
     rootView = view;
     
-    menuOverlayView = [[UIView alloc] initWithFrame:view.bounds];
+    menuOverlayView = [[LBOverlayView alloc] initWithFrame:view.bounds];
     menuOverlayView.backgroundColor = [UIColor clearColor];
     [menuOverlayView addSubview:self];
     [rootView addSubview:menuOverlayView];
@@ -157,6 +170,12 @@ const CGFloat kArrowSize = 2.f;
 }
 
 -(UIView*)generateContentView {
+    
+    for (UIView *v in self.subviews) {
+        
+        [v removeFromSuperview];
+    }
+    
     
     __block CGFloat maxMenuItemWidth = 0.0;
     __block CGFloat maxMenuItemHeight = 0.0;

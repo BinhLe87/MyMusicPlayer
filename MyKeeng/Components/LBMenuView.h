@@ -34,6 +34,11 @@ typedef enum {
 } KxMenuViewArrowDirection;
 
 
+@interface LBOverlayView : UIView
+
+@end
+
+
 @interface LBMenuView : UIView
 
 @property (nonatomic) NSMutableArray<LBMenuItem*> *menuItems;

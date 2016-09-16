@@ -35,6 +35,10 @@
     
 }
 
++(CGFloat)heightForSongCell {
+    
+    return 120;
+}
 
 
 @end
