@@ -13,28 +13,35 @@
 #import "LBConnManager.h"
 #import "LBPhotoOperations.h"
 #import "LBHomeNewVC.h"
+#import "LBHomeNewVCBaseClass.h"
 
 @protocol LBPhotoDownloaderDelegate;
 @protocol LBPhotoFiltrationDelegate;
 @protocol LBHomeNewSongCellDelegate;
 
+@protocol LBHomePageMenuDelegate <NSObject>
+
+-(void)dismissPageMenu;
+-(void)regeneratePageMenu;
+
+@end
 
 
 
-
-@interface LBHomeNewWithFavouriteVC : UIViewController <UITableViewDelegate, UITableViewDataSource, LBHomeNewSongCellDelegate> {
+@interface LBHomeNewWithFavouriteVC : LBHomeNewVCBaseClass <UITableViewDelegate, UITableViewDataSource, LBHomeNewSongCellDelegate> {
     
     NSManagedObjectContext *_managedObjectContext;
     LBConnManager *connManager;
     FetchDataState fetchDataState;
 }
 
-@property (nonatomic) LBTableView *tableview;
+@property (nonatomic) UITableView *tableview;
 @property (nonatomic) NSMutableArray <LBSong *> *songs;
 @property (nonatomic) NSMutableArray <LBVideo *> *videos;
 @property (nonatomic) NSMutableArray <LBMedia *> *favourites;
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) LBPhotoOperations *photoOperations;
+
 
 @property (nonatomic) NSOperationQueue *LBMediaCoreDataQueue;
 

@@ -22,6 +22,8 @@
 #import "UIView+Extensions.h"
 #import "UIResponder+Extensions.h"
 #import "LBFavouriteCell.h"
+#import "LBSongFavouritePlayerViewController.h"
+
 
 typedef NS_ENUM(NSUInteger, TableSectionType) {
     
@@ -89,6 +91,8 @@ static const int NUM_ROW_PER_PAGE_NEW = 10;
     return _LBMediaCoreDataQueue;
 }
 
+
+
 #pragma mark - Load view
 
 -(LBPhotoOperations *)photoOperations {
@@ -107,7 +111,7 @@ static const int NUM_ROW_PER_PAGE_NEW = 10;
     HOMENEW_CELL_WIDTH_NEW = CGRectGetWidth(self.view.bounds);
     
     //register LBHomeNewSongCell nib file
-    _tableview = [[LBTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
     _tableview.delegate = self;
     _tableview.dataSource = self;
     [self.view addSubview:_tableview];
@@ -164,8 +168,6 @@ static const int NUM_ROW_PER_PAGE_NEW = 10;
 -(void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:YES];
 }
 
 //-(void)viewWillDisappear:(BOOL)animated {
@@ -258,6 +260,8 @@ static const int NUM_ROW_PER_PAGE_NEW = 10;
         songCell.NumLikeLbl.text = @"New Song";
         songCell.NumCommentLbl.text = [NSString stringWithFormat:@"Giá %d", [media.price intValue]];
         songCell.song = (LBSong*)media;
+        songCell.delegate = self;
+        songCell.indexPathInTableView = indexPath;
         
         //display seperator image at the bottom of cell
         UIImageView *seperatorImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator_cell.png"]];
@@ -298,6 +302,7 @@ static const int NUM_ROW_PER_PAGE_NEW = 10;
         
     } else if (indexPath.section == TableSectionTypeFavourite) {
         
+        //TODO: Favourite - load cell
         CGRect favouriteCellFrame = CGRectMake(0, 0, self.tableview.bounds.size.width, [LBFavouriteCell heightForFavouriteCell] - [LBFavouriteCell marginY]*2);
         
         CGSize favouriteCellContentSize = CGSizeMake(self.tableview.bounds.size.width * 2, [LBFavouriteCell heightForFavouriteCell] - [LBFavouriteCell marginY]*2);
@@ -317,6 +322,8 @@ static const int NUM_ROW_PER_PAGE_NEW = 10;
     
     return nil;
 }
+
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -395,57 +402,64 @@ static const int NUM_ROW_PER_PAGE_NEW = 10;
     
 }
 
+
+
 #pragma mark - Table view Delegates
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    [self.tableview deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == TableSectionTypeSong) {
+        
+        LBSongFavouritePlayerViewController *favouriteSongPlayerVC = [[LBSongFavouritePlayerViewController alloc] initWithSong:_songs[indexPath.row]];
+        
+        [self showOverlayViewController:favouriteSongPlayerVC completionBlock:^{
+           
+             favouriteSongPlayerVC.view.frame = CGRectMake(0, CGRectGetHeight(self.view.bounds), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                
+                favouriteSongPlayerVC.view.frame = self.view.bounds;
+            }];
+
+        }];
+    }
     
-    /*LBMedia *media = [_medias objectAtIndex:indexPath.row];
-    
-    if ([media isKindOfClass:[LBVideo class]]) {
-        
-        LBVideoPlayerViewController *videoPlayerVC = [[LBVideoPlayerViewController alloc] initWithNibName:@"LBVideoPlayerViewController" bundle:nil];
-        videoPlayerVC.mainVideo = (LBVideo*) media;
-        
-        
-        [self.navigationController pushViewController:videoPlayerVC animated:YES];
-    }*/
 }
 
 
 #pragma mark - LBHomeNewSongCellDelegate
--(void)tapOnMenuPopup:(UITapGestureRecognizer *)tapGesture fromTouchPoint:(CGPoint)fromTouchPoint {
+-(void)tapOnMenuPopup:(NSIndexPath *)indexPath {
     
     NSLog(@"Da tap menupopup");
-    CGPoint point = (tapGesture ? [tapGesture locationInView:self.view] : fromTouchPoint);
-    
-    [menuPopupView showMenuInView:self.view fromOwnerRect:(CGRect){point, CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height)}];
+    if (indexPath.section == TableSectionTypeSong) {
+        
+        LBHomeNewSongCell *songCell = (LBHomeNewSongCell*)[self.tableview cellForRowAtIndexPath:indexPath];
+        
+        if(songCell) {
+            
+            CGPoint convertedPoint = [songCell.menuMoreImg convertPoint:songCell.menuMoreImg.bounds.origin toView:self.view];
+            
+            [menuPopupView showMenuInView:self.view fromOwnerRect:(CGRect){convertedPoint, CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height)}];
+        }
+        
+    }
 }
 
-#pragma mark - Gestures
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+#pragma mark - Popup message
+-(void)showMessageInPopup:(NSString *)message withTitle:(NSString *)title {
     
-    UITouch *touch = [touches anyObject];
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
     
-    //TODO: Expand touch area for menu icon in table cell if exists
-    CGPoint locationInTableView = [touch locationInView:self.tableview];
-    NSIndexPath *tappedIndexPath = [self.tableview indexPathForRowAtPoint:locationInTableView];
-    
-    UITableViewCell *tappedCell = [self.tableview cellForRowAtIndexPath:tappedIndexPath];
-    if ([tappedCell isKindOfClass:[LBHomeNewSongCell class]]) {
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         
-        LBHomeNewSongCell *songCell = (LBHomeNewSongCell*)tappedCell;
-        CGPoint pointTappedInMenuIconRect = [songCell.menuMoreImg convertPoint:locationInTableView fromView:self.tableview];
-        
-        CGRect extendedMenuIconRect = CGRectInset(songCell.menuMoreImg.bounds, -10, -10);
-        
-        if (CGRectContainsPoint(extendedMenuIconRect, pointTappedInMenuIconRect)) {
-            
-            CGRect menuIconRectInCellView = songCell.menuMoreImg.frame;
-            
-            [self tapOnMenuPopup:nil fromTouchPoint:[songCell.contentView convertPoint:CGPointMake(menuIconRectInCellView.origin.x, menuIconRectInCellView.origin.y) toView:self.view]];
-        }
-    }
+        //do something when click button
+    }];
+    [alert addAction:okAction];
     
-    [super touchesBegan:touches withEvent:event];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
@@ -460,6 +474,7 @@ static const int NUM_ROW_PER_PAGE_NEW = 10;
     
     NSLog(@"Da tap 'Lưu vào danh sách Yêu thích'");
 }
+
 
 
 

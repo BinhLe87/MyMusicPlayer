@@ -256,9 +256,6 @@ static const int NUM_ROW_PER_PAGE = 10;
 -(void)exitVideoPlayer {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 

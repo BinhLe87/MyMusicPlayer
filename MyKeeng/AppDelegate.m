@@ -11,6 +11,7 @@
 #import "SDImageCache.h"
 #import "LBHomeGeneralViewController.h"
 #import "LBHomeNewFloatingWindowVC.h"
+#import "LBHomeNewWithFavouriteVC.h"
 
 
 @interface AppDelegate () {
@@ -28,8 +29,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     //TODO: Enable FacebookMemoryProfiler
-    homeNewFloatingWindowVC = [LBHomeNewFloatingWindowVC new];
-    [homeNewFloatingWindowVC enable];
+  //  homeNewFloatingWindowVC = [LBHomeNewFloatingWindowVC new];
+   // [homeNewFloatingWindowVC enable];
     
     // Override point for customization after application launch.
     
@@ -71,6 +72,11 @@
     
     //LBHomeNewVC *homeNewVC = [[LBHomeNewVC alloc] init];
    // homeNewVC.managedObjectContext = self.managedObjectContext;
+    
+
+    
+    /*LBHomeNewWithFavouriteVC *favouriteVC = [[LBHomeNewWithFavouriteVC alloc] init];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:favouriteVC];*/
     
     
     

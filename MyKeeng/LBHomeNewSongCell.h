@@ -11,7 +11,7 @@
 
 @protocol LBHomeNewSongCellDelegate <NSObject>
 
--(void)tapOnMenuPopup:(LBSong*)song;
+-(void)tapOnMenuPopup:(NSIndexPath*)indexPath;
 
 @end
 
@@ -41,6 +41,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *menuMoreImg;
 
 @property (nonatomic) id<LBHomeNewSongCellDelegate> delegate;
+
+@property (nonatomic) NSIndexPath *indexPathInTableView;
 
 +(CGFloat)heightForSongCell;
 

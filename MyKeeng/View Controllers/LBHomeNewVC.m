@@ -29,6 +29,28 @@
     [self.nextResponder touchesBegan:touches withEvent:event];
 }
 
+-(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    
+    if ([self pointInside:point withEvent:event]) {
+    
+        for (UIView *view in self.subviews) {
+            
+            CGPoint convertedPoint = [view convertPoint:point fromView:self];
+            
+            UIView *hitTestView = [view hitTest:convertedPoint withEvent:event];
+            
+            if (hitTestView) {
+                
+                return hitTestView;
+            }
+        }
+        
+        return self;
+    }
+    
+    return nil;
+}
+
 
 
 @end
@@ -149,8 +171,6 @@ static const int NUM_ROW_PER_PAGE = 10;
 -(void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:YES];
 }
 
 //-(void)viewWillDisappear:(BOOL)animated {
@@ -483,9 +503,12 @@ static const int NUM_ROW_PER_PAGE = 10;
     
     for (NSIndexPath *aIndexPath in tobeStarted) {
         
-        LBPhoto* photo = [[self.medias objectAtIndex:aIndexPath.row] image];
+        LBMedia *mediaWillStart = [self.medias objectAtIndex:aIndexPath.row];
+        if (!mediaWillStart.image.hasImage) {
+        LBPhoto* photo = [mediaWillStart image];
         
         [self startOperationsAtIndexPath:photo indexPath:aIndexPath];
+        }
     }
     tobeStarted = nil;
     

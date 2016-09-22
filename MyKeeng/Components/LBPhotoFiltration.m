@@ -25,8 +25,9 @@
     return self;
 }
 
--(void)main {
+-(void)start {
     
+    NSLog(@"Filtrating %@", _photo.url_string);
     if (self.isCancelled) {
         self.executing = NO;
         self.finished = YES;

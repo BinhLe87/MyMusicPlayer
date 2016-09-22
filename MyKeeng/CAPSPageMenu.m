@@ -942,4 +942,9 @@ NSString * const CAPSPageMenuOptionHideTopMenuBar                       = @"hide
     return _mutableMenuItemWidths;
 }
 
+
+
+
+
+
 @end

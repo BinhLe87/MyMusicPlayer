@@ -5,6 +5,7 @@ def sharedpods
 pod 'Mantle'
 pod 'AFNetworking', '~> 3.0'
 pod 'FBMemoryProfiler'
+pod 'ECSlidingViewController', '~> 2.0.3'
 end
 
 target 'MyKeeng' do 

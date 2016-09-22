@@ -30,9 +30,9 @@
     
     LBHomeNewWithFavouriteVC *pageView_homewithfavourite = [[LBHomeNewWithFavouriteVC alloc] init];
     pageView_homewithfavourite.title = @"FAVOURITE";
+    pageView_homewithfavourite.delegate = self;
     
 
-    
     NSDictionary *parameters = @{
                                  CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor colorWithRed:30.0/255.0 green:30.0/255.0 blue:30.0/255.0 alpha:1.0],
                                  CAPSPageMenuOptionViewBackgroundColor: [UIColor colorWithRed:20.0/255.0 green:20.0/255.0 blue:20.0/255.0 alpha:1.0],
@@ -56,6 +56,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark - LBHomeNewVCDelegate
+-(void)showOverlayViewController:(UIViewController *)viewController completionBlock:(void (^)(void))completionBlock {
+    
+    viewController.view.frame = _pageMenu.view.bounds;
+    [_pageMenu addChildViewController:viewController];
+    [_pageMenu.view addSubview:viewController.view];
+    
+    [viewController didMoveToParentViewController:_pageMenu];
+    [_pageMenu.view bringSubviewToFront:viewController.view];
+    
+    if (completionBlock) {
+        
+        completionBlock();
+    }
+}
+
 
 
 

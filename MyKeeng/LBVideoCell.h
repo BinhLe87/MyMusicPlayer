@@ -32,6 +32,9 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
+@property (weak, nonatomic) IBOutlet UIButton *videoBtn;
+
+
 
 -(void)setupUI;
 

@@ -18,18 +18,22 @@
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="dmp-p1-tjJ">
                         <rect key="frame" x="10" y="169" width="411" height="42"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4a-ex-Jdw">
-                                <rect key="frame" x="0.0" y="0.0" width="229" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4a-ex-Jdw">
+                                <rect key="frame" x="0.0" y="0.0" width="135" height="42"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK0-IU-72s">
-                                <rect key="frame" x="229" y="0.0" width="183" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK0-IU-72s">
+                                <rect key="frame" x="135" y="0.0" width="108" height="42"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWz-4o-4tt">
+                                <rect key="frame" x="243" y="0.0" width="168" height="42"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ga5-NB-IC2">
@@ -153,6 +157,7 @@
                 <outlet property="activityIndicatorView" destination="a1o-5t-TnG" id="3Ea-Be-sEH"/>
                 <outlet property="footerView" destination="dmp-p1-tjJ" id="Rut-l9-bfO"/>
                 <outlet property="infoView" destination="nRi-8L-bq3" id="EYi-an-Osb"/>
+                <outlet property="videoBtn" destination="CWz-4o-4tt" id="ksb-dA-BhP"/>
             </connections>
             <point key="canvasLocation" x="226.5" y="232.5"/>
         </tableViewCell>

@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LBHomeGeneralViewController : UIViewController
+@protocol LBHomeNewVCDelegate;
+
+
+@interface LBHomeGeneralViewController : UIViewController <LBHomeNewVCDelegate>
+
 
 
 @end

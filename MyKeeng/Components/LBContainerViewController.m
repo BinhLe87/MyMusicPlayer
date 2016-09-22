@@ -62,7 +62,7 @@
 
   CGRect frame = CGRectMake(widthOffset, heightOffset, adjustedSize.width, adjustedSize.height);
 
-  [self addChildViewController:_presentedViewController];
+  [self addChildViewController:_presentedViewController]; 
   _presentedViewController.view.frame = frame;
   [self.view addSubview:_presentedViewController.view];
 
